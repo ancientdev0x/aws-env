@@ -215,6 +215,48 @@ Scope: India-first concepts that have a credible 3–4 day MVP path. The emphasi
 
 ## Research limitations
 
+## Evidence review update — source-quality and MVP safeguards
+
+The following additions were checked against primary/regulatory sources or identifiable
+published case studies during this research pass. They narrow the top concepts to an
+action that can be demonstrated in a three-day hackathon, and distinguish a prototype
+signal from a verified environmental outcome.
+
+### Verified evidence additions
+
+| Concept | Additional evidence | Product implication |
+|---|---|---|
+| SaansSafe Schools | A Delhi-NCR field validation of low-cost PM instruments reported Spearman correlations of 0.64–0.83 for the instruments studied; the authors support real-time monitoring utility but this is not a regulatory-equivalence result [A5]. | Present low-cost readings as `indicative`, show co-location/calibration date and data freshness, and use official AQI as the public reference. |
+| JalSetu | A Bengaluru water-scarcity study reports a 618 MLD pre-monsoon-2024 demand/supply deficit (1,891 MLD estimated demand; 1,273 MLD available supply after losses/dry borewells) and groundwater-extraction stage rising from 193% in 2022 to 217% in 2023 [W5]. | Keep building-level claims limited to meter/tanker records. An anomaly is a review prompt, never proof that a vendor cheated or that a leak exists. |
+| ReLoop | WIEGO's Pune study used 15 focus groups involving 73 waste pickers and a survey of 150; it records non-enforcement of source segregation, lack of sorting sheds, hazards, and weak social protection [E5]. GPML's SWaCH case study reports that two waste pickers typically serve 200–300 households/businesses and identifies source-separation behaviour change as a continuing challenge [E6]. | Co-design with a collector partner. Never publicly expose worker locations, rank workers, or call a batch “recycled” before an authorised downstream recipient confirms it. |
+| SolarShare / EVFlex | The CEEW national consumer survey of 17,094 households across 21 states and one UT reports 57% specific rooftop-solar awareness; 73% of respondents who consider solar expensive did not know financing options [E7]. | Reframe the first release as a consented eligibility/finance/process coach linked to the official PM Surya Ghar portal, rather than an unvalidated load optimiser. |
+
+### Required three-day acceptance tests
+
+* **SaansSafe:** replay a timestamped poor-air fixture; a principal changes one activity; a parent role sees only the approved notice; export proves source time, action, and acknowledgement.
+* **JalSetu:** record two deliveries plus a leak ticket; modify one unit price or delivery-volume field; an explainable reconciliation rule opens a human-review item; unauthorised roles cannot read receipt data.
+* **ReLoop:** a resident requests pickup; a collector quotes/accepts; QR hand-off is confirmed by both parties; a downstream recipient records receipt; the society view exposes only aggregates.
+* **HeatShift:** replay one heat alert; a supervisor changes a shift, plans water/rest checkpoints, and records check-ins. The screen states “forecast, not medical clearance.”
+
+### Minimal reusable AWS implementation
+
+All four acceptance tests fit one reproducible local architecture: a SAM template and
+LocalStack provide API Gateway, Lambda, DynamoDB, S3, EventBridge, and SQS; DynamoDB
+holds workflow state; S3 keeps raw source snapshots and consented evidence; EventBridge
+schedules ingestion/reminders; and OpenSearch indexes auditable actions. Cedar evaluates
+resident/parent/worker/collector/manager permissions at the API boundary. This is a
+deliberate choice to make the implementation eligible under the event's local open-source
+route while retaining a direct path to AWS deployment. The event README is the
+source for this eligibility condition and service list.
+
+### Added references
+
+* **[A5]** Pal, R. et al. (2020). “Validation of Low-Cost Sensors in Measuring Real-Time PM10 Concentrations at Two Sites in Delhi National Capital Region.” *Aerosol and Air Quality Research*. PMCID: PMC7085545. https://pmc.ncbi.nlm.nih.gov/articles/PMC7085545/
+* **[W5]** “Study on the Water Scarcity Crisis in Bengaluru City, India during Pre-Monsoon 2024—Causes and Sustainable Solutions” (2024). https://omicsonline.org/open-access/study-on-the-water-scarcity-crisis-in-bengaluru-city-india-during-premonsoon-2024causes-and-sustainable-solutions-2157-7617-1000884-138431.html
+* **[E5]** WIEGO (2013). *Pune’s Waste Pickers: Realities & Recommendations*. https://www.wiego.org/wp-content/uploads/2019/09/IEMS-Pune-Waste-Picker-Policy-Recommendations-WIEGO.pdf
+* **[E6]** Global Partnership on Marine Litter (2025). *India: Just Transition of the Informal Recycling Sector*. https://wastepickersinternational.org/wp-content/uploads/2025/05/IndiaBriefv2.pdf
+* **[E7]** Council on Energy, Environment and Water (2026). *What Drives Rooftop Solar Installation Decisions in Indian Homes?* https://www.ceew.in/sites/default/files/report-on-rooftop-solar-adoption-in-indian-households.pdf
+
 - Web and published sources vary in date, methodology and jurisdiction. Quantitative values above remain tied to their cited source rather than being treated as universally current facts.
 - Reddit/community threads establish lived friction and adoption hypotheses; they do not establish incidence or causal effects.
 - Satellite fire, AOD and wind evidence can support regional context but cannot prove a specific local emitter caused a particular monitor spike.
