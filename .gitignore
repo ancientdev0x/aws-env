@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.DS_Store
+*.tmp
+*.log
+.env
+scientist_query*.txt
+task_patch*.txt
