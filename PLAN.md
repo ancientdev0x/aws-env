@@ -24,18 +24,27 @@
    - **Plan B (Fallback)**: If Plan A noisy/misaligned by Friday 21:00, use Microsoft Planetary Computer `sentinel-1-rtc` pre-processed calibrated backscatter for the exact AOI bbox.
 4. **Graph & Reachability Engine**:
    - Base graph: OpenStreetMap (Geofabrik AP extract) + PMGSY GeoSadak rural habitation connectors.
-   - Intersect road edges with buffered candidate water polygon ($25\text{m}$ buffer).
-   - Flag intersecting edges as `SUSPECTED_DISRUPTED`.
-   - Multi-source reachability: Check if each habitation has an active path in remaining graph to any mapped Hospital/PHC or designated Staging Hub (Collectorate, NDRF Camp).
+   - **Habitations source**: OpenStreetMap `place=village|hamlet|suburb|neighbourhood` nodes.
+   - **Population source**: Voronoi cell of each habitation (clipped to AOI) intersected with GHSL GHS-POP R2023A (100m).
+   - **Bridge handling rule**: OSM `bridge=yes` edges must NOT be auto-disrupted. Tag them with uncertainty flag `CHECK`.
+   - **Reachability logic**: `effective_blocked = (auto_suspected - force_cleared) | force_blocked`. Single `nx.multi_source_dijkstra` call finds nearest destinations and distances for all reachable nodes.
+   - **Status & Ranking hierarchy**:
+     - `INUNDATED`: Habitation point itself falls inside candidate flood mask.
+     - `NO_MAPPED_ROAD_PATH`: Habitation is not inundated, but all mapped road routes to destinations are disrupted.
+     - `PATH_EXISTS`: Active mapped road route exists to at least one hospital or staging hub.
+     - **Ranking hierarchy**: `INUNDATED` > `NO_MAPPED_ROAD_PATH` > `PATH_EXISTS`, sorted within each status group by population descending.
 5. **Product Claim Boundary**:
    - **What it is**: *"Post-acquisition field-verification triage queue"* for disaster response officers.
    - **What it is NOT**: NOT a live flood forecast, NOT a rescue dispatch engine, NOT a vehicle turn-by-turn navigation system, NOT a damage valuation tool.
+6. **Strict Truthfulness / No Hallucinated Metrics Rule**:
+   - **Video/UI me sirf script-computed ya cited numbers aayenge.**
+   - All wireframes, mock data schemas, documentation, and video scripts must use `<computed>` or `<officer_name>` placeholders. Never invent arbitrary counts (e.g. population numbers, habitation totals, or synthetic latency benchmarks). Cited numbers must come from official reports (e.g., "4,388 km R&B roads damaged (APSDMA)").
 
 ---
 
 ## 1. Day 2 (Friday) GO/NO-GO Gate (Target: 21:00 IST)
 
-The hard gate for Friday night: **A working Jupyter notebook / standalone Python script rendering candidate flood polygons overlaid on the road network, showing at least 3 disconnected habitations in Vijayawada.**
+The hard gate for Friday night: **AOI me hamara flood mask NRSC 5-Sep 2024 map se visually match kare. Uske baad jitne bhi habitations cut-off niklen, wahi honestly report karo.**
 
 ### Exact Verification Commands & Steps:
 
@@ -66,10 +75,10 @@ Download bounding box `[80.50, 16.50, 80.70, 16.65]` using GDAL/rasterio vsis3 o
 
 #### Step 1.4: Build Road Graph & Reachability Check (`scripts/build_reachability.py`)
 - Extract OSM drivable highways (`motorway`, `trunk`, `primary`, `secondary`, `tertiary`, `unclassified`, `residential`).
-- Build NetworkX `MultiDiGraph`.
-- Spatial intersect edges with `flood_mask_20240901.geojson` buffered by 25m.
-- Run baseline connectivity vs remaining connectivity.
-- *Pass Criteria*: Output `data/processed/triage_summary.json` with habitations clearly flagged `NO_MAPPED_ROAD_PATH`.
+- Build NetworkX `Graph` (or `MultiDiGraph`).
+- Spatial intersect edges with `flood_mask_20240901.geojson` buffered by 25m (excluding `bridge=yes` edges, which get tagged `CHECK`).
+- Run baseline connectivity vs remaining connectivity using `evaluate_reachability`.
+- *Pass Criteria*: AOI me hamara flood mask NRSC 5-Sep 2024 map se visually match kare. Uske baad jitne bhi habitations cut-off niklen, wahi honestly report karo (output in `data/processed/triage_summary.json`).
 
 ---
 
@@ -92,7 +101,7 @@ Download bounding box `[80.50, 16.50, 80.70, 16.65]` using GDAL/rasterio vsis3 o
       "type": "Feature",
       "properties": {
         "confidence": "A_HIGH",
-        "area_sqm": 45200,
+        "area_sqm": "<computed>",
         "delta_db_mean": -4.2
       },
       "geometry": { "type": "Polygon", "coordinates": [[[80.582, 16.541], "..."]] }
@@ -102,6 +111,15 @@ Download bounding box `[80.50, 16.50, 80.70, 16.65]` using GDAL/rasterio vsis3 o
 ```
 
 ### 2.2 Habitation & Triage Record (`triage_summary.json`)
+- **Habitation Definition**: OpenStreetMap `place=village|hamlet|suburb|neighbourhood` nodes within AOI.
+- **Population Source**: Voronoi cell of each habitation (clipped to AOI) intersected with GHSL GHS-POP R2023A (100m).
+- **Status Hierarchy**:
+  - `INUNDATED`: Habitation point itself falls inside candidate flood mask.
+  - `NO_MAPPED_ROAD_PATH`: Habitation point not inundated, but all mapped road routes to destinations are disrupted.
+  - `PATH_EXISTS`: Active mapped road route exists to at least one hospital or staging hub.
+- **Ranking Hierarchy**: `INUNDATED` > `NO_MAPPED_ROAD_PATH` > `PATH_EXISTS`, sorted within each status group by population descending.
+- **Bridge Handling Rule**: OSM `bridge=yes` edges must NOT be auto-disrupted. Tag them with uncertainty flag `CHECK`.
+
 ```json
 [
   {
@@ -109,26 +127,20 @@ Download bounding box `[80.50, 16.50, 80.70, 16.65]` using GDAL/rasterio vsis3 o
     "name": "Rayanapadu Village",
     "lat": 16.5624,
     "lon": 80.5512,
-    "population_proxy": 4200,
-    "population_source": "GHSL_2020_100m",
-    "status": "NO_MAPPED_ROAD_PATH",
-    "baseline_distance_km": 6.4,
+    "population_proxy": "<computed>",
+    "population_source": "GHSL GHS-POP R2023A (100m Voronoi cell clipped to AOI)",
+    "status": "INUNDATED",
+    "baseline_distance_km": "<computed>",
     "nearest_destination": {
       "id": "hosp_gollapudi_phc",
       "name": "Gollapudi Primary Health Centre",
       "type": "HOSPITAL",
-      "baseline_dist_km": 3.8,
-      "current_dist_km": null
+      "distance_km": "<computed>"
     },
     "blocking_edges": [
-      {
-        "edge_id": "osm_way_9841203",
-        "name": "Rayanapadu Access Road",
-        "water_intersection_m": 140,
-        "coords": [[80.556, 16.558], [80.558, 16.559]]
-      }
+      "osm_way_9841203"
     ],
-    "uncertainty_flags": ["peri_urban_edge", "single_culvert_dependence"],
+    "uncertainty_flags": ["CHECK", "peri_urban_edge"],
     "action_required": "Dispatch boat/drone verification team"
   }
 ]
@@ -139,8 +151,8 @@ Download bounding box `[80.50, 16.50, 80.70, 16.65]` using GDAL/rasterio vsis3 o
 *Attributes*:
 - `override_status`: `"FORCE_CLEARED"` | `"FORCE_BLOCKED"` | `"AUTO_SUSPECTED"`
 - `notes`: `"Local police confirms flyover ramp is elevated & motorable"`
-- `officer_id`: `"officer_ntr_04"`
-- `updated_at`: `1728471200`
+- `officer_id`: `"<officer_name>"`
+- `updated_at`: 1728471200
 
 ### 2.4 Staging Hubs Config (`staging_hubs` DynamoDB Table)
 *Partition Key*: `hub_id` (String)  
@@ -149,7 +161,7 @@ Download bounding box `[80.50, 16.50, 80.70, 16.65]` using GDAL/rasterio vsis3 o
 - `lat`: 16.5075
 - `lon`: 80.6486
 - `type`: `"RELIEF_CAMP"` | `"NDRF_BASE"` | `"DISTRICT_COLLECTORATE"`
-- `is_active`: `true`
+- `is_active`: true
 
 ---
 
@@ -159,100 +171,103 @@ Download bounding box `[80.50, 16.50, 80.70, 16.65]` using GDAL/rasterio vsis3 o
 ```text
 Algorithm EvaluateHabitationReachability:
 Input:
-  Graph G = (V, E) [Nodes: road junctions; Edges: road segments with length]
-  Habitations H = { (id, node_v, pop) }
-  Destinations D = { (id, node_d, type) } [Hospitals + Active Staging Hubs]
-  SuspectedEdges S_auto [Edges overlapping flood buffer]
-  Overrides O [Manual FORCE_CLEARED or FORCE_BLOCKED from DynamoDB]
+  GraphEdges E = [ {u, v, weight, edge_id, is_bridge} ]
+  Habitations H = [ {id, name, node, population_proxy, ...} ]
+  Destinations D = [ {id, name, node, type, ...} ]
+  SuspectedEdges S_auto [Edges overlapping candidate flood buffer]
+  Overrides O: ForceCleared F_clear, ForceBlocked F_block
+  InundatedHabitations H_inundated [Habitations whose points fall inside flood mask]
 
-1. Construct Active Graph G_active:
-   E_active = (E \ S_auto)
-   For each (edge_e, status) in O:
-     if status == FORCE_CLEARED: E_active = E_active U {edge_e}
-     if status == FORCE_BLOCKED: E_active = E_active \ {edge_e}
-   G_active = (V, E_active)
+1. Bridge Handling & Effective Blocked Calculation:
+   BridgeEdges = { edge_id for edge in E if edge.is_bridge == True or edge.bridge == "yes" }
+   For each edge in E where edge_id in BridgeEdges and edge_id in S_auto:
+     edge.uncertainty_flag = "CHECK"
+   AutoBlocked = S_auto \ BridgeEdges  // OSM bridge=yes edges must NOT be auto-disrupted
+   EffectiveBlocked = (AutoBlocked \ F_clear) U F_block
 
-2. Multi-Target Shortest Path:
-   Add auxiliary super-sink node TARGET_SINK
-   For each node_d in D:
-     Add directed edge (node_d -> TARGET_SINK, weight=0)
+2. Construct Active Graph G_active:
+   G_active = Graph()
+   For edge in E:
+     If edge.edge_id not in EffectiveBlocked:
+       G_active.add_edge(edge.u, edge.v, weight=edge.weight)
 
-3. For each habitation h in H:
-   path_exists = nx.has_path(G_active, h.node_v, TARGET_SINK)
-   if path_exists:
-     h.status = "PATH_EXISTS"
-     h.nearest_dest = nx.shortest_path(G_active, h.node_v, TARGET_SINK)[-2]
-   else:
-     h.status = "NO_MAPPED_ROAD_PATH"
-     h.nearest_dest = None
+3. Multi-Source Dijkstra (Single Call):
+   ValidDestNodes = { d.node for d in D if d.node in G_active }
+   If ValidDestNodes is not empty:
+     (Distances, Paths) = nx.multi_source_dijkstra(G_active, ValidDestNodes, target=None, weight="weight")
+   Else:
+     Distances = {}, Paths = {}
 
-4. Sort H by:
-   Primary: status == "NO_MAPPED_ROAD_PATH" (descending)
-   Secondary: population_proxy (descending)
+4. Habitation Classification:
+   For hab in H:
+     If hab.id in H_inundated:
+       hab.status = "INUNDATED"
+     Else if hab.node in Distances:
+       hab.status = "PATH_EXISTS"
+       hab.nearest_destination = { id, name, type, distance_km: Distances[hab.node] }
+     Else:
+       hab.status = "NO_MAPPED_ROAD_PATH"
+       hab.nearest_destination = None
+
+5. Sorting Hierarchy:
+   Sort H by:
+     Primary: Status order (INUNDATED: 0, NO_MAPPED_ROAD_PATH: 1, PATH_EXISTS: 2)
+     Secondary: population_proxy descending
 ```
 
 ### 3.2 Standalone Python Test (`tests/test_reachability_engine.py`)
 ```python
-import networkx as nx
-
-def evaluate_reachability(nodes, edges, habitations, destinations, blocked_edges):
-    G = nx.Graph()
-    for u, v, w, eid in edges:
-        if eid not in blocked_edges:
-            G.add_edge(u, v, weight=w, edge_id=eid)
-    
-    results = {}
-    for hab_id, hab_node in habitations.items():
-        connected_dest = None
-        min_dist = float('inf')
-        for dest_id, dest_node in destinations.items():
-            if dest_node in G and nx.has_path(G, hab_node, dest_node):
-                d = nx.shortest_path_length(G, hab_node, dest_node, weight='weight')
-                if d < min_dist:
-                    min_dist = d
-                    connected_dest = dest_id
-        
-        results[hab_id] = {
-            "status": "PATH_EXISTS" if connected_dest else "NO_MAPPED_ROAD_PATH",
-            "nearest": connected_dest,
-            "dist": min_dist if connected_dest else None
-        }
-    return results
+from engine.reachability import evaluate_reachability
 
 def test_reachability_lifecycle():
-    # Toy graph: Habitation A connected via Edge 1 to Junction J, Junction J connected via Edge 2 to Hospital H
-    # Alternative path: Junction J connected via Edge 3 to North Hub N
-    nodes = ["A", "J", "H", "N"]
-    edges = [
-        ("A", "J", 2.0, "e1"), # Road from Village A to Junction J
-        ("J", "H", 3.0, "e2"), # Road from Junction J to Hospital H
-        ("J", "N", 5.0, "e3"), # Rural road from Junction J to North Hub N
+    graph_edges = [
+        {"u": "A", "v": "J", "weight": 2.0, "edge_id": "e1"},
+        {"u": "J", "v": "H", "weight": 3.0, "edge_id": "e2"},
+        {"u": "J", "v": "N", "weight": 5.0, "edge_id": "e3"},
+        {"u": "B", "v": "J", "weight": 1.0, "edge_id": "e4"},
     ]
-    habitations = {"Village_A": "A"}
-    destinations = {"Hospital_H": "H"}
+    hab_a = {"id": "Village_A", "name": "Village A", "node": "A", "population_proxy": 2000}
+    hab_b = {"id": "Village_B", "name": "Village B", "node": "B", "population_proxy": 5000}
+    dest_hospital = [{"id": "Hospital_H", "name": "Hospital H", "node": "H", "type": "HOSPITAL"}]
 
-    # 1. Baseline: All roads open
-    r1 = evaluate_reachability(nodes, edges, habitations, destinations, blocked_edges=set())
-    assert r1["Village_A"]["status"] == "PATH_EXISTS"
-    assert r1["Village_A"]["nearest"] == "Hospital_H"
+    # 1. Baseline open -> PATH_EXISTS to nearest hospital
+    r1 = evaluate_reachability(graph_edges, [hab_a], dest_hospital, auto_suspected_edges=set())
+    assert r1[0]["status"] == "PATH_EXISTS"
+    assert r1[0]["nearest_destination"]["id"] == "Hospital_H"
 
-    # 2. Flood cuts Edge 2 (J -> H)
-    r2 = evaluate_reachability(nodes, edges, habitations, destinations, blocked_edges={"e2"})
-    assert r2["Village_A"]["status"] == "NO_MAPPED_ROAD_PATH"
-    assert r2["Village_A"]["nearest"] is None
+    # 2. Auto-suspected flood blocks edge -> NO_MAPPED_ROAD_PATH
+    r2 = evaluate_reachability(graph_edges, [hab_a], dest_hospital, auto_suspected_edges={"e2"})
+    assert r2[0]["status"] == "NO_MAPPED_ROAD_PATH"
 
-    # 3. Officer adds North Hub N as an active Staging Base
-    destinations_with_hub = {"Hospital_H": "H", "Relief_Hub_N": "N"}
-    r3 = evaluate_reachability(nodes, edges, habitations, destinations_with_hub, blocked_edges={"e2"})
-    assert r3["Village_A"]["status"] == "PATH_EXISTS"
-    assert r3["Village_A"]["nearest"] == "Relief_Hub_N"
+    # 3. Officer adds new Staging Hub -> PATH_EXISTS to new hub
+    dest_with_hub = dest_hospital + [{"id": "Relief_Hub_N", "name": "Relief Hub N", "node": "N", "type": "STAGING_HUB"}]
+    r3 = evaluate_reachability(graph_edges, [hab_a], dest_with_hub, auto_suspected_edges={"e2"})
+    assert r3[0]["status"] == "PATH_EXISTS"
+    assert r3[0]["nearest_destination"]["id"] == "Relief_Hub_N"
 
-    # 4. Officer confirms Edge 2 is actually an elevated bridge (Force Clear e2)
-    r4 = evaluate_reachability(nodes, edges, habitations, destinations, blocked_edges=set())
-    assert r4["Village_A"]["status"] == "PATH_EXISTS"
-    assert r4["Village_A"]["nearest"] == "Hospital_H"
+    # 4. Real FORCE_CLEARED override restores PATH_EXISTS
+    r4 = evaluate_reachability(graph_edges, [hab_a], dest_hospital, auto_suspected_edges={"e2"}, force_cleared_edges={"e2"})
+    assert r4[0]["status"] == "PATH_EXISTS"
 
-    print("✓ All Reachability Lifecycle assertions passed!")
+    # 5. Real FORCE_BLOCKED override triggers NO_MAPPED_ROAD_PATH
+    r5 = evaluate_reachability(graph_edges, [hab_a], dest_hospital, auto_suspected_edges=set(), force_blocked_edges={"e2"})
+    assert r5[0]["status"] == "NO_MAPPED_ROAD_PATH"
+
+    # 6. INUNDATED status ranks #1 above other cut-off habitations
+    r6 = evaluate_reachability(graph_edges, [hab_a, hab_b], dest_hospital, auto_suspected_edges={"e2"}, inundated_habitations={"Village_A"})
+    assert r6[0]["id"] == "Village_A" and r6[0]["status"] == "INUNDATED"
+    assert r6[1]["id"] == "Village_B" and r6[1]["status"] == "NO_MAPPED_ROAD_PATH"
+
+    # 7. Bridge handling: bridge=yes edges NOT auto-disrupted; tagged CHECK
+    bridge_edges = [
+        {"u": "A", "v": "J", "weight": 2.0, "edge_id": "e1"},
+        {"u": "J", "v": "H", "weight": 3.0, "edge_id": "e_bridge", "is_bridge": True},
+    ]
+    r7 = evaluate_reachability(bridge_edges, [hab_a], dest_hospital, auto_suspected_edges={"e_bridge"})
+    assert r7[0]["status"] == "PATH_EXISTS"
+    assert any(e.get("uncertainty_flag") == "CHECK" for e in bridge_edges if e["edge_id"] == "e_bridge")
+
+    print("✓ All Reachability Engine assertions passed!")
 
 if __name__ == "__main__":
     test_reachability_lifecycle()
@@ -270,9 +285,9 @@ Deployed via API Gateway + single AWS Lambda (`lambda_function.py`) with bundled
 ```json
 {
   "event": "Vijayawada Budameru Flood (2024-09-01 Replay)",
-  "total_habitations": 48,
-  "cut_off_count": 14,
-  "cut_off_population_proxy": 58400,
+  "total_habitations": "<computed>",
+  "cut_off_count": "<computed>",
+  "cut_off_population_proxy": "<computed>",
   "habitations": [ /* array of habitation records */ ],
   "active_staging_hubs": [ /* array of active hubs */ ],
   "disrupted_edges": [ /* geojson features for map display */ ]
@@ -287,10 +302,10 @@ Deployed via API Gateway + single AWS Lambda (`lambda_function.py`) with bundled
   "edge_id": "osm_way_9841203",
   "status": "FORCE_CLEARED",
   "notes": "Police outpost reports single-lane tractor traffic passable",
-  "officer_name": "R. Sharma (Sub-Collector)"
+  "officer_name": "<officer_name>"
 }
 ```
-- **Response `200 OK`**: Recomputes graph in memory (<50ms) and returns updated stats and diff.
+- **Response `200 OK`**: Recomputes graph in memory (<computed> ms) and returns updated stats and diff.
 
 ### 4.3 `POST /api/hubs`
 - **Description**: Officer designates a new school/stadium as an active staging hub.
@@ -309,34 +324,37 @@ Deployed via API Gateway + single AWS Lambda (`lambda_function.py`) with bundled
 
 ## 5. UI Architecture & ASCII Wireframe
 
-Single responsive web interface built with Next.js/Tailwind (or vanilla React + Leaflet) deployed on AWS Amplify / S3 + CloudFront.
+Single responsive web interface built with a clean single `index.html` + Leaflet.js (hosted on S3 / CloudFront or local web server). Pre/post SAR PNG overlays will be generated offline and rendered via Leaflet `imageOverlay`.
+
+> [!IMPORTANT]
+> **Video/UI me sirf script-computed ya cited numbers aayenge.** No placeholder numbers are hardcoded.
 
 ```
 +---------------------------------------------------------------------------------------------------+
 |  BAADHDRISHTI (बाढ़-दृष्टि)  |  Vijayawada Budameru Floods (1 Sep 2024 Replay)   |  [AWS Open Data] |
 +---------------------------------------------------------------------------------------------------+
 |  [ STATS BAR ]                                                                                    |
-|  Total Habitations: 48  |  Cut-off (No Mapped Road): 14  |  Est. Isolated Pop: 58,400  [Export CSV] |
+|  Total Habitations: <computed>  |  Cut-off (No Road): <computed>  |  Isolated Pop: <computed>     |
 +---------------------------------------------------+-----------------------------------------------+
-|  MAP VIEW (Leaflet / MapLibre)                    |  FIELD-VERIFICATION PRIORITY QUEUE            |
+|  MAP VIEW (Leaflet)                               |  FIELD-VERIFICATION PRIORITY QUEUE            |
 |                                                   |                                               |
 |  [ Layer Toggle: Before / After / Water Mask ]    |  Filter: [X] Show Only Cut-Off  Sort: [Pop v] |
 |  +---------------------------------------------+  |  -------------------------------------------  |
-|  |                 [Velagaleru Regulator]      |  |  #1. RAYANAPADU (Pop: 4,200)   [NO ROAD PATH] |
-|  |                     \                       |  |      Blocking: Rayanapadu Link Rd (140m wet)  |
+|  |                 [Velagaleru Regulator]      |  |  #1. RAYANAPADU (Pop: <computed>) [INUNDATED] |
+|  |                     \                       |  |      Blocking: Link Rd (<computed> m wet)     |
 |  |       [Rayanapadu]   \===[Water Mask===]    |  |      Nearest Hosp: Gollapudi PHC (Unreachable)|
 |  |         (RED PIN)     \   (A-Tier)          |  |      Action: [Verify Boat] [Clear Road]       |
 |  |                        \                    |  |  -------------------------------------------  |
-|  |  ============[Disrupted Road (RED)]======== |  |  #2. JAKKAMPUDI COLONY (3,800) [NO ROAD PATH] |
+|  |  ============[Disrupted Road (RED)]======== |  |  #2. JAKKAMPUDI (<computed>) [NO ROAD PATH]   |
 |  |           |                                 |  |      Blocking: Inner Ring Rd Culvert          |
 |  |      [Gollapudi PHC]                        |  |      Action: [Verify Boat] [Clear Road]       |
 |  |         (GREEN)                             |  |  -------------------------------------------  |
-|  |                                             |  |  #3. AMBAPURAM (Pop: 2,100)    [PATH EXISTS]  |
-|  |  [AMBER ZONE: Urban Core Excluded - Radar]   |  |      Route open to Gollapudi PHC (4.2 km)     |
+|  |                                             |  |  #3. AMBAPURAM (Pop: <computed>) [PATH EXISTS]|
+|  |  [AMBER ZONE: Urban Core Excluded - Radar]   |  |      Route open to Gollapudi PHC (<computed>) |
 |  +---------------------------------------------+  |  -------------------------------------------  |
 |  [SLIDER: 20 Aug Baseline <==========> 1 Sep]     |  [+ Add Staging Hub]  [Share WhatsApp Report] |
 +---------------------------------------------------+-----------------------------------------------+
-|  CAVEATS & PROVENANCE: Sentinel-1A GRD (12-day revisit) | GHSL 2020 Pop | OpenStreetMap Network   |
+|  CAVEATS & PROVENANCE: Sentinel-1A GRD | GHSL GHS-POP R2023A (100m) | OpenStreetMap Network       |
 |  DISCLAIMER: Preliminary screening triage queue based on mapped roads. NOT official rescue orders. |
 +---------------------------------------------------------------------------------------------------+
 ```
@@ -353,19 +371,22 @@ Single responsive web interface built with Next.js/Tailwind (or vanilla React + 
 - [ ] **Task 2.3**: Download OSM road network for Vijayawada AOI via OSMnx / Geofabrik.  
   *Done Criteria*: `data/processed/road_graph.graphml` saved with highway tags.
 - [ ] **Task 2.4**: Spatial intersection & reachability test execution.  
-  *Done Criteria*: Run `pytest tests/test_reachability_engine.py` passes; `triage_summary.json` generated.
+  *Done Criteria*: Run `python3 tests/test_reachability_engine.py` passes; `triage_summary.json` generated.
 
 ### Saturday, Oct 10 (AWS Backend, Frontend & Interactivity)
 - [ ] **Task 2.5**: Set up DynamoDB tables (`road_overrides`, `staging_hubs`) and SAM template.  
   *Done Criteria*: `sam build && sam deploy` creates stack with live API Gateway URL.
 - [ ] **Task 2.6**: Lambda implementation of reachability engine reading from S3 graph + DynamoDB overrides.  
   *Done Criteria*: `curl $API_URL/api/triage` returns JSON with status code 200.
-- [ ] **Task 2.7**: Build Next.js / Leaflet frontend with side-by-side / overlay slider, triage table, road override modal, and hub addition.  
-  *Done Criteria*: Frontend deployed to Amplify / S3 website with live public HTTPS URL.
+- [ ] **Task 2.7**: Build clean single `index.html` + Leaflet.js frontend with offline pre/post SAR PNG overlays (Leaflet `imageOverlay`), triage queue table, road override modal, and hub addition.  
+  *Done Criteria*: Frontend deployed to S3 website / CloudFront or local host with responsive UI.
 - [ ] **Task 2.8**: WhatsApp share generator button (`wa.me/?text=...`) + CSV download verification.  
-  *Done Criteria*: WhatsApp link formats top 5 cut-off habitations cleanly into clipboard/URL.
+  *Done Criteria*: WhatsApp link formats top cut-off habitations cleanly into clipboard/URL.
 
 ### Sunday, Oct 11 (Feature Freeze, Video & Submission)
+> [!IMPORTANT]
+> **Submission deadline ka exact time verify karna hai (TO VERIFY).**
+
 - [ ] **12:00 IST**: **Strict Feature Freeze** (Zero new features, only bug fixes).
 - [ ] **12:00 – 15:00 IST**: Record 3-minute demo video following exact script.
 - [ ] **15:00 – 17:00 IST**: Draft & publish technical blog post on AWS Builder Center (eligible for AirPods 5 prize!).
@@ -377,11 +398,11 @@ Single responsive web interface built with Next.js/Tailwind (or vanilla React + 
 
 | Timestamp | Screen Visual | Spoken Voiceover (High Energy, Confident) |
 |---|---|---|
-| **0:00 – 0:30** (Problem) | News headlines of Vijayawada 2024 Budameru flood; APSDMA statistics (12.8L affected, 4,300 km roads submerged). | *"In September 2024, the Budameru rivulet breached carrying 35,000 cusecs into Vijayawada, severing entire rural clusters from emergency care. Disaster control rooms faced a critical question: Which villages have lost 100% of their road access right now, and where must boats be dispatched first?"* |
+| **0:00 – 0:30** (Problem) | News headlines of Vijayawada 2024 Budameru flood; APSDMA statistics (12.8L affected, 4,388 km R&B roads damaged (APSDMA)). | *"In September 2024, the Budameru rivulet breached carrying 35,000 cusecs into Vijayawada, severing entire rural clusters from emergency care. Disaster control rooms faced a critical question: Which villages have lost 100% of their road access right now, and where must boats be dispatched first?"* |
 | **0:30 – 1:15** (Data & SAR) | BaadhDrishti UI opens. Slider moves from 20-Aug dry baseline to 1-Sep flood radar mask. Urban amber hatching visible. | *"Meet BaadhDrishti. Powered by AWS Open Data, we ingest Copernicus Sentinel-1 Synthetic Aperture Radar. Because radar penetrates clouds, we run automated change detection. We deliberately exclude the dense urban core to avoid false positives from radar double-bounce, isolating real open-water inundation across peri-urban corridors."* |
-| **1:15 – 2:00** (Reachability & Triage) | Zoom into road network: intersecting roads turn red. Triage table populates on right. | *"Instead of just showing a blue flood map, BaadhDrishti converts OpenStreetMap and PMGSY road networks into a dynamic topology graph. 14 habitations immediately trigger 'NO MAPPED ROAD PATH'. Rayanapadu, home to 4,200 residents, has its only motorable access road submerged. It jumps to Rank #1 on our verification queue."* |
-| **2:00 – 2:30** (Interactivity & Action) | Officer clicks 'Clear Road' on an elevated culvert, then adds 'Kavuluru High School' as a staging hub. Table updates instantly. | *"Disaster response is human-in-the-loop. A field scout calls in: tractor traffic can pass via an elevated embankment. The officer marks the segment 'Cleared'—or designates a new dry high school as a staging hub. Our AWS Lambda engine recomputes reachability in 40 milliseconds, restoring connectivity and updating the relief dispatch queue instantly."* |
-| **2:30 – 3:00** (Architecture & AWS Fit) | Clean AWS Architecture slide (S3 + Lambda + DynamoDB + Amplify + AWS Open Data) + honest disclaimer footer. | *"Architected on AWS: Sentinel-1 data directly from AWS Open Data S3, real-time graph routing on serverless AWS Lambda, and persistent state in DynamoDB. BaadhDrishti doesn't replace official warnings—it arms relief officers with actionable, uncertainty-aware triage within hours of satellite acquisition."* |
+| **1:15 – 2:00** (Reachability & Triage) | Zoom into road network: intersecting roads turn red. Triage table populates on right. | *"Instead of just showing a blue flood map, BaadhDrishti converts OpenStreetMap and PMGSY road networks into a dynamic topology graph. <computed> habitations immediately trigger triage alerts ('INUNDATED' or 'NO MAPPED ROAD PATH'). Rayanapadu, home to <computed> residents, has its access road submerged. It jumps to Rank #1 on our verification queue."* |
+| **2:00 – 2:30** (Interactivity & Action) | Officer clicks 'Clear Road' on an elevated culvert, then adds 'Kavuluru High School' as a staging hub. Table updates instantly. | *"Disaster response is human-in-the-loop. A field scout calls in: tractor traffic can pass via an elevated embankment. The officer marks the segment 'Cleared'—or designates a new dry high school as a staging hub. Our AWS Lambda engine recomputes reachability in <computed> ms, restoring connectivity and updating the relief dispatch queue instantly."* |
+| **2:30 – 3:00** (Architecture & AWS Fit) | Clean AWS Architecture slide (S3 + Lambda + DynamoDB + CloudFront + AWS Open Data) + honest disclaimer footer. | *"Architected on AWS: Sentinel-1 data directly from AWS Open Data S3, reachability analysis on serverless AWS Lambda, and persistent state in DynamoDB. BaadhDrishti doesn't replace official warnings—it arms relief officers with actionable, uncertainty-aware triage within hours of satellite acquisition."* |
 
 ---
 
@@ -400,4 +421,4 @@ Single responsive web interface built with Next.js/Tailwind (or vanilla React + 
 
 1. **SAR Data Source Approval**: Can we lock **Plan B (Planetary Computer S1-RTC pre-calibrated backscatter)** as our primary backup if raw AWS S3 ESA GRD calibration has projection hiccups by Friday 20:00?
 2. **Road Network Source**: Confirming that **OpenStreetMap (Geofabrik AP extract)** will be the primary road layer, supplemented by PMGSY only if trivially downloadable.
-3. **AWS Deployment Stack**: Confirming serverless stack: **AWS S3 + CloudFront (Frontend) + API Gateway/Lambda (Python/NetworkX) + DynamoDB**. No OpenSearch, no heavy VPC.
+3. **AWS Deployment Stack**: Confirming serverless stack: **AWS S3 + CloudFront (Frontend: single index.html + Leaflet.js) + API Gateway/Lambda (Python/NetworkX) + DynamoDB**. No OpenSearch, no heavy VPC.
