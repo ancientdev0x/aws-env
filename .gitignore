@@ -6,3 +6,6 @@ __pycache__/
 .env
 scientist_query*.txt
 task_patch*.txt
+.venv/
+data/raw/
+data/interim/

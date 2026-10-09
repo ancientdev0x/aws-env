@@ -36,6 +36,9 @@ It is NOT: a rescue dispatch system, navigation, a live forecast, or an official
 
 ## Status (update this section as you go)
 - [x] Research, plan, reachability engine + tests
+- [x] Task 2.1 (Fri): `scripts/fetch_s1_aoi.py` → `data/raw/{20240820,20240901}/` (VV+VH raw DN AOI windows, ~2400×2800 px,
+  210 GCPs each, calibration + noise XMLs). STAC-verified: both S1A, relative orbit 92, descending, VV/VH.
+  (2024-09-08 S1A is orbit 27 ascending — not comparable.) Setup: `uv venv --python 3.12 .venv` + `scripts/requirements-offline.txt`.
 - [ ] Fri GO/NO-GO: flood mask visually matches NRSC 5-Sep 2024 map in AOI
 - [ ] Sat: Lambda API, DynamoDB, frontend, road edit + hub add
 - [ ] Sun 12:00 IST feature freeze → video → AWS Builder Center blog → submit (exact deadline time TO VERIFY)

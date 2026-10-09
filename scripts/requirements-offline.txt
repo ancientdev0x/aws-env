@@ -1,0 +1,9 @@
+networkx==3.7
+numpy==2.5.3
+scipy==1.18.1
+rasterio==1.5.2
+pystac-client==0.9.0
+shapely==2.2.0
+pyproj==3.8.0
+boto3==1.43.110
+requests==2.34.2
