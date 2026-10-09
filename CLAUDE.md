@@ -39,7 +39,20 @@ It is NOT: a rescue dispatch system, navigation, a live forecast, or an official
 - [x] Task 2.1 (Fri): `scripts/fetch_s1_aoi.py` → `data/raw/{20240820,20240901}/` (VV+VH raw DN AOI windows, ~2400×2800 px,
   210 GCPs each, calibration + noise XMLs). STAC-verified: both S1A, relative orbit 92, descending, VV/VH.
   (2024-09-08 S1A is orbit 27 ascending — not comparable.) Setup: `uv venv --python 3.12 .venv` + `scripts/requirements-offline.txt`.
-- [ ] Fri GO/NO-GO: flood mask visually matches NRSC 5-Sep 2024 map in AOI
+- [x] Task 2.2 (Fri): `scripts/generate_flood_mask.py` → `data/processed/flood_mask_20240901.{geojson,tif}`.
+  Method: sigma0 calibration + thermal-noise removal → GCP TPS geocode (20 m, EPSG:32644) → 5×5 median →
+  ΔVV < −3 dB **AND post VV < −14.01 dB** (added rule: p90 of post VV over JRC ≥90% water; removes most crop/wet-soil
+  false positives south of Krishna) → exclude slope > 5° (COP-DEM GLO-30) and JRC occurrence ≥ 50% → min 10 px.
+  Script output: 44.93 km² candidate, 432 polygons (pre-urban-exclusion).
+  **Geolocation fix:** GCP heights (~90–150 m) ≠ terrain, so geocoded SAR was offset ~250 m toward far range.
+  Script estimates a near-range shift against JRC water (best 250 m, IoU 0.418 → 0.535) and applies it to both dates
+  (pre↔post phase correlation = 0,0 px). No DEM terrain correction — residual error TO VERIFY against OSM roads.
+- [~] Fri GO/NO-GO: compared `docs/gonogo_flood_mask_quicklook.png` with APSAC/NRSC **6-Sep** TerraSAR-X map
+  (`AP_TERRASARX_6_sep_2024_sat_map.pdf`; no "5-Sep" NRSC map found). Main Elaprolu–Kavuluru–Rayanapadu–Jakkampudi–
+  Ambapuram block and eastward band north of the city match. Mask is somewhat larger (1-Sep vs 6-Sep recession expected).
+  Assessment: **GO** (pending owner confirmation). Plan B not needed so far.
+- [ ] OPEN: urban-core exclusion polygon is undefined in PLAN. Proposal: GHSL SMOD urban centre. Note Ajit Singh Nagar /
+  Payakapuram (real Budameru flooding) would fall inside it.
 - [ ] Sat: Lambda API, DynamoDB, frontend, road edit + hub add
 - [ ] Sun 12:00 IST feature freeze → video → AWS Builder Center blog → submit (exact deadline time TO VERIFY)
 

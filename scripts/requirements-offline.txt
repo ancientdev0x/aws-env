@@ -7,3 +7,4 @@ shapely==2.2.0
 pyproj==3.8.0
 boto3==1.43.110
 requests==2.34.2
+matplotlib==3.11.2
