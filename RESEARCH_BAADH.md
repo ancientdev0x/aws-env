@@ -1,227 +1,275 @@
-# BaadhDrishti — SAR flood candidates, cut-off reachability and exposed-population triage
+# BaadhDrishti — focused research: Vijayawada 2024 SAR flood replay and cut-off reachability
 
-Research date: 9 October 2026. Scope: a technically honest, buildable flood-response prototype for the Bharat Builds Tour Heat & Water track. Case study: the 31 August–September 2024 Budameru / Krishna flooding around Vijayawada, Andhra Pradesh.
+Research date: 9 October 2026. Scope is restricted to the seven requested questions. This is research only: no code and no architecture.
 
-## Executive decision
+## Five-point summary — go/no-go and biggest risks
 
-Build BaadhDrishti only as a **post-acquisition triage and verification tool**:
+1. **GO, with a narrow claim:** produce a historical, satellite-derived *candidate* flood mask and a **possible cut-off / no mapped road path** verification queue. Do not call it live rescue routing, an official road-closure feed, or a count of trapped people.
+2. **Vijayawada is a strong replay choice.** Earth Search returns the stated same-geometry pre/post scenes, and NRSC/APSAC plus International Charter Activation 907 provide unusually strong event-validation references.
+3. **Main technical risk is urban SAR.** Open water is often dark, but flooded urban/vegetated pixels can be missed or confused because of double bounce. NRSC itself says its Vijayawada rapid map did not analyse urban areas. The demo should favour the peri-urban Gollapudi–Jakkampudi–Rayanapadu side and visibly flag dense urban cells.
+4. **Main operational risk is facilities.** Current OSM has roads, named places and hospitals, but its `amenity=shelter` tag does not mean an official flood-relief camp. Say “nearest mapped hospital by remaining mapped road network”; show official shelter as unavailable unless a government camp list is available.
+5. **Do not use raw Earth Search TIFF DN values in a threshold.** The Earth Search S1 GRD `vv`/`vh` assets are uint16 measurement files and include calibration LUT/XML assets. Convert/calibrate first. The actual replay has a **12-day** S1A gap, so do not pitch “six-day real-time monitoring.”
 
-1. identify satellite-derived *candidate* new open-water / inundation areas;
-2. mark road edges that intersect a buffered candidate-water area as **suspected disrupted**, not “closed”; and
-3. recompute which named settlement/habitation nodes lose every viable road path to a nominated staging point or facility.
+---
 
-The output is a ranked field-verification queue: “possible cut-off settlement + the first suspected blocking edge + source/date/confidence.” It is not a flood forecast, water-depth product, road-condition feed, navigation service, population-at-risk count, rescue dispatch engine, or official warning.
+# 1. Competitors
 
-This narrow claim is both meaningful and defensible. In the 2024 Andhra Pradesh flood impact report, APSDMA describes lack of approach-road access, water over roads, road/culvert washouts and villages made inaccessible during floods. The same report says the Budameru rivulet rose to 35,000 cusecs, nearly five times its stated 7,500-cusec carrying capacity; it identifies inundation along Elaprolu, Rayanapadu, Gollapudi, Jakkampudi Colony, Singh Nagar, Gunadala and Ramavarappadu after the Velagaleru regulator received more than 30,000 cusecs on 1 September [1]. This is a credible scenario for prioritising checks, not for inferring a specific road closure from radar alone.
+## Short answer
 
-## Why Vijayawada 2024 is a valid case study
+Flood extent and exposed population are already supplied by major systems. What is not documented as their standard public output is the exact BaadhDrishti question: **after removing candidate-flooded OSM edges, which named settlements no longer have a mapped road path to a mapped hospital/staging point?** That is the narrow differentiation—not flood mapping itself.
 
-### Event facts, separated from product estimates
+## Evidence and links
 
-| Fact | Evidence and product implication |
+| Competitor | Automatic flood extent? | Exposed population? | Cut-off settlements / road isolation / reachability? | Vijayawada 2024 map? |
+|---|---|---|---|---|
+| **Copernicus GFM** | Yes. Global near-real-time automated Sentinel-1 observed flood extent/water extent/reference-water/exclusion-mask products. | Yes. Affected Population is flood extent overlaid on GHSL 100 m population. | No documented graph/path-to-facility output. It includes OSM roads/railways for first infrastructure assessment, but not automatic settlement isolation. | **UNVERIFIED / not found** in this focused search. |
+| **Copernicus EMS Rapid Mapping** | Yes, on-demand maps within hours/days after authorised activation. | Can provide exposure/assets depending on activation. | It provides flood extent and ancillary transport layers; no standard automatic road-network cut-off product was verified. | **No activation found** in focused portal search. |
+| **Sentinel Asia** | Emergency satellite observations/value-added products for selected events. | Event-specific; no standard population product verified. | No standard reachability product verified. | **No product found** in reviewed 2024 portal/newsletters; absence is not proof none existed. |
+| **UNOSAT** | Yes for many activations; uses Sentinel-1/other imagery. | Yes in many products using WorldPop; sometimes affected structures/cropland. | No verified standard road-graph isolation or hospital reachability analysis. | **No Vijayawada product found.** |
+| **NRSC / APSAC / Bhuvan / NDEM** | Yes. NRSC/APSAC released rapid Vijayawada inundation maps. | Area/district statistics can be sent to agencies; no published Vijayawada population-exposure layer found. | Roads are reference layers; no cut-off/reachability analysis found. | **Yes — strongest validation reference.** |
+| **Open-source SAR tools** — UN-SPIDER notebooks, GEE tutorials, GitHub S1 flood tools | Yes: threshold/change-detection masks. | Only when the user adds an overlay. | No built-in settlement cut-off workflow. | Not event-specific. |
+
+Key sources:
+
+* Copernicus GFM Product User Manual: https://extwiki.eodc.eu/gfm_assets/gfm4.0_pum_2025.pdf
+* Copernicus GFM technical overview: https://extwiki.eodc.eu/GFM/PUM/TechnicalOverview
+* Copernicus EMS overview: https://documentation.dataspace.copernicus.eu/Data/CopernicusServices/CEMS.html
+* Copernicus EMS Mapping portal: https://mapping.emergency.copernicus.eu/
+* Sentinel Asia emergency observations: https://sentinel-asia.org/EO/EmergencyObservation.html
+* UNOSAT example of Sentinel-1 extent/population impact product: https://unosat.org/products/3992
+* APSAC September 2024 flood map page: https://apsac.ap.gov.in/?page_id=7308
+
+### Vijayawada reference material found
+
+* APSAC/NRSC 6-Sep map: **Flood Inundation Areas Surrounding Vijayawada**. It uses 20-Aug Sentinel-1A as pre-event reference and 6-Sep TerraSAR-X as post-event imagery. NRSC calls it preliminary, warns that standing/rain water can be included, says no ground verification was done, and says urban inundation analysis was not part of the map because of high-resolution-data limits: https://apsac.ap.gov.in/wp-content/uploads/2024/09/AP_TERRASARX_6_sep_2024_sat_map.pdf
+* APSAC/NRSC 11-Sep map series names Elaprolu, Kavuluru, Rayanapadu, Gollapudi, Jakkampudi, Ambapuram, Nunna, Vijayawada and Ramavarappadu: https://apsac.ap.gov.in/wp-content/uploads/2024/09/ap_2024_11_09_map1.pdf
+* International Charter Activation 907, requested by ISRO 3 Sep 2024, states Budameru flooded about 40% of the city and stranded nearly 275,000 people: https://disasterscharter.org/activations/flood-in-india-activation-907-
+
+## Implication for us
+
+Pitch: “A transparent last-mile **verification-priority** layer over flood candidates.” Do not pitch “first flood map,” “better than NRSC,” or “AI rescue routing.” Use NRSC maps to test whether the broad candidate mask aligns with known flooded directions, while displaying NRSC’s own caveats.
+
+---
+
+# 2. Event choice — Vijayawada/Budameru, 31 Aug–2 Sep 2024
+
+## Short answer
+
+**Keep Vijayawada as the primary event.** It has a verified compatible SAR pair, official rapid-map references, named impacted areas, documented relief operations, and a real access-isolation story.
+
+**Backup:** Assam’s second 2024 flood wave, ideally a selected Lakhimpur/Subansiri AOI in late June/early July 2024. ASDMA reports 3,769,861 affected people during the 16 June–11 September second wave, with an affected-population spike to 24.21 lakh on 5 July. Exact Earth Search pre/post scene IDs for the selected AOI are **UNVERIFIED** and must be queried before switching events: https://asdma.assam.gov.in/sites/default/files/swf_utility_folder/departments/asdma_revenue_uneecopscloud_com_oid_70/menu/document/assam_flood_memorandum_2024_.pdf
+
+## Evidence: ground truth and response
+
+| Fact | Evidence |
 |---|---|
-| Intense rainfall/runoff and concurrent Krishna flooding overwhelmed the system. | APSDMA documents Budameru at 35,000 cusecs and notes the diversion channel capacity; the report describes the low-lying locations inundated downstream of Velagaleru [1]. |
-| Impact was geographically broad. | APSDMA reports 905 villages/wards in 227 mandals and 27 towns affected, with 12.87 lakh people affected statewide; these are event-wide government impact figures, **not** a BaadhDrishti output [1]. |
-| Road access was a material operational issue. | APSDMA explicitly records approach-road access problems, water/mud over roads, washed-out roads/culverts, and damage to 4,388.44 km of R&B roads plus 806 PR roads / 2,187.57 km [1]. Again, these are damage/impact assessments, not automatically observable from one SAR scene. |
-| Independent official EO evidence exists. | NRSC published a rapid map for 5 September 2024 using a Sentinel-1A pre-event scene (20 August) and a TanDEM-X post-event scene. It labels itself preliminary, states no ground verification, and expressly says urban-area analysis is not part of that map [2]. NRSC/APSpace also published a 11 September product naming the Gollapudi–Jakkampudi–Ambapuram, Elaprolu–Kavuluru–Rayanapadu and Nunna–Vijayawada–Ramavarappadu surroundings [3]. |
+| Large parts of Vijayawada were under water from 31 Aug. | The Hindu reports the flood-affected exodus at Ajit Singh Nagar: https://www.thehindu.com/news/national/floods-in-andhra-pradesh-telangana-leave-thousands-homeless/article68597987.ece |
+| Official/rapid-map place references include Gollapudi, Jakkampudi, Ambapuram, Nunna, Rayanapadu, Ramavarappadu, Elaprolu and Kavuluru. | APSAC/NRSC 11-Sep map cited above. |
+| Charter scale is around 40% of city flooded and nearly 275,000 stranded. | International Charter Activation 907, cited above. |
+| Statewide, reported government figures on 4 Sep were 644,000 affected and 42,707 people in 193 camps across seven districts. | Economic Times report: https://economictimes.indiatimes.com/news/india/andhra-pradesh-govt-provides-rs-5-lakh-ex-gratia-to-kin-of-20-flood-victims-relief-measures-continue/printarticle/113059468.cms |
+| Vijayawada APSDMA-reported relief included 43,417 people moved to rehabilitation centres, 48 NDRF/SDRF teams and 197 medical camps; ministers/IAS/IPS officers worked ward-wise. | Business Standard report of official statement: https://business-standard.com/india-news/ndrf-begins-airdropping-food-packets-water-in-flood-hit-vijayawada-124090300350_1.html |
+| Six helicopters and drones dropped food, water, milk, medicines and other essentials. | Same official-report coverage above. |
+| Water duration has no single verified citywide number in retrieved sources. A report on 4 Sep quotes an Ajit Singh Nagar resident on a fourth day without power, but that is not a general water-duration measure. | Economic Times report cited above. |
 
-The important product lesson is not “we can improve on NRSC.” It is: officially issued rapid products demonstrate that the event and broad inundation signal were real, while their own caveats establish why BaadhDrishti must surface uncertainty and route its findings to human verification.
+**Numerical caution:** 275,000 stranded in Vijayawada, 43,417 moved to rehabilitation centres, and 644,000 affected statewide are different denominators. Never combine them.
 
-## User and exact decision
+## Implication for us
 
-Primary user: an NTR district / Vijayawada disaster-control analyst, or a relief organisation GIS analyst.
+Use known place names as face-validity checks. If the flood candidate never reaches the broad areas named by official products/reporting, investigate before demo. Do not claim SAR derives exact water depth, days of standing water or trapped-person count.
 
-Decision supported: **Which settlement–road access pairs should a field/phone/boat verification team check first after a new satellite acquisition?**
+---
 
-A triage card contains:
+# 3. Method — simple reliable Sentinel-1 GRD change detection
 
-- settlement or habitation name/identifier;
-- baseline route to a selected staging point, relief camp, PHC, or depot;
-- a binary network result: `baseline-connected` / `no remaining modeled route after suspected-edge removal`;
-- suspected disrupted edge(s), their distance/overlap to water candidate, and road-source timestamp;
-- acquisition time, orbit/pass, preprocessing/version and confidence class;
-- resident-population proxy inside a clearly labelled buffer/catchment; and
-- “verify by ground report before directing responders” status.
+## Short answer
 
-The analyst selects the staging point and can accept/reject a suspected edge based on official/field evidence. Recalculation then produces the next queue. This makes the consequential decision explicit and keeps the human in control.
+Recommended hackathon baseline:
 
-## What the system would actually calculate
+1. Use the supplied same-geometry pair: 20-Aug and 1-Sep S1A, IW, descending, relative orbit 92, dual VV/VH.
+2. Calibrate raw measurement values to sigma0 (σ⁰), remove noise, terrain-correct, and convert to dB only after calibration.
+3. Apply identical moderate speckle reduction to both images.
+4. Calculate a pre/post **linear-power ratio / log-ratio** or calibrated dB change; calculate Otsu threshold after exclusions within AOI.
+5. Remove permanent water, steep slopes, small isolated components, and terrain artefacts; flag urban/vegetated/paddy contexts as low confidence.
+6. Compare broad result against NRSC map references. Call output “candidate observed inundation,” not truth.
 
-### 1. Flood-candidate surface
+## Are Earth Search S1 GRD assets already calibrated sigma0?
 
-Preferred MVP input is a same-geometry Sentinel-1 GRD pair: one pre-event baseline and one crisis/post-event acquisition, filtered to the same relative orbit, pass, instrument mode and available polarisation. Google’s Sentinel-1 change-detection guidance says time-series images must fully overlap and use the same orbit/pass/relative orbit for an interpretable sequence [4]. Its Earth Engine Sentinel-1 GRD collection is already orbit-file corrected, noise removed, radiometrically calibrated and terrain corrected; values are sigma-nought in dB [5].
+**No, not directly.** Direct Earth Search STAC inspection of both user-specified items showed:
 
-For each pixel or 30–50 m aggregation cell:
+* product type `GRD`, IW, VV/VH, 10 m spacing, descending relative orbit 92;
+* exact items: `S1A_IW_GRDH_1SDV_20240820T003107_20240820T003132_055289_06BD9B` and `S1A_IW_GRDH_1SDV_20240901T003107_20240901T003132_055464_06C415`;
+* `vv` and `vh` data assets are `uint16` measurement TIFFs;
+* separate `schema-calibration-vv/vh` calibration XML/LUT assets are supplied.
 
-```
-water_candidate = significant negative change in VV and/or VH
-                  AND not permanent water
-                  AND slope / HAND / layover-shadow constraints allow it
-                  AND spatial patch rule is met
-```
+Therefore treat the TIFFs as raw measurement/amplitude values needing LUT calibration; do not threshold them as dB/sigma0. Direct unsigned HTTP range reads of the supplied post-event TIFF returned HTTP 206 during research, confirming read access at the time.
 
-A simple ratio/threshold is acceptable only as a preliminary screen. A stronger MVP uses a pre-event seasonal median plus a crisis image, flags negative dual-polarisation change, and stores a confidence tier. Google’s published example demonstrates that negative changes in both VV and VH corresponded to widespread flood water, but also warns that built-up Beira gave a less convincing signal because of double-bounce scattering [4].
+Earth Search explanation: https://element84.com/geospatial/introducing-earth-search-v1-new-datasets-now-available
 
-A practical tiering scheme:
+Copernicus Sentinel Hub describes a different processed chain that applies calibration/noise removal and serves linear-power backscatter: https://documentation.dataspace.copernicus.eu/APIs/SentinelHub/Data/S1GRD.html
 
-| Tier | Rule | UI label |
+## Evidence + practical choices
+
+| Issue | Evidence | Recommended choice |
 |---|---|---|
-| A — higher confidence open-water candidate | large contiguous negative VV+VH change, not permanent water, no terrain/layover mask | “Likely new open water — verify road crossing” |
-| B — plausible | one-polarisation change or adjacency to Tier A | “Possible inundation — verify” |
-| C — unsuitable for automated road inference | dense built-up, flooded vegetation/wetland, layover/shadow, missing comparable baseline, or noisy small patch | “SAR ambiguous — do not infer road status” |
+| Preprocessing | UN-SPIDER lists orbit update, border/thermal noise removal, calibration, terrain correction and dB conversion. | Do all before comparison. |
+| VV/VH | UN-SPIDER: VH is sensitive to surface change; VV is useful for open water/vertical structure. Automated study found VV slightly better under calm conditions. | VV primary for open-water candidate; retain VH as QA, not a complex new classifier. |
+| Otsu | UN-SPIDER uses automatic Otsu/minimum methods but warns unbalanced histograms can fail. Change-detection comparison finds Otsu more liberal than Kittler–Illingworth. | AOI Otsu **after masks**; persist chosen threshold/provenance. Do not use universal fixed threshold. |
+| Fixed threshold | UN-SPIDER GEE tutorial uses ratio >1.25 as an example; it says threshold is trial-and-error. A Mekong study found scene-dependent Otsu thresholds, around -22 dB during floods. | Use threshold only as event-specific baseline. Never hard-code 1.25/-22 dB as global rule. |
+| Speckle | SAR needs speckle/noise management. | Same 3×3/5×5 median/Lee-style treatment on both images; record it. |
+| Permanent water and paddy | UN-SPIDER masks water >10 months/year; paddy/seasonal water can look flooded. | Mask permanent water; tag seasonal/paddy areas lower confidence. |
+| Shadow/terrain | UN-SPIDER example masks >5% slope; a published comparison uses CopDEM GLO-30 plus HAND/PLIA and majority filters. | Use `cop-dem-glo-30` slope mask; disclose the selected threshold and do not claim slope alone solves layover/shadow. |
+| Urban flood | UN-SPIDER warns built-up and vegetated flood detection is difficult; NRSC excluded urban analysis in its 6-Sep map. | Emit `URBAN_SAR_LIMITATION`; never automatically call a city street flooded/closed. |
 
-Do not report hectares without reporting the pixel scale, mask exclusions and date. Do not call the result “flood extent” without the qualifier `satellite-derived candidate`.
+Method sources:
 
-### 2. Road-edge suspicion, rather than road closure
+* UN-SPIDER Python SAR flood workflow: https://un-spider.org/advisory-support/recommended-practices/recommended-practice-flood-mapping/python-step-by-step
+* UN-SPIDER GEE method: https://un-spider.org/advisory-support/recommended-practices/recommended-practice-google-earth-engine-flood-mapping/step-by-step
+* UN-SPIDER limitations: https://un-spider.org/advisory-support/recommended-practices/recommended-practice-flood-mapping/in-detail
+* Twele et al. (2016), automated Sentinel-1 flood chain: https://doi.org/10.1080/01431161.2016.1192304
+* Change-detection comparison, Remote Sensing (2023): https://www.mdpi.com/2072-4292/15/5/1200
+* Dynamic Otsu/VH flood mapping study: https://www.mdpi.com/2072-4292/14/22/5721
 
-Road data is converted to graph edges. A road edge is `suspected disrupted` when it intersects the candidate-water polygon after a parameterised lateral buffer, or when a candidate intersects a bridge/culvert approach. The buffer is a sensitivity parameter to be displayed and tested; it is not a physical water-depth measurement. Candidate intersection does not prove road impassability: elevated roads, bridges, culverts, embankments, water underneath a structure, and positional/raster error all break that inference.
+## Implication for us
 
-For each edge retain:
+Use a transparent rule-based baseline, not a black-box model. The validation/demo sequence should expose pre image → calibrated change score → exclusions → candidate mask → NRSC reference map. That is honest and reviewable.
 
-- source (`OpenStreetMap` / PMGSY GeoSadak / local authoritative layer), source date and tags;
-- geometry version and topology-cleaning version;
-- candidate class and overlap/buffer metrics;
-- optional human report state: `unverified`, `passable`, `restricted`, `closed`, `cleared`, with time and reporter role.
+---
 
-The public PMGSY Rural Connectivity Dataset is unusually useful for a village-access MVP: the Government of India released 2.5 million+ km of rural roads, 1 million+ habitation records and 800,000+ facility points under the Government Open Data License, explicitly noting potential use in quick disaster response [6]. It is a **baseline inventory**, not a live road-closure feed. In Vijayawada’s urban core, OSM may be denser; neither OSM nor PMGSY can certify current passability.
+# 4. Cut-off analysis — OSM roads, settlements and facilities
 
-### 3. Cut-off calculation
+## Short answer
 
-Let baseline road graph be `G=(V,E)`, chosen staging node be `s`, and settlement/access node be `v`. Form `E' = E − E_suspected`. A settlement is a **modelled possible cut-off** iff `v` was connected to `s` in `G` but has no path to `s` in `G'`.
-
-```
-for each settlement v:
-    baseline = has_path(G, v, s)
-    remaining = has_path(G without suspected_edges, v, s)
-    if baseline and not remaining:
-        flag v as possible_cut_off
-```
-
-Rank no-route settlements by a transparent, non-claiming score, for example:
+Simplest defensible definition: a settlement is **possible cut-off** if it had a mapped road path to a selected staging point/hospital before candidate-edge removal and no path after removal.
 
 ```
-priority = 0.45 * normalised population_proxy
-         + 0.25 * road-evidence confidence
-         + 0.20 * baseline detour / network criticality
-         + 0.10 * facility-access penalty
+baseline: has_path(G, settlement, facility)
+remove: road edges intersecting buffered candidate-water mask
+result: baseline-connected AND no-path-after-removal = POSSIBLE_CUT_OFF
 ```
 
-The weights are editable and are not a validated life-safety model. The UI must distinguish “no remaining route in our incomplete baseline graph” from a verified isolation. Never use a straight-line distance as access proof.
+Use NetworkX for connected components and shortest path. OSMnx is optional for extraction/routing convenience.
 
-### 4. Population proxy
+## Evidence and coverage
 
-Intersect the uncertainty-labelled candidate-water area, or a settlement catchment that becomes modelled isolated, with WorldPop grid cells. Sum cell values only as an **estimated resident distribution proxy**, date-labelled by the selected WorldPop release. It is not live presence, a count of trapped people, individual location, household vulnerability or an evacuation manifest.
+| Layer | Finding | Implication |
+|---|---|---|
+| Roads | Geofabrik India/central-zone extract is public: `https://download.geofabrik.de/asia/india/central-zone-latest.osm.pbf` | Current baseline road graph is feasible; it is not a 2024 road-status feed. |
+| Settlements | OSM `place=*` may be a centre point or full area; boundaries are inconsistent. | Use named settlement/colony **centres**, not claimed colony boundaries. |
+| Current Vijayawada OSM check | A direct current Overpass query over 16.45–16.75 N, 80.45–80.85 E found 163 villages, 127 neighbourhoods and 14 suburbs; sample names include Rayanapadu and Gannavaram. | Enough for a demonstration, but present it as current OSM—not 2024 authoritative mapping. |
+| Hospitals | OSM uses `amenity=hospital` plus optional `healthcare=*`/`emergency=*`. Query found 396 hospital-tagged features in broad AOI. | “Nearest mapped hospital” is usable. Capacity/open status/flood operability are **UNVERIFIED**. |
+| Shelters | OSM `amenity=shelter` commonly means physical shelter, often a bus-stop structure; query found one shelter feature in broad AOI. | Do not call it a relief camp. Official shelter location remains **UNVERIFIED**. |
 
-WorldPop’s India constrained 100 m product is modelled people per pixel; the currently indexed R2025A release is labelled alpha and describes 3-arc-second (~100 m) cells [7]. For case-study reproducibility, pin the exact downloaded release and report its year. Use population as a queue multiplier, never as proof of people in flood water.
+Sources:
 
-## Data ledger
+* Geofabrik India: https://download.geofabrik.de/asia/india.html
+* OSM place tags: https://wiki.openstreetmap.org/wiki/Place
+* OSM healthcare tags: https://wiki.openstreetmap.org/wiki/Healthcare
+* OSM shelter key: https://wiki.openstreetmap.org/wiki/Key:shelter
 
-| Layer | Access / status | MVP use | Important limitation |
+## Critical controls
+
+* A flood-mask/road intersection is **suspected disruption**, not road closure.
+* Preserve bridge/tunnel/culvert edges as `needs review`: water under a bridge is not necessarily impassable road.
+* “No mapped road path” is not “rescuers cannot reach it”; unmapped tracks/boats/emergency routes may exist.
+* Compute connected components first, then shortest paths only for surviving components.
+
+## Implication for us
+
+Priority-list row:
+
+`rank | named place | modelled resident proxy | candidate flooded road edges | NO MAPPED ROAD PATH / PATH EXISTS | nearest mapped hospital name + route distance OR none in component | uncertainty flags | action: verify by ward/boat team`.
+
+Do not show a “nearest shelter” value without official camp data.
+
+---
+
+# 5. Population — WorldPop and GHSL
+
+## Short answer
+
+Use **GHSL GHS-POP R2023A, E2020, 100 m** as primary. It is directly verified, licensed CC BY 4.0 and is the population family used by Copernicus GFM. WorldPop is an acceptable alternative, but direct exact India-total 2020 constrained TIFF URL was not verified and a previously guessed path returned HTTP 404.
+
+## Evidence + links
+
+| Dataset | Verified access | Resolution / licence | Implication |
 |---|---|---|---|
-| Sentinel-1 GRD | Copernicus Data Space STAC supports Sentinel-1 discovery; download needs a free account/OIDC token. Earth Engine has a daily updated, processed GRD collection [5, 8]. | Pre/post candidate-water signal. | Acquisition cadence and compatible pair availability constrain latency; radar is not water depth. |
-| NRSC rapid mapping | Official 5 Sep and 11 Sep Vijayawada products are public [2, 3]. | Case-study reference/visual sanity check. | Not ground truth; NRSC explicitly excluded urban analysis in the 5 Sep product. Do not train or claim metric accuracy against it without a defined validation protocol. |
-| PMGSY GeoSadak | Public under Government Open Data License [6]. | Rural road/habitation baseline, facility nodes. | Not live status; road completeness/topology around city/settlement connectors must be checked. |
-| OpenStreetMap | Open data under ODbL; useful complementary road geometry. | Urban/local roads and bridges where available. | Volunteer completeness and tags vary; attribution/ODbL obligations apply. |
-| WorldPop | Public, modelled gridded population [7]. | Resident-distribution proxy. | Not event-time occupancy or vulnerability. |
-| Bhuvan NHP flood portal | Official portal offers flood hydrographs/simulations for Godavari and Tapi and shows event layers only during floods [9]. | Existing-solution comparison / analyst context. | It is not a general Vijayawada live API; do not scrape it or portray BaadhDrishti as an official replacement. |
-| Field/authority reports | Required but no public real-time universal source verified in this research. | Confirm or overturn edge state. | Human verification is a hard operational dependency, not a data feed the MVP should pretend exists. |
+| WorldPop constrained India 2020 | Product portal: https://hub.worldpop.org/geodata/summary?id=49992 ; age/sex India 2020: https://hub.worldpop.org/geodata/summary?id=50436 | ~100m (3 arcsec), WGS84, people per pixel; constrained WorldPop documentation identifies CC BY 4.0. | Product/licence verified; **exact direct total-population India TIFF URL UNVERIFIED**. Retrieve filename from portal/manifest rather than guess. |
+| GHSL GHS-POP R2023A | Official: https://human-settlement.emergency.copernicus.eu/ghs_pop2023.php ; download portal: https://ghsl.jrc.ec.europa.eu/download.php | 100m/1km/3 arcsec/30 arcsec; E1975–E2020 estimates, E2025/E2030 projections; CC BY 4.0. | **Use E2020 for a 2024 historical replay.** |
 
-## Scientific limits that the product must expose
+WorldPop CC BY documentation: https://developers.google.com/earth-engine/datasets/catalog/WorldPop_GP_100m_pop_age_sex_cons_unadj
 
-1. **Urban SAR ambiguity is central, not a footnote.** Smooth water tends to produce low backscatter, but buildings/flooded built-up areas can produce double bounce and both dry/flooded urban scenes can be difficult to separate [4]. NRSC’s 5 September map excluded urban analysis [2]. Therefore do not use BaadhDrishti to label streets within dense Vijayawada as flooded or roads closed.
-2. **Flooded vegetation, rough water and wet soil create omission/commission errors.** ESA training notes limitations for flooded/floating vegetation and the dependence on acquisition, landscape and weather [10].
-3. **A single scene cannot distinguish permanent water from a new flood reliably.** A comparable dry reference and a permanent-water mask are required; ESA’s SNAP tutorial explicitly removes known water and uses elevation to reduce misclassification [11].
-4. **SAR pixel size is not road status.** Sentinel-1 GRD imagery commonly has 10 m posting while effective resolution, processing and geolocation uncertainty mean narrow roads are sub-pixel or mixed. A crossing overlap is evidence to check, not an obstruction observation.
-5. **No water depth or current.** Do not output either. The Bhuvan NHP portal’s modelled depth products are a distinct model/service for other basins; they cannot be inferred from this workflow [9].
-6. **No rescue routing.** Remove suspected edges for analytic sensitivity; only verified closure/restriction reports may drive a responder route recommendation.
-7. **Temporal mismatch matters.** Label scene acquisition time and baseline date; water can advance/recede between pass and response.
+GHSL data-package licence: https://human-settlement.emergency.copernicus.eu/documents/GHSL_Data_Package_2023.pdf
 
-## Validation plan before any operational claim
+## Implication for us
 
-The two-stage claim needs two separate validations.
+Label result exactly as: **“modelled resident population in candidate inundated/isolation-associated 100 m cells (2020 estimate)”**. Round values (e.g., nearest 100). Never call it trapped population, current presence, evacuation manifest, or vulnerability assessment.
 
-### A. Inundation-candidate validation
+---
 
-- Freeze the AOI, image IDs, orbit filters, preprocessing, permanent-water mask, thresholds and morphology rules.
-- Sample stratified points in open/rural, peri-urban, urban, wetland/vegetation and near-road contexts.
-- Compare against time-aligned authoritative imagery, high-resolution post-event imagery if licensed, and field/agency evidence where available.
-- Report confusion matrix, precision, recall and omission/commission errors **by land-cover stratum**, not one flattering global accuracy.
-- Treat official rapid maps as reference context only unless their class definitions, timing and spatial uncertainty support a legitimate comparison.
+# 6. Sentinel-1 revisit
 
-### B. Reachability validation
+## Short answer
 
-- Freeze the road graph and selected staging point before reviewing reports.
-- Assemble time-stamped independent road/bridge status evidence (district control room, NDRF/SDRF/agency updates or survey), with a clear hierarchy of authority.
-- Measure edge-level precision/recall for `suspected disrupted`, then settlement-level precision/recall for `possible cut-off`.
-- Audit every false cut-off: missing alternate lane, bad graph snap, bridge/elevated road, flood-mask false positive, wrong staging node, or late/incorrect road report.
-- Report coverage: share of settlements that can be snapped plausibly and share of graph edges with a usable road class. “No route” has no value if mapping is incomplete.
+Pitch wording:
 
-Until those checks exist, the correct product wording is “verification priority”, never “cut-off village detected.”
+> “When a Sentinel-1 acquisition is available, BaadhDrishti can produce an update from that acquisition. A two-satellite Sentinel-1 constellation has a nominal six-day exact-repeat cycle; availability over one Indian AOI depends on acquisition plan, coverage, orbit direction and publication. It is not continuous monitoring.”
 
-## Build scope for a three-day hackathon
+## Evidence
 
-### Day 1 — reproducible replay
+* Sentinel-1B failed in Dec 2021. Sentinel-1C launched 5 Dec 2024; Sentinel-1D launched 4 Nov 2025.
+* ESA/SentiWiki: one satellite has 12-day repeat; two satellites have nominal six-day exact-repeat, with actual rate varying by latitude/planning.
+* The selected Vijayawada replay is S1A-only, **20 Aug to 1 Sep = 12 days**. That is the actual case-study cadence.
 
-- Pick a **peri-urban/rural** AOI around Gollapudi–Jakkampudi–Rayanapadu rather than claiming street-level coverage for the city core.
-- Discover a compatible Sentinel-1 baseline/crisis pair; record product IDs/times and use a fixed historical replay date.
-- Ingest a small AOI road graph, settlement nodes and one nominated staging point.
-- Display NRSC’s cited reference map link and a source drawer, without copying its output as ground truth.
+Sources:
 
-### Day 2 — candidate and graph sensitivity
+* ESA facts: https://www.esa.int/Applications/Observing_the_Earth/Copernicus/Sentinel-1/Facts_and_figures
+* SentiWiki mission: https://sentiwiki.copernicus.eu/web/s1-mission
 
-- Produce the A/B/C candidate layer with permanent-water and terrain exclusions.
-- Create road-edge intersection evidence; run baseline vs suspected-edge-removed connectivity.
-- Show each possible-cut-off settlement card with a “why this is flagged” panel and a reject/confirm edge control.
+## Implication for us
 
-### Day 3 — truthfulness, demo and deployment
+Display scene time and `image age`. Say “acquisition-triggered update,” not real time or guaranteed six-day flood detection.
 
-- Add a side-by-side pre/post radar view; make the date and `historical replay` label unmissable.
-- Add population proxy only after pinning a WorldPop release and show it as a range/proxy.
-- Record the required workflow: satellite candidate → suspected access disruption → modelled possible cut-off → human confirmation changes the result.
-- Include a failure example (dense urban/ambiguous SAR class) where the tool refuses to make a road claim.
+---
 
-## AWS architecture appropriate to the actual claims
+# 7. Real user workflow — Collector, SDMA and NDRF
 
-- **S3**: immutable, versioned input manifests, derived candidate rasters/vector tiles, road graph snapshot, and validation artefacts.
-- **ECS/Fargate batch** or **AWS Batch**: containerised raster preprocessing and graph calculation; store exact container version and parameters in a manifest.
-- **Step Functions**: explicit staged run: discovery → preprocess → candidate mask → road-intersection evidence → reachability → publish.
-- **Lambda + API Gateway**: read-only query for settlement triage cards and a controlled endpoint for human confirmation state.
-- **DynamoDB**: append-only/role-audited field-confirmation events; never overwrite raw detection evidence.
-- **CloudFront / Amplify**: static analyst-facing map.
+## Short answer
 
-This is an AWS fit because it preserves reproducible, versioned evidence and separates batch geospatial computation from reviewed operational updates. Do not say “AI on AWS” unless a model is actually trained, evaluated and deployed.
+The intended user needs a map plus a short field-verification list, not an autonomous dispatch engine. NDRF flood SOP asks for affected area, population yet to evacuate, priority rescue places, immediate-rescue areas, shelters/relief/medicine locations, communication mode, resource contacts and active hospital list. It says Collectors/DCs/DMs can request NDRF response.
 
-## Novelty assessment
+Vijayawada 2024 reporting confirms ward-wise official relief activity and use of camps, medical camps, NDRF/SDRF, helicopters and drones. That supports a **ward/place priority list + static shareable brief**, not a consumer navigation tool.
 
-Flood mapping itself is not novel: NRSC/Bhuvan publish disaster and flood products [2, 9], and Sentinel-1 change detection is well documented [4, 5]. The defendable contribution is a transparent **uncertainty-first conversion of a satellite-water candidate into a field-verification queue for potentially lost network access**, coupled with reproducible evidence and an explicit refusal to make claims in ambiguous urban pixels. It should be pitched as a decision-support layer that complements official products, not as a replacement.
+## Evidence + links
 
-## Sources
+* NDRF flood SOP: https://ndrf.gov.in/sites/default/files/FLOOD.pdf
+* NDMA preparedness guidance calls for GIS plot of vulnerable localities, roads, hospitals/PHCs, relief camps and logistics: https://ndma.gov.in/sites/default/files/PDF/Review%20of%20Preparedness%20for%20the%20South%20West%20Monsoon%20Season%20Tropical%20Cyclones.pdf
+* Vijayawada ward-wise relief/airdrop evidence: Business Standard link in Section 2.
 
-[1] Andhra Pradesh State Disaster Management Authority, 2024 Andhra Pradesh floods impact/report material (PDF). https://apsdma.ap.gov.in/files/06104de92b01f273eead196a654d65dc.pdf
+## Recommended output format
 
-[2] NRSC/ISRO, “Flood Inundation Areas Surrounding Vijayawada, Andhra Pradesh, India,” map 2024/FL/AP/14/05092024; pre-event Sentinel-1A 20 Aug 2024, post-event TanDEM-X 5 Sep 2024. https://ndem.nrsc.gov.in/documents/Disaster_Document/2024/AP/apflood50dsc05092024_1800hrs/apflood50dsc05092024_1800hrs_map.pdf
+1. **Map:** candidate flood mask; excluded/ambiguous zones; suspected disrupted edges; named places; mapped hospitals; image dates.
+2. **One-page PDF/CSV list suitable for WhatsApp forwarding:** rank, place, 2020 population proxy, suspected road-edge count, `NO MAPPED ROAD PATH` / `PATH EXISTS`, nearest mapped hospital/no facility in component, uncertainty flags, and `verify by ward/boat team` action.
 
-[3] APSAC/NRSC, Vijayawada flood-inundation maps, 11 Sep 2024. https://apsac.ap.gov.in/wp-content/uploads/2024/09/ap_2024_11_09_map1.pdf
+## Implication for us
 
-[4] Google Earth Engine, “Detecting Changes in Sentinel-1 Imagery (Part 4).” https://developers.google.com/earth-engine/tutorials/community/detecting-changes-in-sentinel-1-imagery-pt-4
+The final demo should end with five ranked verification rows. It should show that human confirmation changes the result. It must not route responders through a possibly flooded network.
 
-[5] Google Earth Engine, Sentinel-1 SAR GRD data catalogue and preprocessing. https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S1_GRD ; https://developers.google.com/earth-engine/guides/sentinel1
+---
 
-[6] Government of India, PIB, “Rural Connectivity GIS Data in Public Domain,” 28 Feb 2022. https://pib.gov.in/PressReleasePage.aspx?PRID=1800373 ; PMGSY GeoSadak open data: https://geosadak-pmgsy.nic.in/OpenData
+# Decisions to take after research
 
-[7] WorldPop, India constrained population, R2025A v1 metadata. https://hub.worldpop.org/geodata/summary?id=73812
+1. Approve the claim boundary: “candidate road isolation for verification,” not detected cut-off people/rescue routing.
+2. Approve Vijayawada primary event and NRSC/APSAC maps as qualitative validation references.
+3. Choose GHSL E2020 as population primary; use WorldPop only after official direct-file retrieval.
+4. Remove official-shelter claim from MVP unless an authoritative camp list is obtained.
+5. Freeze a road-edge removal rule, bridge/tunnel review rule, and uncertainty labels before implementation.
+6. Approve baseline: calibrated sigma0 VV change/ratio + AOI Otsu + permanent-water/slope/component masks; keep VH as QA.
+7. Require named-area/NRSC face-validity checks and visible failure examples in urban SAR zones.
+8. Keep Assam Lakhimpur/Subansiri as backup only after exact compatible Earth Search scene IDs are verified.
 
-[8] Copernicus Data Space Ecosystem, Sentinel-1 collection and STAC documentation. https://dataspace.copernicus.eu/data-collections/sentinel-data/sentinel-1 ; https://documentation.dataspace.copernicus.eu/APIs/STAC.html
+## Limitations
 
-[9] NRSC/Bhuvan National Hydrology Project Flood Geoportal. https://bhuvan.nrsc.gov.in/nhp/webgis-flood/map ; portal description: https://bhuvan.nrsc.gov.in/nhp/about-portal
-
-[10] ESA, SAR flood-mapping training material. https://eoscience.esa.int/landtraining2018/files/materials/D5A1_LTC_theorical_YESOU_floods_final.pdf
-
-[11] ESA SNAP, Sentinel-1 flood-mapping tutorial. https://step.esa.int/docs/tutorials/tutorial_s1floodmapping.pdf
-
-## Research limitations
-
-- This report verified public documentation and official case-study products; it did not download/process a specific Sentinel-1 pair, obtain field road-closure observations, or calculate an actual inundation/potential-cut-off total.
-- Web retrieval was intermittently unavailable. Source claims are therefore limited to pages/documents successfully retrieved or directly cited above.
-- A public road inventory is not a real-time routing feed. It must be corrected locally and independently verified before any operational use.
-- The scope deliberately avoids a claimed live Vijayawada service: a historical replay is the appropriate hackathon demonstration unless a current, compatible acquisition and authorised ground validation are actually available.
+* Current OSM query is not a historical 2024 OSM snapshot.
+* Public road layers are not live road-closure feeds.
+* Direct S3 range read worked during research; runtime must still implement access/error handling.
+* This research establishes a defensible baseline and validation references; it does not prove accuracy for a chosen threshold.
