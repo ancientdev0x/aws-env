@@ -10,3 +10,5 @@ task_patch*.txt
 data/raw/
 data/interim/
 data/processed/road_graph.graphml
+aws.json
+
