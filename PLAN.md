@@ -405,9 +405,9 @@ uv venv --python 3.12 .venv && uv pip install --python .venv/bin/python -r scrip
 ```
 
 ### Saturday, Oct 10 (AWS Backend, Frontend & Interactivity)
-- [ ] **Task 2.5**: Set up DynamoDB tables (`road_overrides`, `staging_hubs`) and SAM template.  
+- [x] **Task 2.5**: Set up DynamoDB tables (`road_overrides`, `staging_hubs`) and SAM template.  
   *Done Criteria*: `sam build && sam deploy` creates stack with live API Gateway URL.
-- [ ] **Task 2.6**: Lambda implementation of reachability engine reading from S3 graph + DynamoDB overrides.  
+- [x] **Task 2.6**: Lambda implementation of reachability engine reading from S3 graph + DynamoDB overrides.  
   *Done Criteria*: `curl $API_URL/api/triage` returns JSON with status code 200.
 - [ ] **Task 2.7**: Build clean single `index.html` + Leaflet.js frontend with offline pre/post SAR PNG overlays (Leaflet `imageOverlay`), triage queue table, road override modal, and hub addition.  
   *Done Criteria*: Frontend deployed to S3 website / CloudFront or local host with responsive UI.
@@ -456,6 +456,6 @@ uv venv --python 3.12 .venv && uv pip install --python .venv/bin/python -r scrip
 
 1. **SAR source**: Plan A (raw GRD on AWS Open Data, calibrated) — GO. Plan B kept as fallback only.
 2. **Road network**: current OpenStreetMap via Overpass; PMGSY not used.
-3. **AWS stack**: S3 + CloudFront (single index.html + Leaflet) + API Gateway/Lambda (Python/NetworkX) + DynamoDB, SAM deploy. Region TO CONFIRM (proposal: ap-south-1).
+3. **AWS stack**: S3 + CloudFront (single index.html + Leaflet) + API Gateway HTTP API/Lambda (Python/NetworkX) + DynamoDB, SAM deploy, region ap-south-1 (deployed Sat Oct 10).
 4. **Urban core**: GHSL SMOD class 30 urban centre (owner approved Sat Oct 10).
 5. **GO/NO-GO reference**: APSAC/NRSC 6-Sep 2024 TerraSAR-X map (no 5-Sep map found).

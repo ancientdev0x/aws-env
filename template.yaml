@@ -1,0 +1,82 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: BaadhDrishti - post-flood field-verification triage API (Lambda + API Gateway + DynamoDB + S3)
+
+Globals:
+  Function:
+    Runtime: python3.12
+    Architectures: [arm64]
+    MemorySize: 1024
+    Timeout: 29
+
+Resources:
+  DataBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+
+  RoadOverridesTable:
+    Type: AWS::Serverless::SimpleTable
+    Properties:
+      TableName: !Sub "${AWS::StackName}-road_overrides"
+      PrimaryKey: { Name: edge_id, Type: String }
+
+  StagingHubsTable:
+    Type: AWS::Serverless::SimpleTable
+    Properties:
+      TableName: !Sub "${AWS::StackName}-staging_hubs"
+      PrimaryKey: { Name: hub_id, Type: String }
+
+  Api:
+    Type: AWS::Serverless::HttpApi
+    Properties:
+      # No auth (demo); throttled so a public URL cannot be hammered.
+      DefaultRouteSettings:
+        ThrottlingBurstLimit: 20
+        ThrottlingRateLimit: 10
+      CorsConfiguration:
+        AllowOrigins: ["*"]
+        AllowMethods: [GET, POST]
+        AllowHeaders: [content-type]
+
+  ApiFunction:
+    Type: AWS::Serverless::Function
+    Metadata:
+      BuildMethod: makefile
+    Properties:
+      CodeUri: backend/
+      Handler: app.handler
+      Environment:
+        Variables:
+          DATA_BUCKET: !Ref DataBucket
+          BUNDLE_KEY: lambda_bundle.json
+          ROAD_OVERRIDES_TABLE: !Ref RoadOverridesTable
+          STAGING_HUBS_TABLE: !Ref StagingHubsTable
+      Policies:
+        - S3ReadPolicy: { BucketName: !Ref DataBucket }
+        - DynamoDBCrudPolicy: { TableName: !Ref RoadOverridesTable }
+        - DynamoDBCrudPolicy: { TableName: !Ref StagingHubsTable }
+      Events:
+        Triage:
+          Type: HttpApi
+          Properties: { ApiId: !Ref Api, Method: GET, Path: /api/triage }
+        RoadStatus:
+          Type: HttpApi
+          Properties: { ApiId: !Ref Api, Method: POST, Path: /api/road-status }
+        Hubs:
+          Type: HttpApi
+          Properties: { ApiId: !Ref Api, Method: POST, Path: /api/hubs }
+
+Outputs:
+  ApiUrl:
+    Value: !Sub "https://${Api}.execute-api.${AWS::Region}.amazonaws.com"
+  DataBucketName:
+    Value: !Ref DataBucket
+  RoadOverridesTableName:
+    Value: !Ref RoadOverridesTable
+  StagingHubsTableName:
+    Value: !Ref StagingHubsTable

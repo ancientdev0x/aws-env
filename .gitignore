@@ -12,3 +12,4 @@ data/interim/
 data/processed/road_graph.graphml
 aws.json
 
+.aws-sam/

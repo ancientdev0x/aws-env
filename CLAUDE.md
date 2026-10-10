@@ -79,12 +79,22 @@ It is NOT: a rescue dispatch system, navigation, a live forecast, or an official
   Engine fix: `blocking_edges` now = blocked edges on the habitation's dry-baseline route (was incident-only → empty).
   Clearing them can expose further blocked edges on the next-best route (recompute handles it).
 - [x] Urban core = GHSL SMOD R2023A E2020 class 30 (owner OK'd option (a), Sat). Its roads are treated as open/unknown.
-- [ ] Sat: Lambda API, DynamoDB, frontend, road edit + hub add
+- [x] Task 2.5/2.6 (Sat): SAM stack `baadhdrishti` deployed to **ap-south-1** with local AWS profile `baadh`
+  (never the default medmitra profile). `template.yaml` + `samconfig.toml`; `backend/app.py` + `backend/Makefile`
+  (copies `engine/` into the package). Resources: HTTP API (throttled 10 rps / burst 20, no auth, CORS *), arm64 Lambda
+  1024 MB, DynamoDB `baadhdrishti-road_overrides` / `baadhdrishti-staging_hubs`, private S3 data bucket.
+  API: `https://f3m0jdk4wi.execute-api.ap-south-1.amazonaws.com` (`/api/triage`, `/api/road-status`, `/api/hubs`).
+  Data: `scripts/export_lambda_bundle.py` → `data/processed/lambda_bundle.json` → `s3://<DataBucketName>/lambda_bundle.json`.
+  Verified live: GET reproduces offline (7 cut off, 9,314); clearing Tadepalle's 4 blocking edges (Vijayawada–Vissannapeta
+  Rd) restores 5 habitations; hub at Tadepalle restores the same 5; undo returns to 7. Lambda `compute_ms` ≈ 940–960
+  (GET ≈ 1.6 s warm, POST ≈ 2.4 s since it computes before+after). Local test: `tests/test_lambda_local.py`.
+  Reset officer state before each demo take: `AWS_PROFILE=baadh scripts/reset_demo_state.sh`.
+- [ ] Task 2.7: index.html + Leaflet frontend (S3 + CloudFront), road edit + hub add UI
 - [ ] Sun 12:00 IST feature freeze → video → AWS Builder Center blog → submit (exact deadline time TO VERIFY)
 
 ## Ownership
 Handed over on Fri Oct 9 to a teammate who now owns the build end-to-end. Tasks 2.1–2.4 done (Sat Oct 10).
-Next: Task 2.5 (SAM + DynamoDB) → 2.6 (Lambda reading `data/processed/*` from S3) → 2.7 (index.html + Leaflet).
-Open before deploy: AWS credentials, SAM CLI install, region (proposal ap-south-1).
+Next: Task 2.7 (index.html + Leaflet on S3/CloudFront) → 2.8 (WhatsApp share / CSV).
+Deploy: `sam build && sam deploy` (samconfig pins stack, region ap-south-1, profile baadh); then upload the bundle.
 Commit small, push often, keep the Status section above current. No Claude co-author trailers on commits.
 Offline pipeline reproduce steps: PLAN.md §6.
