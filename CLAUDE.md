@@ -88,11 +88,12 @@ It is NOT: a rescue dispatch system, navigation, a live forecast, or an official
   Verified live: GET reproduces offline (7 cut off, 9,314); clearing Tadepalle's 4 blocking edges (Vijayawada–Vissannapeta
   Rd) restores 5 habitations; hub at Tadepalle restores the same 5; undo returns to 7. Lambda 1769 MB, compute_ms ≈ 616 ms; POST computes once (client diffs). Local test: `tests/test_lambda_local.py`.
 - [x] Task 2.7/2.8: `frontend/index.html` (Leaflet, queue, road edit, hub add, WhatsApp, CSV) on Amazon S3 static website: http://baadhdrishti-frontendbucket-e1tfhveh47sy.s3-website.ap-south-1.amazonaws.com. Deploy: `scripts/deploy_frontend.sh`. Smoke: `tests/frontend_smoke.py <url> [--write]`. (S3 static website fallback used due to account CloudFront verification requirement).
+- [x] Docs (Sun): README (rules moved to docs/HACKATHON.md), docs/architecture.png, docs/VIDEO.md, docs/BLOG.md, docs/SUBMISSION.md. Demo hub: officer-nominated village-centre point from scripts/pick_demo_hub.py (OSM has too few rural public buildings).
 - [ ] Sun 12:00 IST feature freeze → video → AWS Builder Center blog → submit (exact deadline time TO VERIFY)
 
 ## Ownership
 Handed over on Fri Oct 9 to a teammate who now owns the build end-to-end. Tasks 2.1–2.4 done (Sat Oct 10).
-Next: Task 2.7 (index.html + Leaflet on S3/CloudFront) → 2.8 (WhatsApp share / CSV).
+Next: record video (docs/VIDEO.md), publish blog (docs/BLOG.md), submit (docs/SUBMISSION.md).
 Deploy: `sam build && sam deploy` (samconfig pins stack, region ap-south-1, profile baadh); then upload the bundle.
 Commit small, push often, keep the Status section above current. No Claude co-author trailers on commits.
 Offline pipeline reproduce steps: PLAN.md §6.
