@@ -36,11 +36,11 @@ console wiring), serving HTML from Lambda (weak architecture story).
 ### 1. Offline overlays — `scripts/export_overlays.py` (new)
 - Inputs: `data/interim/20240820_vv_db.tif`, `data/interim/20240901_vv_db.tif`, `data/processed/flood_mask_20240901.tif`.
 - Reproject each to EPSG:4326 over the AOI `[80.50, 16.50, 80.70, 16.65]` (same `to_ll` logic as `scripts/quicklook_flood.py`).
-- Write `data/processed/web/pre_vv.png`, `post_vv.png` (grayscale, dB stretched −22..0, nodata transparent),
+- Write `frontend/data/pre_vv.png`, `post_vv.png` (grayscale, dB stretched −22..0, nodata transparent),
   `flood_mask.png` (blue RGBA, transparent where not flood), and `overlays.json`
   `{ "bounds": [[16.50, 80.50], [16.65, 80.70]], "pre": "pre_vv.png", "post": "post_vv.png", "mask": "flood_mask.png",
   "pre_date": "2024-08-20", "post_date": "2024-09-01" }`.
-- Copy `data/processed/urban_core.geojson` into `data/processed/web/`.
+- Copy `data/processed/urban_core.geojson` into `frontend/data/` (served next to `index.html`; one folder to sync).
 - Leaflet `imageOverlay` with lat/lon bounds over Web Mercator: distortion across 0.15° latitude is negligible.
 
 ### 2. Frontend — `frontend/index.html` (new, single file)
@@ -88,8 +88,7 @@ Layout follows PLAN.md §5:
     (default root `index.html`, HTTPS redirect, managed CachingOptimized policy), bucket policy allowing only the distribution.
   - Output `FrontendUrl` and `FrontendBucketName`, `DistributionId`.
 - `scripts/deploy_frontend.sh` (new): reads stack outputs with `AWS_PROFILE=baadh`, writes `frontend/config.json`
-  (gitignored), `aws s3 sync frontend/` + `data/processed/web/` → `s3://<FrontendBucket>/` (`data/` prefix for web files),
-  then `aws cloudfront create-invalidation --paths "/*"`.
+  (gitignored), `aws s3 sync frontend/ s3://<FrontendBucket>/`, then `aws cloudfront create-invalidation --paths "/*"`.
 - CORS stays `*` (no auth by design; throttling already set).
 
 ### 4. Docs & submission
