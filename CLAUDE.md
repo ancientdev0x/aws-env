@@ -1,6 +1,6 @@
 # BaadhDrishti — team context for Claude
 
-Hackathon: Bharat Builds Tour Event 02 — Environmental Hacks (Oct 8–11, 2026). Rules + judging: `README.md`.
+Hackathon: Bharat Builds Tour Event 02 — Environmental Hacks (Oct 8–11, 2026). Rules + judging: `docs/HACKATHON.md`.
 Judges only see a 3-min recorded video. "One feature that works beats five that almost do."
 
 ## What we are building (FROZEN — do not re-debate)
