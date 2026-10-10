@@ -31,8 +31,16 @@ It is NOT: a rescue dispatch system, navigation, a live forecast, or an official
 ## Data facts already verified
 - `s3://sentinel-s1-l1c` works with `--no-sign-request`; measurement TIFFs are raw DN with calibration XMLs alongside.
 - Scene search: Earth Search STAC `https://earth-search.aws.element84.com/v1`, collection `sentinel-1-grd`.
-- Fallback if raw DN pipeline fails: Microsoft Planetary Computer `sentinel-1-rtc` (coverage still TO VERIFY).
-- OSMnx edge lengths are meters; engine reports `distance_km` — convert when building the graph.
+- Fallback if raw DN pipeline fails: Microsoft Planetary Computer `sentinel-1-rtc` (coverage still TO VERIFY). Not needed so far.
+- OSMnx edge lengths are meters; engine reports `distance_km` — `build_road_graph.py` divides by 1000.
+- Scenes: `S1A_IW_GRDH_1SDV_20240820T003107_..._055289_06BD9B` / `..._20240901T003107_..._055464_06C415`, orbit 92 descending.
+  Earth Search measurement TIFFs are tiled+deflate (windowed reads are cheap); GRD has no CRS, only 210 GCPs.
+- Aux rasters (read remotely): JRC GSW occurrence `storage.googleapis.com/global-surface-water/downloads2021/occurrence/
+  occurrence_80E_20Nv1_4_2021.tif`; COP-DEM `s3://copernicus-dem-30m/Copernicus_DSM_COG_10_N16_00_E080_00_DEM/` (no-sign).
+- GHSL R2023A E2020 tile for the AOI is **R7_C26** (R8 does not cover it): `jeodpp.jrc.ec.europa.eu/ftp/jrc-opendata/GHSL/`
+  `GHS_POP_GLOBE_R2023A/GHS_POP_E2020_GLOBE_R2023A_54009_100/V1-0/tiles/` and `GHS_SMOD_.../54009_1000/V2-0/tiles/`.
+- Overpass: Python requests hangs on overpass-api.de over IPv4 from this machine; use curl. Raw OSM cached in `data/raw/osm/`.
+- NRSC reference: APSAC/NRSC 6-Sep 2024 TerraSAR-X map (`apsac.ap.gov.in/.../AP_TERRASARX_6_sep_2024_sat_map.pdf`). No 5-Sep map.
 
 ## Status (update this section as you go)
 - [x] Research, plan, reachability engine + tests
@@ -47,10 +55,10 @@ It is NOT: a rescue dispatch system, navigation, a live forecast, or an official
   **Geolocation fix:** GCP heights (~90–150 m) ≠ terrain, so geocoded SAR was offset ~250 m toward far range.
   Script estimates a near-range shift against JRC water (best 250 m, IoU 0.418 → 0.535) and applies it to both dates
   (pre↔post phase correlation = 0,0 px). No DEM terrain correction — residual error TO VERIFY against OSM roads.
-- [~] Fri GO/NO-GO: compared `docs/gonogo_flood_mask_quicklook.png` with APSAC/NRSC **6-Sep** TerraSAR-X map
+- [x] Fri GO/NO-GO: compared `docs/gonogo_flood_mask_quicklook.png` with APSAC/NRSC **6-Sep** TerraSAR-X map
   (`AP_TERRASARX_6_sep_2024_sat_map.pdf`; no "5-Sep" NRSC map found). Main Elaprolu–Kavuluru–Rayanapadu–Jakkampudi–
   Ambapuram block and eastward band north of the city match. Mask is somewhat larger (1-Sep vs 6-Sep recession expected).
-  Assessment: **GO** (pending owner confirmation). Plan B not needed so far.
+  Assessment: **GO**. Plan B not needed.
 - [x] Task 2.3 (Sat): `scripts/build_road_graph.py` → `data/processed/road_edges.geojson` (engine format: edge_id, u, v,
   weight in **km**, is_bridge, highway, name) + `road_graph.graphml` (gitignored, 18 MB, reproducible).
   Script output: 19,287 nodes, 26,343 undirected edges (unique IDs `osm_way_<way>_<u>_<v>[_k]`), 266 bridge edges, 2,276.5 km.
@@ -75,6 +83,8 @@ It is NOT: a rescue dispatch system, navigation, a live forecast, or an official
 - [ ] Sun 12:00 IST feature freeze → video → AWS Builder Center blog → submit (exact deadline time TO VERIFY)
 
 ## Ownership
-Handed over on Fri Oct 9 to a teammate who now owns the build end-to-end. Next task: PLAN.md Task 2.1
-(fetch S1 AOI scenes) → Task 2.2 (flood mask) → Friday GO/NO-GO. Commit small, push often,
-and keep the Status section above current.
+Handed over on Fri Oct 9 to a teammate who now owns the build end-to-end. Tasks 2.1–2.4 done (Sat Oct 10).
+Next: Task 2.5 (SAM + DynamoDB) → 2.6 (Lambda reading `data/processed/*` from S3) → 2.7 (index.html + Leaflet).
+Open before deploy: AWS credentials, SAM CLI install, region (proposal ap-south-1).
+Commit small, push often, keep the Status section above current. No Claude co-author trailers on commits.
+Offline pipeline reproduce steps: PLAN.md §6.
