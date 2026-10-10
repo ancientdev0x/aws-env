@@ -13,3 +13,4 @@ data/processed/road_graph.graphml
 aws.json
 
 .aws-sam/
+frontend/config.json

@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BaadhDrishti — post-flood road-access triage</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<style>
+  :root { --bg:#0f172a; --panel:#111827; --line:#1f2937; --text:#e5e7eb; --muted:#9ca3af; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: var(--bg); color: var(--text);
+               font: 14px/1.4 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  body { display: grid; grid-template-rows: auto auto 1fr auto; height: 100vh; }
+  header { display: flex; align-items: center; gap: 12px; padding: 10px 16px; border-bottom: 1px solid var(--line); }
+  header h1 { font-size: 18px; margin: 0; }
+  .sub { color: var(--muted); }
+  .badge { margin-left: auto; border: 1px solid var(--line); border-radius: 999px; padding: 2px 10px; color: var(--muted); font-size: 12px; }
+  #stats { display: flex; gap: 28px; padding: 8px 16px; border-bottom: 1px solid var(--line); font-variant-numeric: tabular-nums; }
+  #stats b { font-size: 18px; display: block; }
+  #stats span { color: var(--muted); font-size: 12px; }
+  main { display: grid; grid-template-columns: 1fr 430px; min-height: 0; }
+  #mapwrap { position: relative; min-height: 0; }
+  #map { position: absolute; inset: 0; background: #0b1220; }
+  #map.adding { cursor: crosshair; }
+  .panel { position: absolute; z-index: 1000; background: rgba(17, 24, 39, .92); border: 1px solid var(--line);
+           border-radius: 8px; padding: 8px 10px; font-size: 12px; display: grid; gap: 4px; }
+  #controls { left: 56px; top: 10px; }
+  #controls label { display: flex; gap: 6px; align-items: center; }
+  #legend { left: 10px; bottom: 24px; }
+  .sw { display: inline-block; width: 16px; height: 4px; margin-right: 6px; vertical-align: middle; }
+  .dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; vertical-align: middle; }
+  aside { border-left: 1px solid var(--line); display: grid; grid-template-rows: auto 1fr auto; min-height: 0; }
+  #qhead { padding: 10px 12px; border-bottom: 1px solid var(--line); display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+  #qhead h2 { font-size: 12px; letter-spacing: .06em; text-transform: uppercase; margin: 0 auto 0 0; color: var(--muted); }
+  #queue { overflow: auto; }
+  .row { padding: 10px 12px; border-bottom: 1px solid var(--line); }
+  .row.sel { background: #1e293b; }
+  .row.verified { opacity: .55; }
+  .row .t { display: flex; gap: 8px; align-items: baseline; }
+  .rk { color: var(--muted); width: 2.2em; }
+  .nm { font-weight: 600; }
+  .meta { color: var(--muted); font-size: 12px; margin: 4px 0 6px 2.2em; }
+  .st { font-size: 11px; padding: 1px 6px; border-radius: 4px; margin-left: auto; white-space: nowrap; }
+  .st.NO_MAPPED_ROAD_PATH { background: #ef4444; color: #fff; }
+  .st.INUNDATED { background: #991b1b; color: #fff; }
+  .st.PATH_EXISTS { background: #14532d; color: #bbf7d0; }
+  .acts { margin-left: 2.2em; display: flex; gap: 6px; flex-wrap: wrap; }
+  button, select { background: #1f2937; color: var(--text); border: 1px solid #374151; border-radius: 6px;
+                   padding: 4px 10px; font: inherit; font-size: 12px; cursor: pointer; }
+  button:hover { background: #374151; }
+  button.primary { background: #2563eb; border-color: #2563eb; }
+  #qfoot { padding: 10px 12px; border-top: 1px solid var(--line); display: flex; gap: 8px; flex-wrap: wrap; }
+  footer { padding: 6px 16px 8px; border-top: 1px solid var(--line); color: var(--muted); font-size: 11px; }
+  footer ul { margin: 2px 0; padding-left: 18px; }
+  footer a { color: #93c5fd; }
+  .disc { color: #fca5a5; font-weight: 600; }
+  #banner { display: none; position: fixed; top: 10px; left: 50%; transform: translateX(-50%); z-index: 3000;
+            background: #7f1d1d; color: #fff; padding: 8px 14px; border-radius: 8px; cursor: pointer; }
+  #toast { display: none; position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%); z-index: 3000;
+           background: #064e3b; color: #ecfdf5; padding: 10px 16px; border-radius: 8px; max-width: 680px;
+           box-shadow: 0 6px 24px rgba(0, 0, 0, .4); }
+  dialog { background: var(--panel); color: var(--text); border: 1px solid #374151; border-radius: 10px; min-width: 360px; }
+  dialog::backdrop { background: rgba(0, 0, 0, .5); }
+  dialog h3 { margin: 0 0 6px; font-size: 15px; }
+  dialog label { display: grid; gap: 4px; margin: 8px 0; font-size: 12px; color: var(--muted); }
+  dialog input, dialog textarea, dialog select { background: #0b1220; color: var(--text); border: 1px solid #374151;
+                                                 border-radius: 6px; padding: 6px; font: inherit; }
+  dialog menu { display: flex; gap: 8px; justify-content: flex-end; padding: 0; margin: 10px 0 0; }
+  .leaflet-popup-content { font-size: 12px; }
+  .leaflet-popup-content button { color: #111; background: #f3f4f6; border-color: #d1d5db; margin: 4px 2px 0 0; }
+  .hubicon { color: #facc15; font-size: 22px; line-height: 22px; text-shadow: 0 0 3px #000; }
+</style>
+</head>
+<body>
+<header>
+  <h1>BaadhDrishti <span class="sub">(बाढ़-दृष्टि)</span></h1>
+  <span class="sub">Vijayawada Budameru flood · 1 Sep 2024 replay · field-verification triage queue</span>
+  <span class="badge">Sentinel-1 via AWS Open Data · AWS Lambda · Amazon DynamoDB</span>
+</header>
+<section id="stats">
+  <div><b id="s-scope">–</b><span>habitations in scope</span></div>
+  <div><b id="s-cut">–</b><span>no mapped road path</span></div>
+  <div><b id="s-pop">–</b><span>cut-off population proxy (GHSL 2020)</span></div>
+  <div><b id="s-ms">–</b><span>last recompute on Lambda (ms)</span></div>
+</section>
+<main>
+  <div id="mapwrap">
+    <div id="map"></div>
+    <div id="controls" class="panel">
+      <label><input type="checkbox" id="t-sar" checked> Sentinel-1 VV backscatter</label>
+      <label><span id="d-pre">20 Aug</span> <input type="range" id="t-slider" min="0" max="100" value="100"> <span id="d-post">1 Sep</span></label>
+      <label><input type="checkbox" id="t-mask" checked> Candidate water mask</label>
+      <label><input type="checkbox" id="t-roads" checked> Disrupted roads</label>
+      <label><input type="checkbox" id="t-urban" checked> Urban core (excluded)</label>
+      <label><input type="checkbox" id="t-dest"> Hospitals / health centres</label>
+    </div>
+    <div id="legend" class="panel">
+      <div><span class="sw" style="background:#ef4444"></span>Road suspected flooded (blocked)</div>
+      <div><span class="sw" style="background:#f59e0b"></span>Bridge in flood: CHECK (kept open)</div>
+      <div><span class="sw" style="background:#10b981"></span>Officer: cleared</div>
+      <div><span class="sw" style="background:#a855f7"></span>Officer: blocked</div>
+      <div><span class="dot" style="background:#ef4444"></span>No mapped road path</div>
+      <div><span class="dot" style="background:#22c55e"></span>Path exists</div>
+      <div><span class="dot" style="background:#6b7280"></span>Out of scope (urban core)</div>
+      <div><span class="hubicon" style="font-size:14px">★</span> Staging hub</div>
+    </div>
+  </div>
+  <aside>
+    <div id="qhead">
+      <h2>Field-verification priority queue</h2>
+      <label><input type="checkbox" id="f-cut" checked> Only cut-off</label>
+      <select id="f-sort"><option value="status">Sort: status</option><option value="pop">Sort: population</option></select>
+    </div>
+    <div id="queue"><div class="row">Loading…</div></div>
+    <div id="qfoot">
+      <button id="b-hub">+ Add staging hub</button>
+      <button id="b-wa">Share on WhatsApp</button>
+      <button id="b-csv">Download CSV</button>
+    </div>
+  </aside>
+</main>
+<footer>
+  <div class="disc">Preliminary screening triage queue based on mapped roads. NOT official rescue orders.</div>
+  <ul id="caveats"></ul>
+  <div>Data: Copernicus Sentinel-1 (ESA) via AWS Open Data / Earth Search · JRC Global Surface Water · Copernicus DEM GLO-30 ·
+    GHSL GHS-POP &amp; GHS-SMOD R2023A (CC BY 4.0) · © OpenStreetMap contributors (ODbL) · Reference:
+    <a href="https://apsac.ap.gov.in/wp-content/uploads/2024/09/AP_TERRASARX_6_sep_2024_sat_map.pdf" target="_blank" rel="noopener">NRSC/APSAC 6-Sep-2024 flood map</a></div>
+</footer>
+<div id="banner"></div>
+<div id="toast"></div>
+<dialog id="dlg">
+  <form method="dialog" id="dlg-form">
+    <h3 id="dlg-title"></h3>
+    <div id="dlg-fields"></div>
+    <menu><button value="cancel" formnovalidate>Cancel</button><button value="ok" class="primary">Confirm</button></menu>
+  </form>
+</dialog>
+<script>
+const AOI_BOUNDS = [[16.50, 80.50], [16.65, 80.70]];
+const ROAD_COLOR = { AUTO_SUSPECTED: '#ef4444', CHECK: '#f59e0b', FORCE_CLEARED: '#10b981', FORCE_BLOCKED: '#a855f7' };
+const HAB_COLOR = { NO_MAPPED_ROAD_PATH: '#ef4444', INUNDATED: '#991b1b', PATH_EXISTS: '#22c55e' };
+const URBAN_TIP = 'Urban core excluded due to radar double-bounce ambiguity (NRSC 6-Sep map also excludes urban areas)';
+const S = { api: null, data: null, prev: null, sel: null, onlyCut: true, sort: 'status', verified: new Set(), addHub: false };
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const fmt = n => Number(n).toLocaleString('en-IN');
+const statusText = s => s.replaceAll('_', ' ');
+
+// ---------- map + static layers ----------
+const map = L.map('map', { preferCanvas: true }).fitBounds(AOI_BOUNDS);
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  maxZoom: 19, attribution: '&copy; OpenStreetMap contributors' }).addTo(map);
+for (const [pane, z] of [['sar', 350], ['mask', 360], ['urban', 370], ['roads', 410], ['habs', 450]]) {
+  map.createPane(pane).style.zIndex = z;
+}
+const LY = { pre: null, post: null, mask: null, urban: null,
+  roads: L.layerGroup().addTo(map), habs: L.layerGroup().addTo(map), dest: L.layerGroup(), hubs: L.layerGroup().addTo(map) };
+
+function toggle(id, layer) { $(id).checked ? map.addLayer(layer) : map.removeLayer(layer); }
+function banner(msg) { $('banner').textContent = msg; $('banner').style.display = msg ? 'block' : 'none'; }
+let toastTimer;
+function toast(msg, ms = 9000) {
+  $('toast').textContent = msg; $('toast').style.display = 'block';
+  clearTimeout(toastTimer); toastTimer = setTimeout(() => { $('toast').style.display = 'none'; }, ms);
+}
+async function getJSON(url) {
+  const r = await fetch(url);
+  if (!r.ok) throw new Error(`${url}: HTTP ${r.status}`);
+  return r.json();
+}
+async function postJSON(path, body) {
+  const r = await fetch(S.api + path, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body) });
+  const j = await r.json().catch(() => ({}));
+  if (!r.ok) throw new Error(j.error || `HTTP ${r.status}`);
+  return j;
+}
+
+async function loadStatic() {
+  const ov = await getJSON('data/overlays.json');
+  LY.pre = L.imageOverlay('data/' + ov.pre, ov.bounds, { pane: 'sar', opacity: 0 }).addTo(map);
+  LY.post = L.imageOverlay('data/' + ov.post, ov.bounds, { pane: 'sar', opacity: 0 }).addTo(map);
+  LY.mask = L.imageOverlay('data/' + ov.mask, ov.bounds, { pane: 'mask', opacity: 0.8 }).addTo(map);
+  const day = d => new Date(d + 'T00:00:00Z').toLocaleDateString('en-IN', { day: 'numeric', month: 'short', timeZone: 'UTC' });
+  $('d-pre').textContent = day(ov.pre_date); $('d-post').textContent = day(ov.post_date);
+  LY.urban = L.geoJSON(await getJSON('data/urban_core.geojson'), {
+    pane: 'urban', interactive: true,
+    style: { color: '#f59e0b', weight: 2, dashArray: '6 4', fillColor: '#f59e0b', fillOpacity: 0.12 },
+  }).bindTooltip(URBAN_TIP, { sticky: true }).addTo(map);
+  applySar();
+}
+function applySar() {
+  const on = $('t-sar').checked, v = Number($('t-slider').value) / 100;
+  LY.pre.setOpacity(on ? (1 - v) * 0.85 : 0);
+  LY.post.setOpacity(on ? v * 0.85 : 0);
+}
+
+// ---------- dynamic layers + queue ----------
+function roadNames(r) { return [...new Set((r.blocking_roads || []).map(b => b.name || `unnamed ${b.highway || 'road'}`))]; }
+
+function renderStats() {
+  const d = S.data;
+  $('s-scope').textContent = fmt(d.in_scope_habitations);
+  $('s-cut').textContent = fmt(d.cut_off_count);
+  $('s-pop').textContent = fmt(d.cut_off_population_proxy);
+  $('s-ms').textContent = fmt(Math.round(d.compute_ms));
+}
+function renderRoads() {
+  LY.roads.clearLayers();
+  L.geoJSON(S.data.disrupted_edges, {
+    pane: 'roads',
+    style: f => ({ color: ROAD_COLOR[f.properties.status], weight: f.properties.status === 'AUTO_SUSPECTED' ? 3 : 5, opacity: 0.95 }),
+    onEachFeature: (f, layer) => layer.on('click', e => { if (!S.addHub) roadPopup(f.properties, e.latlng); }),
+  }).addTo(LY.roads);
+  toggle('t-roads', LY.roads);
+}
+function renderHabs() {
+  LY.habs.clearLayers();
+  const add = (r, oos) => {
+    const cut = !oos && r.status !== 'PATH_EXISTS';
+    L.circleMarker([r.lat, r.lon], { pane: 'habs', radius: cut ? 8 : 5, color: '#111827', weight: 1,
+        fillColor: oos ? '#6b7280' : HAB_COLOR[r.status], fillOpacity: 0.95 })
+      .bindTooltip(`${esc(r.name)} · ${esc(oos ? r.excluded_reason : statusText(r.status))}`)
+      .on('click', () => { if (!S.addHub && !oos) select(r.id, true); })
+      .addTo(LY.habs);
+  };
+  S.data.out_of_scope.forEach(r => add(r, true));
+  S.data.habitations.forEach(r => add(r, false));
+}
+function renderDest() {
+  LY.dest.clearLayers();
+  for (const d of S.data.destinations || []) {
+    L.circleMarker([d.lat, d.lon], { pane: 'habs', radius: 3, color: '#1d4ed8', weight: 1, fillColor: '#3b82f6', fillOpacity: 1 })
+      .bindTooltip(esc(d.name)).addTo(LY.dest);
+  }
+  toggle('t-dest', LY.dest);
+}
+function renderHubs() {
+  LY.hubs.clearLayers();
+  const icon = L.divIcon({ className: 'hubicon', html: '★', iconSize: [22, 22], iconAnchor: [11, 11] });
+  for (const h of S.data.active_staging_hubs) {
+    L.marker([h.lat, h.lon], { icon }).bindTooltip('Staging hub: ' + esc(h.name)).addTo(LY.hubs);
+  }
+}
+function renderQueue() {
+  const all = S.data.habitations; // API order: status, then population
+  const rank = new Map(all.map((r, i) => [r.id, i + 1]));
+  let rows = S.onlyCut ? all.filter(r => r.status !== 'PATH_EXISTS') : all.slice();
+  if (S.sort === 'pop') rows.sort((a, b) => b.population_proxy - a.population_proxy);
+  $('queue').innerHTML = rows.length ? rows.map(r => {
+    const nd = r.nearest_destination, roads = roadNames(r);
+    const meta = r.status === 'PATH_EXISTS'
+      ? `Route open to ${esc(nd.name)} (${nd.distance_km} km; dry baseline ${r.baseline_distance_km} km)`
+      : `Blocking: ${roads.length ? roads.map(esc).join('; ') : 'not identified'} · dry-baseline route was ${r.baseline_distance_km} km`;
+    const flags = r.uncertainty_flags.length ? ` · flags: ${r.uncertainty_flags.map(esc).join(', ')}` : '';
+    return `<div class="row${S.sel === r.id ? ' sel' : ''}${S.verified.has(r.id) ? ' verified' : ''}" data-id="${esc(r.id)}">
+      <div class="t"><span class="rk">#${rank.get(r.id)}</span><span class="nm">${esc(r.name)}</span>
+        <span class="st ${esc(r.status)}">${esc(statusText(r.status))}</span></div>
+      <div class="meta">Population proxy ${fmt(r.population_proxy)} · ${meta}${flags}</div>
+      <div class="acts"><button data-act="zoom">Zoom</button>
+        ${r.blocking_edges.length ? '<button data-act="clear">Clear blocking roads</button>' : ''}
+        <button data-act="verify">${S.verified.has(r.id) ? 'Unmark verified' : 'Mark verified'}</button></div>
+    </div>`;
+  }).join('') : '<div class="row">No habitations match the filter.</div>';
+}
+function renderCaveats() { $('caveats').innerHTML = S.data.caveats.map(c => `<li>${esc(c)}</li>`).join(''); }
+function renderAll() { renderStats(); renderRoads(); renderHabs(); renderDest(); renderHubs(); renderQueue(); renderCaveats(); }
+
+function select(id, scroll) {
+  S.sel = id; renderQueue();
+  if (scroll) document.querySelector(`.row[data-id="${CSS.escape(id)}"]`)?.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+}
+function applyUpdate(data) { S.prev = S.data; S.data = data; renderAll(); }
+async function refresh() {
+  try { applyUpdate(await getJSON(S.api + '/api/triage')); banner(''); }
+  catch (e) { banner('Could not load triage queue: ' + e.message); }
+}
+function showDiff() {
+  const before = new Map((S.prev?.habitations || []).map(r => [r.id, r.status]));
+  const restored = [], cut = [];
+  for (const r of S.data.habitations) {
+    const old = before.get(r.id);
+    if (!old || old === r.status) continue;
+    (r.status === 'PATH_EXISTS' ? restored : cut).push(r.name);
+  }
+  const parts = [];
+  if (restored.length) parts.push(`Restored (${restored.length}): ${restored.join(', ')}`);
+  if (cut.length) parts.push(`Newly cut off (${cut.length}): ${cut.join(', ')}`);
+  toast(`${parts.join(' · ') || 'No habitation changed status'} — recomputed in ${fmt(Math.round(S.data.compute_ms))} ms`);
+}
+
+// ---------- officer actions ----------
+function ask(title, fields) {
+  return new Promise(resolve => {
+    $('dlg-title').textContent = title;
+    $('dlg-fields').innerHTML = fields.map(f => {
+      const input = f.type === 'select'
+        ? `<select name="${f.name}">${f.options.map(o => `<option${o === f.value ? ' selected' : ''}>${esc(o)}</option>`).join('')}</select>`
+        : f.type === 'textarea'
+          ? `<textarea name="${f.name}" rows="2">${esc(f.value || '')}</textarea>`
+          : `<input name="${f.name}" value="${esc(f.value || '')}"${f.required ? ' required' : ''}>`;
+      return `<label>${esc(f.label)}${input}</label>`;
+    }).join('');
+    const dlg = $('dlg');
+    dlg.returnValue = '';
+    dlg.onclose = () => resolve(dlg.returnValue === 'ok' ? Object.fromEntries(new FormData($('dlg-form'))) : null);
+    dlg.showModal();
+  });
+}
+const officerFields = () => [
+  { name: 'officer_name', label: 'Officer name', value: localStorage.getItem('bd_officer') || '', required: true },
+  { name: 'notes', label: 'Notes (source of field report)', type: 'textarea' },
+];
+async function setRoadStatus(edgeIds, status, title) {
+  const v = await ask(title, officerFields());
+  if (!v) return;
+  localStorage.setItem('bd_officer', v.officer_name);
+  toast('Recomputing reachability on AWS Lambda…', 60000);
+  try {
+    let last;
+    for (const id of edgeIds) {
+      last = await postJSON('/api/road-status', { edge_id: id, status, officer_name: v.officer_name, notes: v.notes });
+    }
+    applyUpdate(last); showDiff();
+  } catch (e) { banner('Update failed: ' + e.message); refresh(); }
+}
+function roadPopup(p, latlng) {
+  const el = document.createElement('div');
+  const label = p.name || `Unnamed ${p.highway || 'road'}`;
+  el.innerHTML = `<b>${esc(label)}</b><br>${esc(p.highway || '')} · ${esc(statusText(p.status))}`
+    + (p.status === 'CHECK' ? '<br>Bridge in flood: not auto-disrupted, verify' : '')
+    + '<br><button data-s="FORCE_CLEARED">Mark cleared</button><button data-s="FORCE_BLOCKED">Mark blocked</button>'
+    + (['FORCE_CLEARED', 'FORCE_BLOCKED'].includes(p.status) ? '<button data-s="AUTO_SUSPECTED">Reset to satellite</button>' : '');
+  const pop = L.popup().setLatLng(latlng).setContent(el).openOn(map);
+  el.addEventListener('click', e => {
+    const s = e.target.dataset && e.target.dataset.s;
+    if (!s) return;
+    map.closePopup(pop);
+    setRoadStatus([p.edge_id], s, `${statusText(s).toLowerCase()}: ${label}`);
+  });
+}
+function setAddHub(on) {
+  S.addHub = on;
+  $('map').classList.toggle('adding', on);
+  $('b-hub').textContent = on ? 'Click the map to place the hub (cancel)' : '+ Add staging hub';
+}
+map.on('click', async e => {
+  if (!S.addHub) return;
+  setAddHub(false);
+  const v = await ask(`New staging hub at ${e.latlng.lat.toFixed(5)}, ${e.latlng.lng.toFixed(5)}`, [
+    { name: 'name', label: 'Hub name (school / camp)', required: true },
+    { name: 'hub_kind', label: 'Kind', type: 'select', value: 'SCHOOL', options: ['SCHOOL', 'RELIEF_CAMP', 'NDRF_BASE', 'DISTRICT_COLLECTORATE'] },
+  ]);
+  if (!v) return;
+  toast('Recomputing reachability on AWS Lambda…', 60000);
+  try {
+    applyUpdate(await postJSON('/api/hubs', { name: v.name, hub_kind: v.hub_kind, lat: e.latlng.lat, lon: e.latlng.lng }));
+    showDiff();
+  } catch (err) { $('toast').style.display = 'none'; banner('Hub not added: ' + err.message); }
+});
+
+// ---------- share + CSV ----------
+function shareText() {
+  const rows = S.data.habitations.filter(r => r.status !== 'PATH_EXISTS').slice(0, 10);
+  return [
+    'BaadhDrishti field-verification queue — Vijayawada Budameru flood (1 Sep 2024 replay)',
+    `Generated ${new Date().toLocaleString('en-IN')}`,
+    `No mapped road path to a hospital/hub: ${S.data.cut_off_count} habitations, population proxy ${fmt(S.data.cut_off_population_proxy)} (GHSL 2020)`,
+    ...rows.map((r, i) => `${i + 1}. ${r.name} — ${statusText(r.status)} — pop. proxy ${fmt(r.population_proxy)} — blocked: ${roadNames(r).join('; ') || 'not identified'}`),
+    'Preliminary screening from Sentinel-1 + mapped roads. NOT official rescue orders — verify on ground.',
+    location.href,
+  ].join('\n');
+}
+function downloadCsv() {
+  const cols = ['rank', 'id', 'name', 'status', 'population_proxy', 'baseline_distance_km', 'nearest_destination',
+    'distance_km', 'blocking_roads', 'blocking_edge_ids', 'uncertainty_flags'];
+  const q = v => `"${String(v ?? '').replaceAll('"', '""')}"`;
+  const lines = [cols.join(',')].concat(S.data.habitations.map((r, i) => [i + 1, r.id, r.name, r.status, r.population_proxy,
+    r.baseline_distance_km, r.nearest_destination?.name, r.nearest_destination?.distance_km, roadNames(r).join('; '),
+    r.blocking_edges.join(' '), r.uncertainty_flags.join(' ')].map(q).join(',')));
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([lines.join('\n')], { type: 'text/csv' }));
+  a.download = `baadhdrishti_queue_${new Date().toISOString().slice(0, 10)}.csv`;
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+}
+
+// ---------- wiring ----------
+$('t-sar').onchange = applySar;
+$('t-slider').oninput = applySar;
+$('t-mask').onchange = () => toggle('t-mask', LY.mask);
+$('t-urban').onchange = () => toggle('t-urban', LY.urban);
+$('t-roads').onchange = () => toggle('t-roads', LY.roads);
+$('t-dest').onchange = () => toggle('t-dest', LY.dest);
+$('f-cut').onchange = e => { S.onlyCut = e.target.checked; renderQueue(); };
+$('f-sort').onchange = e => { S.sort = e.target.value; renderQueue(); };
+$('banner').onclick = () => banner('');
+$('b-hub').onclick = () => setAddHub(!S.addHub);
+$('b-wa').onclick = () => S.data && window.open('https://wa.me/?text=' + encodeURIComponent(shareText()), '_blank', 'noopener');
+$('b-csv').onclick = () => S.data && downloadCsv();
+$('queue').addEventListener('click', e => {
+  const row = e.target.closest('.row[data-id]');
+  if (!row) return;
+  const r = S.data.habitations.find(h => h.id === row.dataset.id);
+  const act = e.target.closest('button')?.dataset.act;
+  if (!act) return select(r.id, false);
+  if (act === 'zoom') { select(r.id, false); map.flyTo([r.lat, r.lon], 15); }
+  if (act === 'verify') { S.verified.has(r.id) ? S.verified.delete(r.id) : S.verified.add(r.id); renderQueue(); }
+  if (act === 'clear') setRoadStatus(r.blocking_edges, 'FORCE_CLEARED', `Clear ${roadNames(r).join('; ') || 'blocking roads'} for ${r.name}`);
+});
+
+(async () => {
+  try {
+    S.api = (await getJSON('config.json')).apiUrl.replace(/\/$/, '');
+    await loadStatic();
+  } catch (e) { banner('Startup failed: ' + e.message); return; }
+  await refresh();
+})();
+</script>
+</body>
+</html>
