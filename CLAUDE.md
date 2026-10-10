@@ -51,6 +51,12 @@ It is NOT: a rescue dispatch system, navigation, a live forecast, or an official
   (`AP_TERRASARX_6_sep_2024_sat_map.pdf`; no "5-Sep" NRSC map found). Main Elaprolu–Kavuluru–Rayanapadu–Jakkampudi–
   Ambapuram block and eastward band north of the city match. Mask is somewhat larger (1-Sep vs 6-Sep recession expected).
   Assessment: **GO** (pending owner confirmation). Plan B not needed so far.
+- [x] Task 2.3 (Sat): `scripts/build_road_graph.py` → `data/processed/road_edges.geojson` (engine format: edge_id, u, v,
+  weight in **km**, is_bridge, highway, name) + `road_graph.graphml` (gitignored, 18 MB, reproducible).
+  Script output: 18,808 nodes, 25,864 undirected edges (unique IDs `osm_way_<way>_<u>_<v>[_k]`), 243 bridge edges, 2,276.5 km.
+  Classes: PLAN list + `*_link`. Raw OSM via curl → `data/raw/osm/roads_aoi.osm` (Python requests hangs on overpass-api.de
+  over IPv4 here; curl uses IPv6). **OSM is current (osm_base 2026-10-10), not a 2024 snapshot** — caveat for UI.
+  Independent geolocation check vs OSM water polygons: residual best fit ≤ 1 px (20 m) east of current alignment.
 - [ ] OPEN: urban-core exclusion polygon is undefined in PLAN. Proposal: GHSL SMOD urban centre. Note Ajit Singh Nagar /
   Payakapuram (real Budameru flooding) would fall inside it.
 - [ ] Sat: Lambda API, DynamoDB, frontend, road edit + hub add

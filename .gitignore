@@ -9,3 +9,4 @@ task_patch*.txt
 .venv/
 data/raw/
 data/interim/
+data/processed/road_graph.graphml
