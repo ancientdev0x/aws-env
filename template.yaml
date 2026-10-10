@@ -6,7 +6,7 @@ Globals:
   Function:
     Runtime: python3.12
     Architectures: [arm64]
-    MemorySize: 1024
+    MemorySize: 1769 # 1769 MB = one full vCPU
     Timeout: 29
 
 Resources:

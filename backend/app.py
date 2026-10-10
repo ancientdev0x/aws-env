@@ -2,7 +2,7 @@
 backend/app.py - BaadhDrishti API Lambda (PLAN.md §4)
 
 GET  /api/triage       -> ranked queue with current officer overrides + hubs
-POST /api/road-status  -> FORCE_CLEARED | FORCE_BLOCKED | AUTO_SUSPECTED (= remove override), then recompute
+POST /api/road-status  -> FORCE_CLEARED | FORCE_BLOCKED | AUTO_SUSPECTED (= remove override), then recompute (client computes the diff)
 POST /api/hubs         -> add officer staging hub (snapped to nearest road node), then recompute
 
 Precomputed graph/habitations come from s3://$DATA_BUCKET/$BUNDLE_KEY (scripts/export_lambda_bundle.py).
@@ -133,6 +133,7 @@ def compute():
         "active_staging_hubs": hubs,
         "road_overrides": overrides,
         "disrupted_edges": {"type": "FeatureCollection", "features": disrupted},
+        "destinations": [{k: d[k] for k in ("id", "name", "type", "lat", "lon")} for d in b["destinations"]],
         "caveats": b["caveats"],
     }
 
@@ -141,25 +142,17 @@ def respond(code, body):
     return {"statusCode": code, "headers": {"Content-Type": "application/json"}, "body": json.dumps(body, default=plain)}
 
 
-def status_diff(before, after):
-    old = {r["id"]: r["status"] for r in before["habitations"]}
-    return [{"id": r["id"], "name": r["name"], "from": old.get(r["id"]), "to": r["status"]}
-            for r in after["habitations"] if old.get(r["id"]) != r["status"]]
-
-
 def road_status(body):
     b = load_bundle()
     eid, st = body.get("edge_id"), body.get("status")
     if eid not in b["edge_meta"] or st not in ROAD_STATUSES:
         return respond(400, {"error": f"edge_id must be a known edge and status one of {sorted(ROAD_STATUSES)}"})
-    before = compute()
     if st == "AUTO_SUSPECTED":
         _overrides.delete_item(Key={"edge_id": eid})
     else:
         _overrides.put_item(Item={"edge_id": eid, "override_status": st, "notes": str(body.get("notes", ""))[:500],
                                   "officer_id": str(body.get("officer_name", ""))[:100], "updated_at": int(time.time())})
-    after = compute()
-    return respond(200, {**after, "diff": status_diff(before, after)})
+    return respond(200, compute())
 
 
 def add_hub(body):
@@ -175,13 +168,11 @@ def add_hub(body):
     node, snap_m = nearest_node(b["nodes"], lon, lat)
     if snap_m > MAX_HUB_SNAP_M:
         return respond(400, {"error": f"nearest mapped road is {snap_m:.0f} m away"})
-    before = compute()
     hub = {"hub_id": f"hub_{uuid.uuid4().hex[:10]}", "name": name, "lat": Decimal(str(lat)), "lon": Decimal(str(lon)),
            "type": "STAGING_HUB", "hub_kind": body.get("hub_kind") if body.get("hub_kind") in HUB_KINDS else "SCHOOL",
            "node": node, "snap_distance_m": Decimal(str(round(snap_m, 1))), "is_active": True}
     _hubs.put_item(Item=hub)
-    after = compute()
-    return respond(201, {**after, "hub": hub, "diff": status_diff(before, after)})
+    return respond(201, {**compute(), "hub": hub})
 
 
 def handler(event, context):

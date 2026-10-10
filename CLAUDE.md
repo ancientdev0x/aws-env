@@ -82,12 +82,11 @@ It is NOT: a rescue dispatch system, navigation, a live forecast, or an official
 - [x] Task 2.5/2.6 (Sat): SAM stack `baadhdrishti` deployed to **ap-south-1** with local AWS profile `baadh`
   (never the default medmitra profile). `template.yaml` + `samconfig.toml`; `backend/app.py` + `backend/Makefile`
   (copies `engine/` into the package). Resources: HTTP API (throttled 10 rps / burst 20, no auth, CORS *), arm64 Lambda
-  1024 MB, DynamoDB `baadhdrishti-road_overrides` / `baadhdrishti-staging_hubs`, private S3 data bucket.
+  1769 MB, DynamoDB `baadhdrishti-road_overrides` / `baadhdrishti-staging_hubs`, private S3 data bucket.
   API: `https://f3m0jdk4wi.execute-api.ap-south-1.amazonaws.com` (`/api/triage`, `/api/road-status`, `/api/hubs`).
   Data: `scripts/export_lambda_bundle.py` → `data/processed/lambda_bundle.json` → `s3://<DataBucketName>/lambda_bundle.json`.
   Verified live: GET reproduces offline (7 cut off, 9,314); clearing Tadepalle's 4 blocking edges (Vijayawada–Vissannapeta
-  Rd) restores 5 habitations; hub at Tadepalle restores the same 5; undo returns to 7. Lambda `compute_ms` ≈ 940–960
-  (GET ≈ 1.6 s warm, POST ≈ 2.4 s since it computes before+after). Local test: `tests/test_lambda_local.py`.
+  Rd) restores 5 habitations; hub at Tadepalle restores the same 5; undo returns to 7. Lambda 1769 MB, compute_ms ≈ 616 ms; POST computes once (client diffs). Local test: `tests/test_lambda_local.py`.
   Reset officer state before each demo take: `AWS_PROFILE=baadh scripts/reset_demo_state.sh`.
 - [ ] Task 2.7: index.html + Leaflet frontend (S3 + CloudFront), road edit + hub add UI
 - [ ] Sun 12:00 IST feature freeze → video → AWS Builder Center blog → submit (exact deadline time TO VERIFY)

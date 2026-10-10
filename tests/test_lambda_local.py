@@ -49,6 +49,8 @@ def test_api_lifecycle():
     code, t = call("GET", "/api/triage")
     assert code == 200
     assert t["cut_off_count"] == offline["cut_off_count"], "Lambda must reproduce the offline triage"
+    assert t["destinations"] and set(t["destinations"][0]) == {"id", "name", "type", "lat", "lon"}
+    assert "diff" not in t
     first = next(r for r in t["habitations"] if r["status"] == "NO_MAPPED_ROAD_PATH")
     assert first["blocking_roads"], "cut-off habitation must name its blocking roads"
     print(f"✓ GET /api/triage: {t['cut_off_count']} cut off, compute {t['compute_ms']} ms")
@@ -57,6 +59,7 @@ def test_api_lifecycle():
     for e in first["blocking_edges"]:
         code, r = call("POST", "/api/road-status", {"edge_id": e, "status": "FORCE_CLEARED", "officer_name": "test"})
         assert code == 200
+    assert "diff" not in r, "diff is computed client-side now"
     rec = next(h for h in r["habitations"] if h["id"] == first["id"])
     assert rec["status"] == "PATH_EXISTS" or rec["blocking_edges"] != first["blocking_edges"]
     print(f"✓ POST /api/road-status: {first['name']} -> {rec['status']}")
