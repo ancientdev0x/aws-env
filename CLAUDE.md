@@ -53,12 +53,24 @@ It is NOT: a rescue dispatch system, navigation, a live forecast, or an official
   Assessment: **GO** (pending owner confirmation). Plan B not needed so far.
 - [x] Task 2.3 (Sat): `scripts/build_road_graph.py` → `data/processed/road_edges.geojson` (engine format: edge_id, u, v,
   weight in **km**, is_bridge, highway, name) + `road_graph.graphml` (gitignored, 18 MB, reproducible).
-  Script output: 18,808 nodes, 25,864 undirected edges (unique IDs `osm_way_<way>_<u>_<v>[_k]`), 243 bridge edges, 2,276.5 km.
+  Script output: 19,287 nodes, 26,343 undirected edges (unique IDs `osm_way_<way>_<u>_<v>[_k]`), 266 bridge edges, 2,276.5 km.
+  Simplification splits edges where `bridge` changes (`edge_attrs_differ`) — otherwise a short bridge merged into a 4 km
+  road made the whole road exempt from flooding (this bug hid every cut-off). Long bridges left are real flyovers / the
+  Vijayawada West Bypass Krishna bridge — **whether West Bypass was open in Sep 2024 is TO VERIFY** (current OSM).
+  Also writes `road_nodes.json` ({node: [lon, lat]}) for snapping.
   Classes: PLAN list + `*_link`. Raw OSM via curl → `data/raw/osm/roads_aoi.osm` (Python requests hangs on overpass-api.de
   over IPv4 here; curl uses IPv6). **OSM is current (osm_base 2026-10-10), not a 2024 snapshot** — caveat for UI.
   Independent geolocation check vs OSM water polygons: residual best fit ≤ 1 px (20 m) east of current alignment.
-- [ ] OPEN: urban-core exclusion polygon is undefined in PLAN. Proposal: GHSL SMOD urban centre. Note Ajit Singh Nagar /
-  Payakapuram (real Budameru flooding) would fall inside it.
+- [x] Task 2.4 (Sat): `scripts/build_reachability.py` → `data/processed/triage_summary.json` (+ habitations.json,
+  destinations.json, suspected_edges.json, urban_core.geojson). Script output (computed, OK to quote with caveats):
+  130 OSM habitations; 90 inside urban core (out of scope), 40 in scope; **7 NO_MAPPED_ROAD_PATH** — Tadepalle,
+  Paidurupadu, Elaprolu, Vemavaram, Jakkampudi, Kotturu, Shabada — population proxy 9,314; 0 INUNDATED (village points
+  are built-up = bright in SAR, so the point test never fires; known SAR limitation). 689 auto-suspected edges,
+  29 bridge CHECK edges, 301 health destinations ("pet clinic" excluded), urban core 70.4 km².
+  Morphological closing was tested (3/5/7 px) and rejected: 5+ only added Amaravati-side villages where NRSC shows no flood.
+  Engine fix: `blocking_edges` now = blocked edges on the habitation's dry-baseline route (was incident-only → empty).
+  Clearing them can expose further blocked edges on the next-best route (recompute handles it).
+- [x] Urban core = GHSL SMOD R2023A E2020 class 30 (owner OK'd option (a), Sat). Its roads are treated as open/unknown.
 - [ ] Sat: Lambda API, DynamoDB, frontend, road edit + hub add
 - [ ] Sun 12:00 IST feature freeze → video → AWS Builder Center blog → submit (exact deadline time TO VERIFY)
 

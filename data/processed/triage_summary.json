@@ -1,0 +1,3163 @@
+{
+ "event": "Vijayawada Budameru Flood (2024-09-01 Replay)",
+ "aoi": [
+  80.5,
+  16.5,
+  80.7,
+  16.65
+ ],
+ "total_habitations": 130,
+ "in_scope_habitations": 40,
+ "out_of_scope_habitations": 90,
+ "inundated_count": 0,
+ "no_mapped_road_path_count": 7,
+ "cut_off_count": 7,
+ "cut_off_population_proxy": 9314,
+ "aoi_population_ghsl_e2020": 1198724,
+ "destinations": 301,
+ "road_edges": 26343,
+ "auto_suspected_edges": 689,
+ "bridge_check_edges": 29,
+ "urban_core_area_sqkm": 70.4,
+ "caveats": [
+  "Candidate observed inundation from Sentinel-1 change detection; not ground verified.",
+  "Urban core (GHSL SMOD urban centre) excluded: radar double-bounce; its roads are treated as open/unknown.",
+  "Road network and facilities are current OpenStreetMap, not a 2024 snapshot.",
+  "Population is a GHSL 2020 estimate apportioned by Voronoi cell, not a census count."
+ ],
+ "habitations": [
+  {
+   "id": "hab_node_4759485235",
+   "name": "Tadepalle",
+   "place": "village",
+   "lat": 16.6090694,
+   "lon": 80.618695,
+   "snap_distance_m": 40.0,
+   "population_proxy": 2404,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": false,
+   "uncertainty_flags": [],
+   "status": "NO_MAPPED_ROAD_PATH",
+   "nearest_destination": null,
+   "blocking_edges": [
+    "osm_way_1319229524_3785767795_7893021026",
+    "osm_way_1319229524_3785767789_7893021026",
+    "osm_way_1319229524_3785767789_12208787153",
+    "osm_way_375166068_6353953719_12208787154"
+   ],
+   "is_inundated": false,
+   "baseline_distance_km": 4.12
+  },
+  {
+   "id": "hab_node_4759485234",
+   "name": "Paidurupadu",
+   "place": "village",
+   "lat": 16.6003249,
+   "lon": 80.5786529,
+   "snap_distance_m": 30.7,
+   "population_proxy": 2278,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": false,
+   "uncertainty_flags": [],
+   "status": "NO_MAPPED_ROAD_PATH",
+   "nearest_destination": null,
+   "blocking_edges": [
+    "osm_way_846174539_3785671503_7894561871",
+    "osm_way_845537890_3785671404_3785671492",
+    "osm_way_1312671205_3785669945_3785671402",
+    "osm_way_1312671205_3785669945_6547133008"
+   ],
+   "is_inundated": false,
+   "baseline_distance_km": 4.54
+  },
+  {
+   "id": "hab_node_4759481049",
+   "name": "Elaprolu",
+   "place": "village",
+   "lat": 16.6023428,
+   "lon": 80.5586565,
+   "snap_distance_m": 24.4,
+   "population_proxy": 1344,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": false,
+   "uncertainty_flags": [],
+   "status": "NO_MAPPED_ROAD_PATH",
+   "nearest_destination": null,
+   "blocking_edges": [
+    "osm_way_851369912_3785669939_3785669949"
+   ],
+   "is_inundated": false,
+   "baseline_distance_km": 3.6
+  },
+  {
+   "id": "hab_node_5649146809",
+   "name": "Vemavaram",
+   "place": "village",
+   "lat": 16.5972155,
+   "lon": 80.6198173,
+   "snap_distance_m": 74.0,
+   "population_proxy": 960,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": false,
+   "uncertainty_flags": [],
+   "status": "NO_MAPPED_ROAD_PATH",
+   "nearest_destination": null,
+   "blocking_edges": [
+    "osm_way_1319229524_3785767795_7893021026",
+    "osm_way_1319229524_3785767789_7893021026",
+    "osm_way_1319229524_3785767789_12208787153",
+    "osm_way_375166068_6353953719_12208787154"
+   ],
+   "is_inundated": false,
+   "baseline_distance_km": 5.7
+  },
+  {
+   "id": "hab_node_5645738551",
+   "name": "Jakkampudi",
+   "place": "village",
+   "lat": 16.5840853,
+   "lon": 80.614908,
+   "snap_distance_m": 15.8,
+   "population_proxy": 937,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": false,
+   "uncertainty_flags": [],
+   "status": "NO_MAPPED_ROAD_PATH",
+   "nearest_destination": null,
+   "blocking_edges": [
+    "osm_way_657973600_3785619744_5299108466",
+    "osm_way_903359549_3785619744_3785619771",
+    "osm_way_903359549_3785619771_3785619806"
+   ],
+   "is_inundated": false,
+   "baseline_distance_km": 5.51
+  },
+  {
+   "id": "hab_node_5645738552",
+   "name": "Kotturu",
+   "place": "village",
+   "lat": 16.6204652,
+   "lon": 80.6221347,
+   "snap_distance_m": 27.6,
+   "population_proxy": 801,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": false,
+   "uncertainty_flags": [],
+   "status": "NO_MAPPED_ROAD_PATH",
+   "nearest_destination": null,
+   "blocking_edges": [
+    "osm_way_1319229524_3785767795_7893021026",
+    "osm_way_1319229524_3785767789_7893021026",
+    "osm_way_1319229524_3785767789_12208787153",
+    "osm_way_375166068_6353953719_12208787154"
+   ],
+   "is_inundated": false,
+   "baseline_distance_km": 3.02
+  },
+  {
+   "id": "hab_node_5645738550",
+   "name": "Shabada",
+   "place": "village",
+   "lat": 16.5847216,
+   "lon": 80.6106396,
+   "snap_distance_m": 36.4,
+   "population_proxy": 590,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": false,
+   "uncertainty_flags": [],
+   "status": "NO_MAPPED_ROAD_PATH",
+   "nearest_destination": null,
+   "blocking_edges": [
+    "osm_way_760792528_7871167333_7871167338",
+    "osm_way_760792528_7871167337_7871167338",
+    "osm_way_760792528_7871031905_7871167337",
+    "osm_way_760792528_7107669350_7871031905",
+    "osm_way_843798403_7107669350_7871197722",
+    "osm_way_843803720_7871197722_7871281909",
+    "osm_way_548524026_5299108215_7871281909",
+    "osm_way_760792536_5299108214_5299108215",
+    "osm_way_847030101_5299108214_7903947936"
+   ],
+   "is_inundated": false,
+   "baseline_distance_km": 5.89
+  },
+  {
+   "id": "hab_node_13137350952",
+   "name": "RCM New Colony",
+   "place": "neighbourhood",
+   "lat": 16.619332,
+   "lon": 80.5427071,
+   "snap_distance_m": 53.2,
+   "population_proxy": 23776,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": false,
+   "uncertainty_flags": [],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_7116293061",
+    "name": "Government Hospital, Kondapalli",
+    "type": "HOSPITAL",
+    "distance_km": 0.59
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.59
+  },
+  {
+   "id": "hab_node_14263203291",
+   "name": "Security Colony",
+   "place": "neighbourhood",
+   "lat": 16.5948886,
+   "lon": 80.5254933,
+   "snap_distance_m": 61.2,
+   "population_proxy": 16870,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": false,
+   "uncertainty_flags": [],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_7116293133",
+    "name": "Ibrahimpatnam PHC",
+    "type": "HEALTH_CENTRE",
+    "distance_km": 0.68
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.68
+  },
+  {
+   "id": "hab_node_4754865434",
+   "name": "West Ibrahimpatnam",
+   "place": "village",
+   "lat": 16.5984884,
+   "lon": 80.512957,
+   "snap_distance_m": 19.2,
+   "population_proxy": 11132,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": false,
+   "uncertainty_flags": [],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_7116293133",
+    "name": "Ibrahimpatnam PHC",
+    "type": "HEALTH_CENTRE",
+    "distance_km": 1.5
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 1.5
+  },
+  {
+   "id": "hab_node_4759481581",
+   "name": "Kavuluru",
+   "place": "village",
+   "lat": 16.630448,
+   "lon": 80.5832791,
+   "snap_distance_m": 41.9,
+   "population_proxy": 10349,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": false,
+   "uncertainty_flags": [],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_12997685797",
+    "name": "Dhanvantri charitable trust hospital",
+    "type": "HOSPITAL",
+    "distance_km": 0.72
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.72
+  },
+  {
+   "id": "hab_node_13185671793",
+   "name": "Hrudaya Nagar Colony",
+   "place": "neighbourhood",
+   "lat": 16.5813663,
+   "lon": 80.685164,
+   "snap_distance_m": 37.1,
+   "population_proxy": 8759,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": false,
+   "uncertainty_flags": [],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_6768082614",
+    "name": "Praja VaidyaSaala",
+    "type": "HOSPITAL",
+    "distance_km": 0.87
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.87
+  },
+  {
+   "id": "hab_node_13137350950",
+   "name": "VTPS A Colony",
+   "place": "neighbourhood",
+   "lat": 16.6042623,
+   "lon": 80.5315531,
+   "snap_distance_m": 23.2,
+   "population_proxy": 7869,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": false,
+   "uncertainty_flags": [],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_7116293133",
+    "name": "Ibrahimpatnam PHC",
+    "type": "HEALTH_CENTRE",
+    "distance_km": 1.76
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 1.76
+  },
+  {
+   "id": "hab_node_4793653626",
+   "name": "Nunna",
+   "place": "village",
+   "lat": 16.5787507,
+   "lon": 80.683814,
+   "snap_distance_m": 53.0,
+   "population_proxy": 7849,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": false,
+   "uncertainty_flags": [],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_6768082614",
+    "name": "Praja VaidyaSaala",
+    "type": "HOSPITAL",
+    "distance_km": 0.67
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.67
+  },
+  {
+   "id": "hab_node_5645738542",
+   "name": "Bodapadu",
+   "place": "village",
+   "lat": 16.5717014,
+   "lon": 80.6824126,
+   "snap_distance_m": 28.2,
+   "population_proxy": 6017,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": false,
+   "uncertainty_flags": [],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_6768082614",
+    "name": "Praja VaidyaSaala",
+    "type": "HOSPITAL",
+    "distance_km": 0.24
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.24
+  },
+  {
+   "id": "hab_node_13137385804",
+   "name": "Railway Colony  Guntupalli",
+   "place": "neighbourhood",
+   "lat": 16.5853092,
+   "lon": 80.5525603,
+   "snap_distance_m": 48.5,
+   "population_proxy": 5491,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": false,
+   "uncertainty_flags": [],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_7793151899",
+    "name": "Baba Hospital",
+    "type": "HOSPITAL",
+    "distance_km": 7.27
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 6.22
+  },
+  {
+   "id": "hab_node_5127911165",
+   "name": "Mandadam",
+   "place": "village",
+   "lat": 16.5207776,
+   "lon": 80.5233562,
+   "snap_distance_m": 41.0,
+   "population_proxy": 5011,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": false,
+   "uncertainty_flags": [],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_7793324105",
+    "name": "Rangaiah Gari Hospital",
+    "type": "HOSPITAL",
+    "distance_km": 11.27
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 11.27
+  },
+  {
+   "id": "hab_node_4759481050",
+   "name": "Velagaleru",
+   "place": "village",
+   "lat": 16.6466923,
+   "lon": 80.6119573,
+   "snap_distance_m": 6.3,
+   "population_proxy": 4756,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": false,
+   "uncertainty_flags": [],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_7116293146",
+    "name": "Primary Health Centre, Velagaleru",
+    "type": "HEALTH_CENTRE",
+    "distance_km": 0.68
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.68
+  },
+  {
+   "id": "hab_node_5645885358",
+   "name": "Guntupalle",
+   "place": "village",
+   "lat": 16.5684883,
+   "lon": 80.547691,
+   "snap_distance_m": 32.1,
+   "population_proxy": 4727,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": false,
+   "uncertainty_flags": [],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_7793151899",
+    "name": "Baba Hospital",
+    "type": "HOSPITAL",
+    "distance_km": 4.2
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 4.2
+  },
+  {
+   "id": "hab_node_14263233805",
+   "name": "Sivalayam B Colony",
+   "place": "neighbourhood",
+   "lat": 16.6162808,
+   "lon": 80.5371361,
+   "snap_distance_m": 94.5,
+   "population_proxy": 3160,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": false,
+   "uncertainty_flags": [],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_7116293061",
+    "name": "Government Hospital, Kondapalli",
+    "type": "HOSPITAL",
+    "distance_km": 0.87
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.87
+  },
+  {
+   "id": "hab_node_5645738548",
+   "name": "Nainavaram",
+   "place": "village",
+   "lat": 16.5691488,
+   "lon": 80.6309902,
+   "snap_distance_m": 45.6,
+   "population_proxy": 2989,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": false,
+   "uncertainty_flags": [],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_4193108392",
+    "name": "municipal health centre",
+    "type": "HOSPITAL",
+    "distance_km": 3.85
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 2.81
+  },
+  {
+   "id": "hab_node_13137383958",
+   "name": "Ashok Nagar",
+   "place": "neighbourhood",
+   "lat": 16.5690503,
+   "lon": 80.5681714,
+   "snap_distance_m": 35.0,
+   "population_proxy": 2490,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": false,
+   "uncertainty_flags": [],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_7793324105",
+    "name": "Rangaiah Gari Hospital",
+    "type": "HOSPITAL",
+    "distance_km": 3.71
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 3.71
+  },
+  {
+   "id": "hab_node_13137398007",
+   "name": "Ambedkar Nagar",
+   "place": "neighbourhood",
+   "lat": 16.5712749,
+   "lon": 80.5514142,
+   "snap_distance_m": 33.8,
+   "population_proxy": 2346,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": false,
+   "uncertainty_flags": [],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_7793151899",
+    "name": "Baba Hospital",
+    "type": "HOSPITAL",
+    "distance_km": 4.76
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 4.76
+  },
+  {
+   "id": "hab_node_5645738549",
+   "name": "Ambapuram",
+   "place": "village",
+   "lat": 16.5650915,
+   "lon": 80.6262006,
+   "snap_distance_m": 32.2,
+   "population_proxy": 2284,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": false,
+   "uncertainty_flags": [],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_4193108392",
+    "name": "municipal health centre",
+    "type": "HOSPITAL",
+    "distance_km": 3.15
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 2.99
+  },
+  {
+   "id": "hab_node_1685808056",
+   "name": "Rayanapadu",
+   "place": "village",
+   "lat": 16.5734294,
+   "lon": 80.5686883,
+   "snap_distance_m": 19.1,
+   "population_proxy": 2215,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": false,
+   "uncertainty_flags": [],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_7793151899",
+    "name": "Baba Hospital",
+    "type": "HOSPITAL",
+    "distance_km": 9.13
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 4.5
+  },
+  {
+   "id": "hab_node_13137350951",
+   "name": "VTPS B Colony",
+   "place": "neighbourhood",
+   "lat": 16.6161471,
+   "lon": 80.5392335,
+   "snap_distance_m": 12.3,
+   "population_proxy": 2145,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": false,
+   "uncertainty_flags": [],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_7116293061",
+    "name": "Government Hospital, Kondapalli",
+    "type": "HOSPITAL",
+    "distance_km": 0.92
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.92
+  },
+  {
+   "id": "hab_node_5382677910",
+   "name": "Venkatapalem",
+   "place": "village",
+   "lat": 16.5136697,
+   "lon": 80.5517149,
+   "snap_distance_m": 7.2,
+   "population_proxy": 2126,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": false,
+   "uncertainty_flags": [],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_7793324105",
+    "name": "Rangaiah Gari Hospital",
+    "type": "HOSPITAL",
+    "distance_km": 10.58
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 9.41
+  },
+  {
+   "id": "hab_node_5645885359",
+   "name": "Tummalapalem",
+   "place": "village",
+   "lat": 16.5715614,
+   "lon": 80.5310072,
+   "snap_distance_m": 12.1,
+   "population_proxy": 1849,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": false,
+   "uncertainty_flags": [],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_7793151899",
+    "name": "Baba Hospital",
+    "type": "HOSPITAL",
+    "distance_km": 2.43
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 2.43
+  },
+  {
+   "id": "hab_node_5645738543",
+   "name": "Kundawarikandrika",
+   "place": "village",
+   "lat": 16.580335,
+   "lon": 80.6683247,
+   "snap_distance_m": 32.8,
+   "population_proxy": 1848,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": false,
+   "uncertainty_flags": [],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_6768082614",
+    "name": "Praja VaidyaSaala",
+    "type": "HOSPITAL",
+    "distance_km": 2.36
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 2.36
+  },
+  {
+   "id": "hab_node_5645738544",
+   "name": "Patapadu",
+   "place": "village",
+   "lat": 16.5794445,
+   "lon": 80.6651485,
+   "snap_distance_m": 25.8,
+   "population_proxy": 1711,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": false,
+   "uncertainty_flags": [],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_6768082614",
+    "name": "Praja VaidyaSaala",
+    "type": "HOSPITAL",
+    "distance_km": 2.67
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 2.67
+  },
+  {
+   "id": "hab_node_11989681048",
+   "name": "Velagapudi",
+   "place": "village",
+   "lat": 16.5262754,
+   "lon": 80.511699,
+   "snap_distance_m": 56.7,
+   "population_proxy": 1576,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": false,
+   "uncertainty_flags": [],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_7793324105",
+    "name": "Rangaiah Gari Hospital",
+    "type": "HOSPITAL",
+    "distance_km": 12.71
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 12.71
+  },
+  {
+   "id": "hab_node_14263233806",
+   "name": "New B'colony",
+   "place": "neighbourhood",
+   "lat": 16.6144909,
+   "lon": 80.5393541,
+   "snap_distance_m": 51.8,
+   "population_proxy": 1543,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": false,
+   "uncertainty_flags": [],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_7116293061",
+    "name": "Government Hospital, Kondapalli",
+    "type": "HOSPITAL",
+    "distance_km": 1.04
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 1.04
+  },
+  {
+   "id": "hab_node_14263233807",
+   "name": "Old B Colony",
+   "place": "neighbourhood",
+   "lat": 16.6116057,
+   "lon": 80.5407831,
+   "snap_distance_m": 41.1,
+   "population_proxy": 1443,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": false,
+   "uncertainty_flags": [],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_7116293061",
+    "name": "Government Hospital, Kondapalli",
+    "type": "HOSPITAL",
+    "distance_km": 1.55
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 1.55
+  },
+  {
+   "id": "hab_node_14263233808",
+   "name": "Malkapuram",
+   "place": "neighbourhood",
+   "lat": 16.6114057,
+   "lon": 80.538788,
+   "snap_distance_m": 102.5,
+   "population_proxy": 1139,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": false,
+   "uncertainty_flags": [],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_7116293061",
+    "name": "Government Hospital, Kondapalli",
+    "type": "HOSPITAL",
+    "distance_km": 1.77
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 1.77
+  },
+  {
+   "id": "hab_node_5382677907",
+   "name": "Uddandrayanipalem",
+   "place": "village",
+   "lat": 16.5394762,
+   "lon": 80.5145502,
+   "snap_distance_m": 36.7,
+   "population_proxy": 879,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": false,
+   "uncertainty_flags": [],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_7793324105",
+    "name": "Rangaiah Gari Hospital",
+    "type": "HOSPITAL",
+    "distance_km": 14.55
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 14.55
+  },
+  {
+   "id": "hab_node_5645738546",
+   "name": "Venkatapuram",
+   "place": "village",
+   "lat": 16.5841048,
+   "lon": 80.6533443,
+   "snap_distance_m": 5.0,
+   "population_proxy": 763,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": false,
+   "uncertainty_flags": [],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_6768082614",
+    "name": "Praja VaidyaSaala",
+    "type": "HOSPITAL",
+    "distance_km": 4.32
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 3.67
+  },
+  {
+   "id": "hab_node_5645738545",
+   "name": "Apparaopeta",
+   "place": "village",
+   "lat": 16.582003,
+   "lon": 80.6452185,
+   "snap_distance_m": 21.3,
+   "population_proxy": 676,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": false,
+   "uncertainty_flags": [],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_6768082614",
+    "name": "Praja VaidyaSaala",
+    "type": "HOSPITAL",
+    "distance_km": 5.41
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 4.42
+  },
+  {
+   "id": "hab_node_5382677908",
+   "name": "Tallayapalem",
+   "place": "village",
+   "lat": 16.5326675,
+   "lon": 80.5335724,
+   "snap_distance_m": 17.2,
+   "population_proxy": 585,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": false,
+   "uncertainty_flags": [],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_7793324105",
+    "name": "Rangaiah Gari Hospital",
+    "type": "HOSPITAL",
+    "distance_km": 12.68
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 12.68
+  },
+  {
+   "id": "hab_node_5645738547",
+   "name": "Sitarampuram",
+   "place": "village",
+   "lat": 16.58194,
+   "lon": 80.6566801,
+   "snap_distance_m": 32.8,
+   "population_proxy": 416,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": false,
+   "uncertainty_flags": [],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_6768082614",
+    "name": "Praja VaidyaSaala",
+    "type": "HOSPITAL",
+    "distance_km": 3.82
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 3.5
+  },
+  {
+   "id": "hab_node_5127911166",
+   "name": "Modugalankapalem",
+   "place": "hamlet",
+   "lat": 16.5320357,
+   "lon": 80.5084325,
+   "snap_distance_m": 26.9,
+   "population_proxy": 180,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": false,
+   "uncertainty_flags": [],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_7793324105",
+    "name": "Rangaiah Gari Hospital",
+    "type": "HOSPITAL",
+    "distance_km": 13.58
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 13.58
+  }
+ ],
+ "out_of_scope": [
+  {
+   "id": "hab_node_11479000004",
+   "name": "Gollapudi",
+   "place": "village",
+   "lat": 16.5374528,
+   "lon": 80.5848974,
+   "snap_distance_m": 58.0,
+   "population_proxy": 45067,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_7793324142",
+    "name": "Asha Hospital",
+    "type": "HOSPITAL",
+    "distance_km": 0.8
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.8,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_11603248766",
+   "name": "Payakapuram",
+   "place": "neighbourhood",
+   "lat": 16.5489197,
+   "lon": 80.6496014,
+   "snap_distance_m": 19.8,
+   "population_proxy": 33025,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_7793324104",
+    "name": "Sri Viswanadh Memorial Hospitals",
+    "type": "HOSPITAL",
+    "distance_km": 0.34
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.34,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_11607185471",
+   "name": "Machavaram",
+   "place": "neighbourhood",
+   "lat": 16.518949,
+   "lon": 80.6491526,
+   "snap_distance_m": 32.8,
+   "population_proxy": 31321,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_7116293163",
+    "name": "UHC Durga Puram",
+    "type": "HEALTH_CENTRE",
+    "distance_km": 0.73
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.73,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_13146701395",
+   "name": "Gunadala",
+   "place": "neighbourhood",
+   "lat": 16.5234413,
+   "lon": 80.6658531,
+   "snap_distance_m": 39.3,
+   "population_proxy": 31286,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_7793378110",
+    "name": "Sri Chaitanya Multi Specialty Dental Hospital",
+    "type": "HOSPITAL",
+    "distance_km": 0.47
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.47,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_12189104960",
+   "name": "KG Gupta Municipal Employees Colony",
+   "place": "neighbourhood",
+   "lat": 16.5021074,
+   "lon": 80.651442,
+   "snap_distance_m": 17.5,
+   "population_proxy": 31249,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_way_343150091",
+    "name": "Ankur Hospital",
+    "type": "HOSPITAL",
+    "distance_km": 0.18
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.18,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_12606776174",
+   "name": "Veterinary Colony",
+   "place": "neighbourhood",
+   "lat": 16.5132535,
+   "lon": 80.666488,
+   "snap_distance_m": 28.1,
+   "population_proxy": 26126,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_2331669857",
+    "name": "Lakshmi Hoapital",
+    "type": "HOSPITAL",
+    "distance_km": 0.34
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.34,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_13143853815",
+   "name": "SSS Colony",
+   "place": "hamlet",
+   "lat": 16.5498582,
+   "lon": 80.5733524,
+   "snap_distance_m": 42.9,
+   "population_proxy": 25038,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_7793324105",
+    "name": "Rangaiah Gari Hospital",
+    "type": "HOSPITAL",
+    "distance_km": 1.41
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 1.41,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_11608734214",
+   "name": "Christurajupuram",
+   "place": "neighbourhood",
+   "lat": 16.512979,
+   "lon": 80.657492,
+   "snap_distance_m": 23.2,
+   "population_proxy": 24749,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_2331669857",
+    "name": "Lakshmi Hoapital",
+    "type": "HOSPITAL",
+    "distance_km": 0.98
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.98,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_11601717406",
+   "name": "Ajit Singh Nagar",
+   "place": "neighbourhood",
+   "lat": 16.5394512,
+   "lon": 80.6404977,
+   "snap_distance_m": 50.8,
+   "population_proxy": 20916,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_7793324154",
+    "name": "Smile Multi Speciality Hospital",
+    "type": "HOSPITAL",
+    "distance_km": 0.12
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.12,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_11649308783",
+   "name": "Bavajipet",
+   "place": "neighbourhood",
+   "lat": 16.5205027,
+   "lon": 80.6403603,
+   "snap_distance_m": 53.0,
+   "population_proxy": 20876,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_7116293163",
+    "name": "UHC Durga Puram",
+    "type": "HEALTH_CENTRE",
+    "distance_km": 0.41
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.41,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_11607986801",
+   "name": "Suryaraopeta",
+   "place": "neighbourhood",
+   "lat": 16.5124538,
+   "lon": 80.6377768,
+   "snap_distance_m": 37.1,
+   "population_proxy": 20535,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_13013158543",
+    "name": "Purma Heart Institute",
+    "type": "HOSPITAL",
+    "distance_km": 0.05
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.05,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_11649316892",
+   "name": "Kaleswara Rao Market",
+   "place": "neighbourhood",
+   "lat": 16.513299,
+   "lon": 80.6135243,
+   "snap_distance_m": 40.0,
+   "population_proxy": 19798,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_6768455453",
+    "name": "Sridevi Eye Hospital",
+    "type": "HOSPITAL",
+    "distance_km": 0.52
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.52,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_11603178151",
+   "name": "Prasadampadu",
+   "place": "suburb",
+   "lat": 16.521091,
+   "lon": 80.68948,
+   "snap_distance_m": 46.6,
+   "population_proxy": 19262,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_8774916002",
+    "name": "Best Hospital",
+    "type": "HOSPITAL",
+    "distance_km": 0.45
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.45,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_11603255427",
+   "name": "Labbipet",
+   "place": "neighbourhood",
+   "lat": 16.5041903,
+   "lon": 80.6418471,
+   "snap_distance_m": 56.4,
+   "population_proxy": 19123,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_6792254686",
+    "name": "S V R Neuro & Trauma Hospital",
+    "type": "HOSPITAL",
+    "distance_km": 0.0
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.0,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_11601701065",
+   "name": "Gandhi Nagar",
+   "place": "neighbourhood",
+   "lat": 16.5208795,
+   "lon": 80.6276102,
+   "snap_distance_m": 31.5,
+   "population_proxy": 18526,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_6770944927",
+    "name": "Meher Hospitals",
+    "type": "HOSPITAL",
+    "distance_km": 0.5
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.5,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_7688406712",
+   "name": "HB Colony",
+   "place": "neighbourhood",
+   "lat": 16.5345173,
+   "lon": 80.5961395,
+   "snap_distance_m": 22.1,
+   "population_proxy": 18369,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_12618166652",
+    "name": "Vijayawada Super Speciality Physiotherapy Hospital",
+    "type": "HOSPITAL",
+    "distance_km": 0.31
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.31,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_11601747723",
+   "name": "1 Town",
+   "place": "neighbourhood",
+   "lat": 16.5187041,
+   "lon": 80.612832,
+   "snap_distance_m": 71.5,
+   "population_proxy": 18353,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_6773679562",
+    "name": "Anurag Hospital For Children",
+    "type": "HOSPITAL",
+    "distance_km": 0.21
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.21,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_11601753432",
+   "name": "Madhura Nagar",
+   "place": "neighbourhood",
+   "lat": 16.527055,
+   "lon": 80.6504121,
+   "snap_distance_m": 36.7,
+   "population_proxy": 18123,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_7793378153",
+    "name": "Praneeth Multi Speciality Hospital",
+    "type": "HOSPITAL",
+    "distance_km": 0.54
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.54,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_13136432014",
+   "name": "Kummaripalem",
+   "place": "neighbourhood",
+   "lat": 16.5221374,
+   "lon": 80.6003785,
+   "snap_distance_m": 91.0,
+   "population_proxy": 17350,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_6768584550",
+    "name": "Yakkala Jyothi Hospital",
+    "type": "HOSPITAL",
+    "distance_km": 0.41
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.41,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_13146701394",
+   "name": "Ramavarappadu Junction Roads",
+   "place": "neighbourhood",
+   "lat": 16.5245514,
+   "lon": 80.6781144,
+   "snap_distance_m": 11.1,
+   "population_proxy": 16748,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_way_403044123",
+    "name": "Rainbow Children's Hospital",
+    "type": "HOSPITAL",
+    "distance_km": 1.0
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 1.0,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_11601685554",
+   "name": "Moghalraja Puram",
+   "place": "neighbourhood",
+   "lat": 16.5088551,
+   "lon": 80.6459179,
+   "snap_distance_m": 31.5,
+   "population_proxy": 16221,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_11571990784",
+    "name": "Noble Hospitals",
+    "type": "HOSPITAL",
+    "distance_km": 0.15
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.15,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_11608396727",
+   "name": "Bharathi Nagar",
+   "place": "neighbourhood",
+   "lat": 16.506886,
+   "lon": 80.6674296,
+   "snap_distance_m": 38.5,
+   "population_proxy": 16063,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_7799862524",
+    "name": "Sri Sai Hospital",
+    "type": "HOSPITAL",
+    "distance_km": 0.37
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.37,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_13136396267",
+   "name": "APHB Colony",
+   "place": "neighbourhood",
+   "lat": 16.5318176,
+   "lon": 80.5948,
+   "snap_distance_m": 45.2,
+   "population_proxy": 15220,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_7793324132",
+    "name": "Ravi Hospital",
+    "type": "HOSPITAL",
+    "distance_km": 0.22
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.22,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_13946650689",
+   "name": "Vasavi Nagar Colony",
+   "place": "neighbourhood",
+   "lat": 16.5030179,
+   "lon": 80.6641328,
+   "snap_distance_m": 43.3,
+   "population_proxy": 15042,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_7799862530",
+    "name": "Balaji Ayurveda Hospital",
+    "type": "HOSPITAL",
+    "distance_km": 0.21
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.21,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_13946646706",
+   "name": "Padmavathi Nagar",
+   "place": "neighbourhood",
+   "lat": 16.5101276,
+   "lon": 80.6735626,
+   "snap_distance_m": 61.4,
+   "population_proxy": 14968,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_7793378149",
+    "name": "Krishna Veni Hospital",
+    "type": "HOSPITAL",
+    "distance_km": 0.5
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.5,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_11479000003",
+   "name": "Bhavanipuram",
+   "place": "village",
+   "lat": 16.5261449,
+   "lon": 80.5930924,
+   "snap_distance_m": 51.7,
+   "population_proxy": 14917,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_7793324141",
+    "name": "Vindhya Hospital",
+    "type": "HOSPITAL",
+    "distance_km": 0.09
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.09,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_11601741161",
+   "name": "Satyanarayana Puram",
+   "place": "neighbourhood",
+   "lat": 16.5242563,
+   "lon": 80.6385752,
+   "snap_distance_m": 49.8,
+   "population_proxy": 14735,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_7793378116",
+    "name": "Prakash Healthy Life",
+    "type": "HOSPITAL",
+    "distance_km": 0.29
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.29,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_11649310214",
+   "name": "RR Peta",
+   "place": "neighbourhood",
+   "lat": 16.5404621,
+   "lon": 80.6345617,
+   "snap_distance_m": 40.1,
+   "population_proxy": 14235,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_7793324137",
+    "name": "Jayamma Eye Hospital",
+    "type": "HOSPITAL",
+    "distance_km": 0.33
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.33,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_11603155743",
+   "name": "Governorpeta",
+   "place": "neighbourhood",
+   "lat": 16.511273,
+   "lon": 80.6275292,
+   "snap_distance_m": 34.2,
+   "population_proxy": 14007,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_7793433251",
+    "name": "Dharma Hospital",
+    "type": "HOSPITAL",
+    "distance_km": 0.11
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.11,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_11601632443",
+   "name": "Auto Nagar",
+   "place": "neighbourhood",
+   "lat": 16.5018047,
+   "lon": 80.6759591,
+   "snap_distance_m": 83.7,
+   "population_proxy": 13747,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_12875636474",
+    "name": "Vikram Hospital",
+    "type": "HOSPITAL",
+    "distance_km": 1.16
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 1.16,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_13946646705",
+   "name": "Vijaya Lakshmi Puram",
+   "place": "neighbourhood",
+   "lat": 16.5142477,
+   "lon": 80.6746486,
+   "snap_distance_m": 34.2,
+   "population_proxy": 13463,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_way_403044123",
+    "name": "Rainbow Children's Hospital",
+    "type": "HOSPITAL",
+    "distance_km": 0.55
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.55,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_11601647177",
+   "name": "Krishna Lanka",
+   "place": "suburb",
+   "lat": 16.5068899,
+   "lon": 80.6225523,
+   "snap_distance_m": 25.8,
+   "population_proxy": 13387,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_14058659401",
+    "name": "Arya Vaidya Sala Kottakkal",
+    "type": "HOSPITAL",
+    "distance_km": 0.7
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.7,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_11608415853",
+   "name": "Currency Nagar",
+   "place": "neighbourhood",
+   "lat": 16.5167083,
+   "lon": 80.6796711,
+   "snap_distance_m": 38.6,
+   "population_proxy": 13056,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_way_403579547",
+    "name": "Ayush Hospital",
+    "type": "HOSPITAL",
+    "distance_km": 0.53
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.53,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_13946650688",
+   "name": "Subbarao Colony",
+   "place": "neighbourhood",
+   "lat": 16.5051246,
+   "lon": 80.6660954,
+   "snap_distance_m": 49.4,
+   "population_proxy": 12050,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_7799862524",
+    "name": "Sri Sai Hospital",
+    "type": "HOSPITAL",
+    "distance_km": 0.05
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.05,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_7688406707",
+   "name": "Joji Nagar",
+   "place": "neighbourhood",
+   "lat": 16.5379928,
+   "lon": 80.6020556,
+   "snap_distance_m": 12.1,
+   "population_proxy": 11987,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_7793324093",
+    "name": "Sri Venkateswara Nursing Home for Women and Children",
+    "type": "HOSPITAL",
+    "distance_km": 0.75
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.75,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_13137417327",
+   "name": "Ayodhya Nagar",
+   "place": "suburb",
+   "lat": 16.5302902,
+   "lon": 80.6316006,
+   "snap_distance_m": 40.0,
+   "population_proxy": 11530,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_12996110302",
+    "name": "Unnamed health facility",
+    "type": "HOSPITAL",
+    "distance_km": 1.05
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 1.05,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_13944942926",
+   "name": "Lenin Center",
+   "place": "neighbourhood",
+   "lat": 16.5142319,
+   "lon": 80.6261445,
+   "snap_distance_m": 16.5,
+   "population_proxy": 11298,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_7793433280",
+    "name": "Dr. Sohan Singh Homeo Hospital",
+    "type": "HOSPITAL",
+    "distance_km": 0.39
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.39,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_11658410229",
+   "name": "Buckinghampeta",
+   "place": "neighbourhood",
+   "lat": 16.5086963,
+   "lon": 80.6320355,
+   "snap_distance_m": 69.2,
+   "population_proxy": 11101,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_13001406927",
+    "name": "Heart & Brain Institute",
+    "type": "HOSPITAL",
+    "distance_km": 0.22
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.22,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_11601717407",
+   "name": "Vambay Colony",
+   "place": "neighbourhood",
+   "lat": 16.5379508,
+   "lon": 80.6535699,
+   "snap_distance_m": 15.4,
+   "population_proxy": 10473,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_7116293127",
+    "name": "Mukhyamantri Aarogya Kendram,Vambay Colony",
+    "type": "HEALTH_CENTRE",
+    "distance_km": 0.13
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.13,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_13944889043",
+   "name": "Nehru Nagar",
+   "place": "neighbourhood",
+   "lat": 16.5031233,
+   "lon": 80.6299779,
+   "snap_distance_m": 53.4,
+   "population_proxy": 10416,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_12625499791",
+    "name": "Sri Ram Hospitals",
+    "type": "HOSPITAL",
+    "distance_km": 0.2
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.2,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_12422552997",
+   "name": "Prajasakti Nagar",
+   "place": "neighbourhood",
+   "lat": 16.5098505,
+   "lon": 80.6416194,
+   "snap_distance_m": 19.2,
+   "population_proxy": 10388,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_way_341412486",
+    "name": "AP SUPERSPECIALITY DENTAL HOSPITAL",
+    "type": "HOSPITAL",
+    "distance_km": 0.03
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.03,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_11608641729",
+   "name": "Giripuram",
+   "place": "neighbourhood",
+   "lat": 16.5064562,
+   "lon": 80.6386853,
+   "snap_distance_m": 38.2,
+   "population_proxy": 9895,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_12873280773",
+    "name": "Bhargav Nursing Home & Eye Hospital",
+    "type": "HOSPITAL",
+    "distance_km": 0.13
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.13,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_13946562754",
+   "name": "Pushpatotha Nagar",
+   "place": "neighbourhood",
+   "lat": 16.528867,
+   "lon": 80.6451673,
+   "snap_distance_m": 53.2,
+   "population_proxy": 9784,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_7793378153",
+    "name": "Praneeth Multi Speciality Hospital",
+    "type": "HOSPITAL",
+    "distance_km": 0.29
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.29,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_11607962258",
+   "name": "Rajarajeswari Peta",
+   "place": "neighbourhood",
+   "lat": 16.5316075,
+   "lon": 80.6229911,
+   "snap_distance_m": 30.3,
+   "population_proxy": 9733,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_7116293149",
+    "name": "UPHC,New R.R. Pet",
+    "type": "HEALTH_CENTRE",
+    "distance_km": 0.66
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.66,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_11601701064",
+   "name": "Hanuman Pet",
+   "place": "neighbourhood",
+   "lat": 16.5159579,
+   "lon": 80.6221281,
+   "snap_distance_m": 36.4,
+   "population_proxy": 9267,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_8774956334",
+    "name": "Dr T V S Clinic, Vaccination centre",
+    "type": "HOSPITAL",
+    "distance_km": 0.28
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.28,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_13944934051",
+   "name": "Jammichettu Center",
+   "place": "neighbourhood",
+   "lat": 16.5071652,
+   "lon": 80.6444288,
+   "snap_distance_m": 35.5,
+   "population_proxy": 9168,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_11573018969",
+    "name": "Tenet Diagnostics",
+    "type": "HOSPITAL",
+    "distance_km": 0.1
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.1,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_13136396268",
+   "name": "Chittinagar",
+   "place": "neighbourhood",
+   "lat": 16.5313448,
+   "lon": 80.5989277,
+   "snap_distance_m": 35.5,
+   "population_proxy": 8620,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_7793324102",
+    "name": "Bhavani Hospital",
+    "type": "HOSPITAL",
+    "distance_km": 0.18
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.18,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_13143645977",
+   "name": "JNNURM Colony",
+   "place": "neighbourhood",
+   "lat": 16.5577891,
+   "lon": 80.6120336,
+   "snap_distance_m": 34.2,
+   "population_proxy": 8369,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_4193108392",
+    "name": "municipal health centre",
+    "type": "HOSPITAL",
+    "distance_km": 2.35
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 2.35,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_11607962259",
+   "name": "New Rajarajeswari Peta",
+   "place": "neighbourhood",
+   "lat": 16.5354823,
+   "lon": 80.6278005,
+   "snap_distance_m": 33.6,
+   "population_proxy": 8305,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_12996110302",
+    "name": "Unnamed health facility",
+    "type": "HOSPITAL",
+    "distance_km": 0.25
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.25,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_13946610436",
+   "name": "Cheruvu Centre",
+   "place": "neighbourhood",
+   "lat": 16.5305631,
+   "lon": 80.6068272,
+   "snap_distance_m": 26.1,
+   "population_proxy": 8226,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_way_1246204819",
+    "name": "APSRTC Hospital",
+    "type": "HOSPITAL",
+    "distance_km": 0.5
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.5,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_13946646704",
+   "name": "Murali Nagar",
+   "place": "neighbourhood",
+   "lat": 16.5101397,
+   "lon": 80.6823726,
+   "snap_distance_m": 45.7,
+   "population_proxy": 8024,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_way_403579547",
+    "name": "Ayush Hospital",
+    "type": "HOSPITAL",
+    "distance_km": 1.62
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 1.62,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_13946613824",
+   "name": "Ganapathi Nagar",
+   "place": "neighbourhood",
+   "lat": 16.528139,
+   "lon": 80.6105563,
+   "snap_distance_m": 25.5,
+   "population_proxy": 7973,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_7793324124",
+    "name": "Garre Nageswara Rao Hospital",
+    "type": "HOSPITAL",
+    "distance_km": 0.42
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.42,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_13946562342",
+   "name": "Ramakrishna Puram",
+   "place": "neighbourhood",
+   "lat": 16.5308223,
+   "lon": 80.6365476,
+   "snap_distance_m": 51.3,
+   "population_proxy": 7911,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_7793378133",
+    "name": "Sri Raksha Children Hospital",
+    "type": "HOSPITAL",
+    "distance_km": 0.97
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.97,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_13946612501",
+   "name": "Cement Factory Colony",
+   "place": "neighbourhood",
+   "lat": 16.5292496,
+   "lon": 80.6284637,
+   "snap_distance_m": 29.3,
+   "population_proxy": 7717,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_8775012300",
+    "name": "Primary Health Centre, Baptist Palem",
+    "type": "HEALTH_CENTRE",
+    "distance_km": 0.84
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.84,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_11603287961",
+   "name": "Urmila Nagar",
+   "place": "neighbourhood",
+   "lat": 16.5445312,
+   "lon": 80.5993447,
+   "snap_distance_m": 43.5,
+   "population_proxy": 7324,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_7793324093",
+    "name": "Sri Venkateswara Nursing Home for Women and Children",
+    "type": "HOSPITAL",
+    "distance_km": 1.57
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 1.57,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_13946562343",
+   "name": "Muthyalammapdu",
+   "place": "neighbourhood",
+   "lat": 16.5268311,
+   "lon": 80.6377625,
+   "snap_distance_m": 44.0,
+   "population_proxy": 7167,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_7793378128",
+    "name": "Prasanthi Hospital",
+    "type": "HOSPITAL",
+    "distance_km": 0.19
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.19,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_11603287960",
+   "name": "Kabela",
+   "place": "neighbourhood",
+   "lat": 16.5418761,
+   "lon": 80.6075718,
+   "snap_distance_m": 26.0,
+   "population_proxy": 7011,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_4193108392",
+    "name": "municipal health centre",
+    "type": "HOSPITAL",
+    "distance_km": 1.08
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 1.08,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_11601747724",
+   "name": "Vinchipeta",
+   "place": "neighbourhood",
+   "lat": 16.5247367,
+   "lon": 80.6173116,
+   "snap_distance_m": 18.2,
+   "population_proxy": 6871,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_7793324088",
+    "name": "Hope Hospital",
+    "type": "HOSPITAL",
+    "distance_km": 0.2
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.2,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_13946609003",
+   "name": "Kedareshwarapeta",
+   "place": "neighbourhood",
+   "lat": 16.5277183,
+   "lon": 80.6263156,
+   "snap_distance_m": 33.4,
+   "population_proxy": 6864,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_8775012300",
+    "name": "Primary Health Centre, Baptist Palem",
+    "type": "HEALTH_CENTRE",
+    "distance_km": 0.68
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.68,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_13946610435",
+   "name": "RRT Nagar",
+   "place": "neighbourhood",
+   "lat": 16.5318138,
+   "lon": 80.6063351,
+   "snap_distance_m": 31.5,
+   "population_proxy": 6684,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_way_1246204819",
+    "name": "APSRTC Hospital",
+    "type": "HOSPITAL",
+    "distance_km": 0.43
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.43,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_13946613822",
+   "name": "LP Panja",
+   "place": "neighbourhood",
+   "lat": 16.5231784,
+   "lon": 80.6159781,
+   "snap_distance_m": 24.1,
+   "population_proxy": 6645,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_7793324088",
+    "name": "Hope Hospital",
+    "type": "HOSPITAL",
+    "distance_km": 0.18
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.18,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_13137405352",
+   "name": "RR Nagar",
+   "place": "neighbourhood",
+   "lat": 16.5447255,
+   "lon": 80.6085283,
+   "snap_distance_m": 23.8,
+   "population_proxy": 6632,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_4193108392",
+    "name": "municipal health centre",
+    "type": "HOSPITAL",
+    "distance_km": 0.95
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.95,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_11649310213",
+   "name": "Prakashnagar",
+   "place": "neighbourhood",
+   "lat": 16.5476435,
+   "lon": 80.6547672,
+   "snap_distance_m": 37.6,
+   "population_proxy": 6609,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_6768072042",
+    "name": "Chikitsa General Hospital",
+    "type": "HOSPITAL",
+    "distance_km": 0.15
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.15,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_13136423547",
+   "name": "Kothapeta",
+   "place": "neighbourhood",
+   "lat": 16.5228795,
+   "lon": 80.6104104,
+   "snap_distance_m": 6.7,
+   "population_proxy": 6606,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_7793324124",
+    "name": "Garre Nageswara Rao Hospital",
+    "type": "HOSPITAL",
+    "distance_km": 0.26
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.26,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_13137418604",
+   "name": "Devi Nagar",
+   "place": "suburb",
+   "lat": 16.5333827,
+   "lon": 80.6450743,
+   "snap_distance_m": 24.5,
+   "population_proxy": 6452,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_7793378153",
+    "name": "Praneeth Multi Speciality Hospital",
+    "type": "HOSPITAL",
+    "distance_km": 1.39
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 1.39,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_13137417326",
+   "name": "Rama Krishna Puram",
+   "place": "neighbourhood",
+   "lat": 16.5322578,
+   "lon": 80.6412774,
+   "snap_distance_m": 40.0,
+   "population_proxy": 6319,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_7793378133",
+    "name": "Sri Raksha Children Hospital",
+    "type": "HOSPITAL",
+    "distance_km": 0.82
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.82,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_11608677701",
+   "name": "Kasturibaipeta",
+   "place": "neighbourhood",
+   "lat": 16.5089698,
+   "lon": 80.6388583,
+   "snap_distance_m": 33.5,
+   "population_proxy": 5827,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_7799862525",
+    "name": "Latha Super Speciality Hospital",
+    "type": "HOSPITAL",
+    "distance_km": 0.13
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.13,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_11649310212",
+   "name": "Rajiv Nagar",
+   "place": "neighbourhood",
+   "lat": 16.553381,
+   "lon": 80.6566852,
+   "snap_distance_m": 50.8,
+   "population_proxy": 5653,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_6768072042",
+    "name": "Chikitsa General Hospital",
+    "type": "HOSPITAL",
+    "distance_km": 0.86
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.86,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_13944889044",
+   "name": "Naidupet",
+   "place": "neighbourhood",
+   "lat": 16.5055662,
+   "lon": 80.6253249,
+   "snap_distance_m": 39.9,
+   "population_proxy": 5473,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_7116293170",
+    "name": "Mukhyamantri Aarogya Kendram,Krishnalanka",
+    "type": "HEALTH_CENTRE",
+    "distance_km": 0.54
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.54,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_13946562347",
+   "name": "KL Rao Nagar",
+   "place": "neighbourhood",
+   "lat": 16.533494,
+   "lon": 80.6153363,
+   "snap_distance_m": 30.5,
+   "population_proxy": 5218,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_7793324098",
+    "name": "Bhavya Hospital",
+    "type": "HOSPITAL",
+    "distance_km": 0.16
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.16,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_13946610438",
+   "name": "Bheemannavaripeta",
+   "place": "neighbourhood",
+   "lat": 16.5390083,
+   "lon": 80.6131082,
+   "snap_distance_m": 29.2,
+   "population_proxy": 5160,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_7793324129",
+    "name": "Children's Hospital",
+    "type": "HOSPITAL",
+    "distance_km": 0.1
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.1,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_13946562346",
+   "name": "Boggu Lane Railway Colony",
+   "place": "neighbourhood",
+   "lat": 16.520715,
+   "lon": 80.6224202,
+   "snap_distance_m": 36.3,
+   "population_proxy": 5133,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_8774956334",
+    "name": "Dr T V S Clinic, Vaccination centre",
+    "type": "HOSPITAL",
+    "distance_km": 0.72
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.72,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_13946613823",
+   "name": "Islampet",
+   "place": "neighbourhood",
+   "lat": 16.5252647,
+   "lon": 80.6143475,
+   "snap_distance_m": 54.1,
+   "population_proxy": 4851,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_7793324135",
+    "name": "Health Care Hospital",
+    "type": "HOSPITAL",
+    "distance_km": 0.2
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.2,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_13137410245",
+   "name": "Chittinagar",
+   "place": "neighbourhood",
+   "lat": 16.5318751,
+   "lon": 80.6116742,
+   "snap_distance_m": 16.1,
+   "population_proxy": 4809,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_7793324128",
+    "name": "Dr. Koneru Madhusudhan Rao Memorial Hospital",
+    "type": "HOSPITAL",
+    "distance_km": 0.17
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.17,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_13946610442",
+   "name": "Lambadipeta",
+   "place": "neighbourhood",
+   "lat": 16.5366777,
+   "lon": 80.6134589,
+   "snap_distance_m": 41.4,
+   "population_proxy": 4608,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_way_280460629",
+    "name": "Cholera Hospital",
+    "type": "HOSPITAL",
+    "distance_km": 0.16
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.16,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_11603178152",
+   "name": "Ramavarappadu",
+   "place": "suburb",
+   "lat": 16.5270964,
+   "lon": 80.679073,
+   "snap_distance_m": 146.8,
+   "population_proxy": 4580,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_10895507025",
+    "name": "Unnamed health facility",
+    "type": "HOSPITAL",
+    "distance_km": 1.81
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 1.81,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_13946639677",
+   "name": "Davu Buchiah Colony",
+   "place": "neighbourhood",
+   "lat": 16.5319259,
+   "lon": 80.6521209,
+   "snap_distance_m": 36.5,
+   "population_proxy": 4480,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_7793378153",
+    "name": "Praneeth Multi Speciality Hospital",
+    "type": "HOSPITAL",
+    "distance_km": 1.16
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 1.16,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_11601747726",
+   "name": "Syndicate Bank Colony",
+   "place": "neighbourhood",
+   "lat": 16.5350776,
+   "lon": 80.616016,
+   "snap_distance_m": 27.4,
+   "population_proxy": 4418,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_7116293212",
+    "name": "Mukhyamantri Aarogya Kendram,Lambadipet",
+    "type": "HEALTH_CENTRE",
+    "distance_km": 0.07
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.07,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_11603382270",
+   "name": "Baptist Palem",
+   "place": "neighbourhood",
+   "lat": 16.5258407,
+   "lon": 80.6248388,
+   "snap_distance_m": 23.0,
+   "population_proxy": 4365,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_8775012300",
+    "name": "Primary Health Centre, Baptist Palem",
+    "type": "HEALTH_CENTRE",
+    "distance_km": 0.04
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.04,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_13946562348",
+   "name": "Fraserpeta",
+   "place": "neighbourhood",
+   "lat": 16.5290069,
+   "lon": 80.6132363,
+   "snap_distance_m": 28.7,
+   "population_proxy": 4175,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_7793324139",
+    "name": "Siddhartha Orthopaedic Hospital",
+    "type": "HOSPITAL",
+    "distance_km": 0.29
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.29,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_11601704637",
+   "name": "Vidhyadharapuram",
+   "place": "suburb",
+   "lat": 16.5317106,
+   "lon": 80.5990122,
+   "snap_distance_m": 19.7,
+   "population_proxy": 4173,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_7793324102",
+    "name": "Bhavani Hospital",
+    "type": "HOSPITAL",
+    "distance_km": 0.25
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.25,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_13944889036",
+   "name": "Ranadheer Nagar",
+   "place": "neighbourhood",
+   "lat": 16.5028687,
+   "lon": 80.6233583,
+   "snap_distance_m": 32.5,
+   "population_proxy": 3824,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_7116293170",
+    "name": "Mukhyamantri Aarogya Kendram,Krishnalanka",
+    "type": "HEALTH_CENTRE",
+    "distance_km": 0.47
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.47,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_11603367700",
+   "name": "Pezzonipet",
+   "place": "neighbourhood",
+   "lat": 16.5231206,
+   "lon": 80.6245798,
+   "snap_distance_m": 48.0,
+   "population_proxy": 3110,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_8775012300",
+    "name": "Primary Health Centre, Baptist Palem",
+    "type": "HEALTH_CENTRE",
+    "distance_km": 0.49
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.49,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_13946562349",
+   "name": "Tailor Peta",
+   "place": "neighbourhood",
+   "lat": 16.5302097,
+   "lon": 80.6125253,
+   "snap_distance_m": 24.7,
+   "population_proxy": 2511,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_7793324139",
+    "name": "Siddhartha Orthopaedic Hospital",
+    "type": "HOSPITAL",
+    "distance_km": 0.13
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.13,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_13946646703",
+   "name": "Sri Ramachandra Nagar",
+   "place": "neighbourhood",
+   "lat": 16.5124438,
+   "lon": 80.6804672,
+   "snap_distance_m": 51.0,
+   "population_proxy": 2449,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_7793378152",
+    "name": "Rajarshi Hospitals",
+    "type": "HOSPITAL",
+    "distance_km": 1.55
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 1.55,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_13946610437",
+   "name": "Mahanthipuram",
+   "place": "neighbourhood",
+   "lat": 16.5315066,
+   "lon": 80.608375,
+   "snap_distance_m": 55.1,
+   "population_proxy": 2442,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_way_1246204819",
+    "name": "APSRTC Hospital",
+    "type": "HOSPITAL",
+    "distance_km": 0.5
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.5,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_11649310211",
+   "name": "Kandrika",
+   "place": "neighbourhood",
+   "lat": 16.55075,
+   "lon": 80.6596284,
+   "snap_distance_m": 22.6,
+   "population_proxy": 2253,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_6768072042",
+    "name": "Chikitsa General Hospital",
+    "type": "HOSPITAL",
+    "distance_km": 0.86
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.86,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_13946562344",
+   "name": "Green Park Colony",
+   "place": "neighbourhood",
+   "lat": 16.5241993,
+   "lon": 80.6235646,
+   "snap_distance_m": 26.5,
+   "population_proxy": 1972,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_8775012300",
+    "name": "Primary Health Centre, Baptist Palem",
+    "type": "HEALTH_CENTRE",
+    "distance_km": 0.56
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.56,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_13946562345",
+   "name": "BG Colony",
+   "place": "neighbourhood",
+   "lat": 16.5226524,
+   "lon": 80.6230382,
+   "snap_distance_m": 87.0,
+   "population_proxy": 1746,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_8775012300",
+    "name": "Primary Health Centre, Baptist Palem",
+    "type": "HEALTH_CENTRE",
+    "distance_km": 0.6
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 0.6,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  },
+  {
+   "id": "hab_node_13946639678",
+   "name": "GVR Nagar",
+   "place": "neighbourhood",
+   "lat": 16.5335067,
+   "lon": 80.6538726,
+   "snap_distance_m": 79.4,
+   "population_proxy": 890,
+   "population_source": "GHSL GHS-POP R2023A E2020 100m (Voronoi cell of habitation, clipped to AOI)",
+   "in_urban_core": true,
+   "uncertainty_flags": [
+    "URBAN_CORE_EXCLUDED"
+   ],
+   "status": "PATH_EXISTS",
+   "nearest_destination": {
+    "id": "dest_node_7793378153",
+    "name": "Praneeth Multi Speciality Hospital",
+    "type": "HOSPITAL",
+    "distance_km": 1.6
+   },
+   "blocking_edges": [],
+   "is_inundated": false,
+   "baseline_distance_km": 1.6,
+   "excluded_reason": "URBAN_CORE_EXCLUDED"
+  }
+ ]
+}
