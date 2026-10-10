@@ -2,6 +2,7 @@
 engine/reachability.py - BaadhDrishti Reachability & Triage Engine
 
 Calculates habitation isolation and nearest destination using multi-source Dijkstra.
+Blocking edges are the blocked edges on each cut-off habitation's dry-baseline route.
 Strict rule: Blocked edges = (auto_suspected - force_cleared) | force_blocked
 Excludes auto-disruption for bridge=yes edges (flags them as CHECK).
 Handles INUNDATED status when habitation point is inside the flood mask.
@@ -59,6 +60,13 @@ def evaluate_reachability(
         if eid not in effective_blocked:
             G.add_edge(edge['u'], edge['v'], weight=edge.get('weight', 1.0), edge_id=eid)
 
+    # Dry-baseline graph (no edges blocked) to explain which blocked edges cut each habitation off
+    G_base = nx.Graph()
+    edge_ids_by_pair: Dict[Any, List[str]] = {}
+    for edge in graph_edges:
+        G_base.add_edge(edge['u'], edge['v'], weight=edge.get('weight', 1.0))
+        edge_ids_by_pair.setdefault(frozenset((edge['u'], edge['v'])), []).append(edge['edge_id'])
+
     # Prepare destination mapping
     dest_node_to_id = {}
     valid_dest_nodes = set()
@@ -81,6 +89,11 @@ def evaluate_reachability(
             nearest_dist[node] = float(dist)
             # path_dict[node] is a list of nodes starting at destination source and ending at node
             nearest_dest_node[node] = path_dict[node][0]
+
+    base_paths: Dict[Any, List[Any]] = {}
+    base_dest_nodes = {d['node'] for d in destinations if d['node'] in G_base}
+    if base_dest_nodes:
+        base_paths = nx.multi_source_dijkstra(G_base, base_dest_nodes, target=None, weight='weight')[1]  # type: ignore
 
     # Evaluate each habitation
     triage_records = []
@@ -108,12 +121,15 @@ def evaluate_reachability(
                 "distance_km": round(nearest_dist[hab_node], 2)
             }
 
-        # Identify blocking edges connected directly or on incident edges
+        # Blocking edges = blocked edges on the dry-baseline shortest route to the nearest destination.
+        # A road segment counts only if every parallel edge between its two nodes is blocked.
         blocking_edges = []
-        if status in ("INUNDATED", "NO_MAPPED_ROAD_PATH"):
-            for edge in graph_edges:
-                if edge['edge_id'] in effective_blocked and (edge['u'] == hab_node or edge['v'] == hab_node):
-                    blocking_edges.append(edge['edge_id'])
+        if status in ("INUNDATED", "NO_MAPPED_ROAD_PATH") and hab_node in base_paths:
+            route = base_paths[hab_node]
+            for a, b in zip(route[:-1], route[1:]):
+                ids = edge_ids_by_pair[frozenset((a, b))]
+                if all(i in effective_blocked for i in ids):
+                    blocking_edges.extend(ids)
 
         uncertainty_flags = list(hab.get('uncertainty_flags', []))
         for edge in graph_edges:

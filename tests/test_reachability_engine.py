@@ -61,7 +61,9 @@ def test_reachability_engine():
     assert len(r2) == 1
     assert r2[0]["status"] == "NO_MAPPED_ROAD_PATH"
     assert r2[0]["nearest_destination"] is None
-    print("✓ Case 2 passed: Auto-suspected flood blocks edge -> NO_MAPPED_ROAD_PATH")
+    # e2 is not incident to Village A; it is the blocked edge on A's dry-baseline route A-J-H
+    assert r2[0]["blocking_edges"] == ["e2"]
+    print("✓ Case 2 passed: Auto-suspected flood blocks edge -> NO_MAPPED_ROAD_PATH (blocking edge on baseline route)")
 
     # Case 3: Officer adds new Staging Hub -> PATH_EXISTS to new hub
     dest_with_hub = [
