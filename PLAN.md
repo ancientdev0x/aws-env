@@ -409,9 +409,9 @@ uv venv --python 3.12 .venv && uv pip install --python .venv/bin/python -r scrip
   *Done Criteria*: `sam build && sam deploy` creates stack with live API Gateway URL.
 - [x] **Task 2.6**: Lambda implementation of reachability engine reading from S3 graph + DynamoDB overrides.  
   *Done Criteria*: `curl $API_URL/api/triage` returns JSON with status code 200.
-- [ ] **Task 2.7**: Build clean single `index.html` + Leaflet.js frontend with offline pre/post SAR PNG overlays (Leaflet `imageOverlay`), triage queue table, road override modal, and hub addition.  
+- [x] **Task 2.7**: Build clean single `index.html` + Leaflet.js frontend with offline pre/post SAR PNG overlays (Leaflet `imageOverlay`), triage queue table, road override modal, and hub addition.  
   *Done Criteria*: Frontend deployed to S3 website / CloudFront or local host with responsive UI.
-- [ ] **Task 2.8**: WhatsApp share generator button (`wa.me/?text=...`) + CSV download verification.  
+- [x] **Task 2.8**: WhatsApp share generator button (`wa.me/?text=...`) + CSV download verification.  
   *Done Criteria*: WhatsApp link formats top cut-off habitations cleanly into clipboard/URL.
 
 ### Sunday, Oct 11 (Feature Freeze, Video & Submission)

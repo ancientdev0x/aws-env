@@ -87,8 +87,7 @@ It is NOT: a rescue dispatch system, navigation, a live forecast, or an official
   Data: `scripts/export_lambda_bundle.py` → `data/processed/lambda_bundle.json` → `s3://<DataBucketName>/lambda_bundle.json`.
   Verified live: GET reproduces offline (7 cut off, 9,314); clearing Tadepalle's 4 blocking edges (Vijayawada–Vissannapeta
   Rd) restores 5 habitations; hub at Tadepalle restores the same 5; undo returns to 7. Lambda 1769 MB, compute_ms ≈ 616 ms; POST computes once (client diffs). Local test: `tests/test_lambda_local.py`.
-  Reset officer state before each demo take: `AWS_PROFILE=baadh scripts/reset_demo_state.sh`.
-- [ ] Task 2.7: index.html + Leaflet frontend (S3 + CloudFront), road edit + hub add UI
+- [x] Task 2.7/2.8: `frontend/index.html` (Leaflet, queue, road edit, hub add, WhatsApp, CSV) on Amazon S3 static website: http://baadhdrishti-frontendbucket-e1tfhveh47sy.s3-website.ap-south-1.amazonaws.com. Deploy: `scripts/deploy_frontend.sh`. Smoke: `tests/frontend_smoke.py <url> [--write]`. (S3 static website fallback used due to account CloudFront verification requirement).
 - [ ] Sun 12:00 IST feature freeze → video → AWS Builder Center blog → submit (exact deadline time TO VERIFY)
 
 ## Ownership

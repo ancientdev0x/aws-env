@@ -43,6 +43,28 @@ Resources:
         AllowMethods: [GET, POST]
         AllowHeaders: [content-type]
 
+  FrontendBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      WebsiteConfiguration: { IndexDocument: index.html }
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: false
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: false
+
+  FrontendBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref FrontendBucket
+      PolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal: "*"
+            Action: s3:GetObject
+            Resource: !Sub "${FrontendBucket.Arn}/*"
+
   ApiFunction:
     Type: AWS::Serverless::Function
     Metadata:
@@ -80,3 +102,7 @@ Outputs:
     Value: !Ref RoadOverridesTable
   StagingHubsTableName:
     Value: !Ref StagingHubsTable
+  FrontendUrl:
+    Value: !GetAtt FrontendBucket.WebsiteURL
+  FrontendBucketName:
+    Value: !Ref FrontendBucket
