@@ -426,6 +426,7 @@ uv venv --python 3.12 .venv && uv pip install --python .venv/bin/python -r scrip
 ---
 
 ## 7. 3-Minute Demo Video Script (Shot-by-Shot)
+> Recording version with live values and checklist: docs/VIDEO.md (supersedes the table below).
 
 | Timestamp | Screen Visual | Spoken Voiceover (High Energy, Confident) |
 |---|---|---|
