@@ -8,6 +8,7 @@ Outputs:
   data/processed/road_graph.graphml   - OSMnx graph (highway/bridge/name tags, length in meters)
   data/processed/road_edges.geojson   - one undirected feature per edge in engine format:
                                         edge_id, u, v, weight (km), is_bridge, highway, name
+  data/processed/road_nodes.json      - {node_id: [lon, lat]} for snapping habitations / hospitals / officer hubs
 """
 
 import json
@@ -43,7 +44,10 @@ def main():
     OUT.mkdir(parents=True, exist_ok=True)
     if not RAW_OSM.exists():
         fetch_osm()
-    G = ox.graph_from_xml(RAW_OSM, simplify=True, retain_all=True)
+    # Split simplified edges wherever the bridge tag changes; otherwise a short bridge is merged into a long road edge
+    # and the whole edge would be exempt from auto-disruption (bridge rule).
+    G = ox.graph_from_xml(RAW_OSM, simplify=False, retain_all=True)
+    G = ox.simplify_graph(G, edge_attrs_differ=["bridge"])
     ox.save_graphml(G, OUT / "road_graph.graphml")
 
     features = []
@@ -67,6 +71,7 @@ def main():
             "geometry": mapping(geom),
         })
 
+    (OUT / "road_nodes.json").write_text(json.dumps({str(n): [round(d["x"], 7), round(d["y"], 7)] for n, d in G.nodes(data=True)}))
     (OUT / "road_edges.geojson").write_text(json.dumps({"type": "FeatureCollection", "features": features}))
     n_bridge = sum(f["properties"]["is_bridge"] for f in features)
     km = sum(f["properties"]["weight"] for f in features)
