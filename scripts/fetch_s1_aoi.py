@@ -6,7 +6,7 @@ scripts/fetch_s1_aoi.py - Task 2.1: fetch Sentinel-1 GRD AOI windows (offline, r
 3. Read only that window of raw uint16 DN (VV, VH) from s3://sentinel-s1-l1c (no-sign-request).
 4. Save DN windows with GCPs shifted to window coords, plus calibration/noise XMLs and a sidecar JSON.
 
-Output: data/raw/<YYYYMMDD>/{vv,vh}_dn.tif, calibration-*.xml, noise-*.xml, meta.json
+Output: data/raw/<YYYYMMDD>/{vv,vh}_dn.tif, calibration-*.xml, noise-*.xml, annotation-vv.xml, meta.json
 """
 
 import json
@@ -68,6 +68,8 @@ def main():
         out.mkdir(parents=True, exist_ok=True)
         meta = {"scene_id": it.id, "datetime": it.properties["datetime"],
                 "relative_orbit": geom[date][0], "orbit_state": geom[date][1], "aoi": AOI, "pols": {}}
+        manifest_bucket, manifest_key = s3_split(it.assets["safe-manifest"].href)
+        s3.download_file(manifest_bucket, manifest_key.rsplit("/", 1)[0] + "/annotation/iw-vv.xml", str(out / "annotation-vv.xml"))
         for pol in ("vv", "vh"):
             for kind in ("calibration", "noise"):
                 bucket, key = s3_split(it.assets[f"schema-{kind}-{pol}"].href)
