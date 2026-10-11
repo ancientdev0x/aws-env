@@ -94,7 +94,7 @@ It is NOT: a rescue dispatch system, navigation, a live forecast, or an official
   (ElevenLabs, key in .env) → `video/record_app.py` (live site) → `video/render_html.py` → `video/assemble.py`; timing in
   `video/timeline.py`. Independent QC pass: no ground-truth violations; pacing fixes applied. Making it surfaced 3 app fixes:
   shared canvas renderer (road clicks were swallowed), gzip API responses, batch `edge_ids` in road-status.
-- [ ] Sun 12:00 IST feature freeze → video → AWS Builder Center blog → submit (exact deadline time TO VERIFY)
+- [x] Submitted Sun Oct 11 (Team 7). Video https://youtu.be/5Q1qWojO7iI; blog on AWS Builder Center (link in docs/SUBMISSION.md). Editable until the deadline.
 
 ## Ownership
 Handed over on Fri Oct 9 to a teammate who now owns the build end-to-end. Tasks 2.1–2.4 done (Sat Oct 10).

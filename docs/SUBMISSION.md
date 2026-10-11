@@ -10,7 +10,7 @@ Deadline hour: not published on the schedule page as of 2026-10-11 afternoon —
 - [x] Video (≤ 3 min) uploaded to YouTube — link: https://youtu.be/5Q1qWojO7iI
 - [x] Blog published on AWS Builder Center (cover: docs/cover.png, body image: docs/architecture.png) — link: https://builder.aws.com/content/3KY89U51xxhZcBmo0v9XJ4cOi4o/which-villages-lost-every-road-to-a-hospital-building-baadhdrishti-on-aws
 - [ ] AWS Builder Center student profile verified.
-- [ ] Submission form: project name BaadhDrishti, Track 02 Heat & Water, repo link, live link, video link, blog link,
+- [x] Submitted Sun Oct 11 (Team 7, KGJWGQ). Submission form: project name BaadhDrishti, Track 02 Heat & Water, repo link, live link, video link, blog link,
       AWS services: S3 (data bundle + static website hosting), API Gateway, Lambda, DynamoDB, SAM, AWS Open Data (Sentinel-1).
       (CloudFront is not used: the new account needs CloudFront verification — see CLAUDE.md.)
 - [ ] After judging: deactivate the `baadh-dev` access key in IAM; `sam delete --stack-name baadhdrishti` when no longer needed.
