@@ -328,6 +328,8 @@ Deployed via API Gateway + single AWS Lambda (`lambda_function.py`) with bundled
 ```
 - **Response `200 OK`**: Recomputes graph in memory (<computed> ms) and returns updated stats and diff.
 - Note: clearing the reported `blocking_edges` may expose further blocked edges on the next-best route; the recompute reports them.
+- Batch form (implemented Sun Oct 11): `"edge_ids": ["...", "..."]` (max 50) instead of `edge_id` → one write batch, one recompute.
+  Responses are gzip-compressed when the client sends `Accept-Encoding: gzip` (~395 kB → ~64 kB).
 
 ### 4.3 `POST /api/hubs`
 - **Description**: Officer designates a new school/stadium as an active staging hub.

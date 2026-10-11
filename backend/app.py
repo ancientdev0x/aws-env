@@ -2,7 +2,7 @@
 backend/app.py - BaadhDrishti API Lambda (PLAN.md §4)
 
 GET  /api/triage       -> ranked queue with current officer overrides + hubs
-POST /api/road-status  -> FORCE_CLEARED | FORCE_BLOCKED | AUTO_SUSPECTED (= remove override), then recompute (client computes the diff)
+POST /api/road-status  -> edge_id | edge_ids[]: FORCE_CLEARED | FORCE_BLOCKED | AUTO_SUSPECTED (= remove override), then recompute (client computes the diff)
 POST /api/hubs         -> add officer staging hub (snapped to nearest road node), then recompute
 
 Precomputed graph/habitations come from s3://$DATA_BUCKET/$BUNDLE_KEY (scripts/export_lambda_bundle.py).
@@ -25,6 +25,7 @@ from engine.reachability import evaluate_reachability
 ROAD_STATUSES = {"FORCE_CLEARED", "FORCE_BLOCKED", "AUTO_SUSPECTED"}
 HUB_KINDS = {"RELIEF_CAMP", "NDRF_BASE", "DISTRICT_COLLECTORATE", "SCHOOL"}
 MAX_HUB_SNAP_M = 1000.0
+MAX_EDGES_PER_POST = 50
 
 _ddb = boto3.resource("dynamodb")
 _overrides = _ddb.Table(os.environ.get("ROAD_OVERRIDES_TABLE", "road_overrides"))
@@ -145,15 +146,18 @@ def respond(code, body):
 
 
 def road_status(body):
+    """One edge (`edge_id`) or several (`edge_ids`, e.g. all blocking roads of a habitation) -> one recompute."""
     b = load_bundle()
-    eid, st = body.get("edge_id"), body.get("status")
-    if eid not in b["edge_meta"] or st not in ROAD_STATUSES:
-        return respond(400, {"error": f"edge_id must be a known edge and status one of {sorted(ROAD_STATUSES)}"})
-    if st == "AUTO_SUSPECTED":
-        _overrides.delete_item(Key={"edge_id": eid})
-    else:
-        _overrides.put_item(Item={"edge_id": eid, "override_status": st, "notes": str(body.get("notes", ""))[:500],
-                                  "officer_id": str(body.get("officer_name", ""))[:100], "updated_at": int(time.time())})
+    ids, st = body.get("edge_ids") or [body.get("edge_id")], body.get("status")
+    if not isinstance(ids, list) or not 0 < len(ids) <= MAX_EDGES_PER_POST or any(e not in b["edge_meta"] for e in ids) \
+            or st not in ROAD_STATUSES:
+        return respond(400, {"error": f"edge_id / edge_ids (max {MAX_EDGES_PER_POST}) must be known edges and status one of {sorted(ROAD_STATUSES)}"})
+    for eid in ids:
+        if st == "AUTO_SUSPECTED":
+            _overrides.delete_item(Key={"edge_id": eid})
+        else:
+            _overrides.put_item(Item={"edge_id": eid, "override_status": st, "notes": str(body.get("notes", ""))[:500],
+                                      "officer_id": str(body.get("officer_name", ""))[:100], "updated_at": int(time.time())})
     return respond(200, compute())
 
 

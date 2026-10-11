@@ -73,6 +73,15 @@ def test_api_lifecycle():
     assert t2["cut_off_count"] == offline["cut_off_count"]
     print("✓ AUTO_SUSPECTED removes override")
 
+    # Several edges in one request (one recompute) == the same edges one by one
+    code, r1 = call("POST", "/api/road-status", {"edge_ids": first["blocking_edges"], "status": "FORCE_CLEARED"})
+    assert code == 200 and {o["edge_id"] for o in r1["road_overrides"]} == set(first["blocking_edges"])
+    assert next(h for h in r1["habitations"] if h["id"] == first["id"])["status"] == rec["status"]
+    code, r2 = call("POST", "/api/road-status", {"edge_ids": first["blocking_edges"], "status": "AUTO_SUSPECTED"})
+    assert code == 200 and not r2["road_overrides"] and r2["cut_off_count"] == offline["cut_off_count"]
+    assert call("POST", "/api/road-status", {"edge_ids": [first["blocking_edges"][0], "nope"], "status": "FORCE_CLEARED"})[0] == 400
+    print("✓ POST /api/road-status with edge_ids (batch)")
+
     # Hub at the cut-off habitation itself -> it becomes PATH_EXISTS to that hub
     code, h = call("POST", "/api/hubs", {"name": "Test hub", "lat": first["lat"], "lon": first["lon"]})
     assert code == 201, h

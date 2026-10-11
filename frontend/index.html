@@ -321,11 +321,8 @@ async function setRoadStatus(edgeIds, status, title) {
   localStorage.setItem('bd_officer', v.officer_name);
   toast('Recomputing reachability on AWS Lambda…', 60000);
   try {
-    let last;
-    for (const id of edgeIds) {
-      last = await postJSON('/api/road-status', { edge_id: id, status, officer_name: v.officer_name, notes: v.notes });
-    }
-    applyUpdate(last); showDiff();
+    applyUpdate(await postJSON('/api/road-status', { edge_ids: edgeIds, status, officer_name: v.officer_name, notes: v.notes }));
+    showDiff();
   } catch (e) { banner('Update failed: ' + e.message); refresh(); }
 }
 function roadPopup(p, latlng) {
