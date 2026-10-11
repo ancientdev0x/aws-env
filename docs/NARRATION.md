@@ -43,7 +43,7 @@ Disaster response needs a human in the loop. //
 A field report says that stretch of road is passable. The officer marks it cleared — //
 and AWS Lambda recomputes reachability in well under a second. Five habitations get a path back. //
 For Paidurupadu, the officer nominates a dry staging point — and it is connected too. //
-But if the bridge on that same road is reported down, five habitations are cut off again. //
+But if the bridge on that same road is reported down, the same five are cut off again. //
 That is exactly why bridges are flagged, not guessed. //
 The queue goes to field teams on WhatsApp, or as a spreadsheet.
 

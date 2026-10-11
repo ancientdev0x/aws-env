@@ -164,7 +164,7 @@ WrapStyle: 2
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
-Style: Cap,Noto Sans,40,&H00F2F2F2,&H00F2F2F2,&H8C000000,&H00000000,0,0,0,0,100,100,0,0,3,12,0,2,80,80,44,1
+Style: Cap,Noto Sans,46,&H00F2F2F2,&H00F2F2F2,&H8C000000,&H00000000,0,0,0,0,100,100,0,0,3,12,0,2,80,80,44,1
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text

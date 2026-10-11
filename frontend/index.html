@@ -59,7 +59,7 @@
   .disc { color: #fca5a5; font-weight: 600; }
   #banner { display: none; position: fixed; top: 10px; left: 50%; transform: translateX(-50%); z-index: 3000;
             background: #7f1d1d; color: #fff; padding: 8px 14px; border-radius: 8px; cursor: pointer; }
-  #toast { display: none; position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%); z-index: 3000;
+  #toast { display: none; position: fixed; bottom: 150px; left: 50%; transform: translateX(-50%); z-index: 3000;
            background: #064e3b; color: #ecfdf5; padding: 10px 16px; border-radius: 8px; max-width: 680px;
            box-shadow: 0 6px 24px rgba(0, 0, 0, .4); }
   dialog { background: var(--panel); color: var(--text); border: 1px solid #374151; border-radius: 10px; min-width: 360px; }
@@ -164,7 +164,7 @@ const LY = { pre: null, post: null, mask: null, urban: null,
 function toggle(id, layer) { $(id).checked ? map.addLayer(layer) : map.removeLayer(layer); }
 function banner(msg) { $('banner').textContent = msg; $('banner').style.display = msg ? 'block' : 'none'; }
 let toastTimer;
-function toast(msg, ms = 9000) {
+function toast(msg, ms = 6500) {
   $('toast').textContent = msg; $('toast').style.display = 'block';
   clearTimeout(toastTimer); toastTimer = setTimeout(() => { $('toast').style.display = 'none'; }, ms);
 }

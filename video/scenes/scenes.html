@@ -69,7 +69,9 @@
   #s6 .l2 { left: 0; right: 0; top: 400px; text-align: center; font-size: 46px; color: var(--muted); }
   #s6 .end { left: 0; right: 0; top: 560px; text-align: center; }
   #s6 .end .w { font-size: 110px; }
-  #s6 .links { margin-top: 26px; display: flex; gap: 18px; justify-content: center; }
+  #s6 .links { margin-top: 26px; display: flex; flex-direction: column; gap: 14px; align-items: center; }
+  #s6 .links .chip { white-space: nowrap; }
+  #s6 .links .chip { font-size: 30px; padding: 12px 24px; color: var(--text); }
   #s6 .foot { left: 0; right: 0; bottom: 70px; text-align: center; font-size: 20px; color: var(--dim); }
 </style>
 </head>
@@ -204,7 +206,9 @@ function render5(t) {
     b_off: at('officer', 1), b_ddb: at('DynamoDB'), b_web: at('single'),
   };
   fade($('s5head'), t, 0.1, null, 16); fade($('s5lane1'), t, show.b_s1, null, 0); fade($('s5lane2'), t, show.b_api, null, 0);
-  for (const [id, ts] of Object.entries(show)) fade($(id), t, ts - 0.15, null, 26);
+  for (const [id, ts] of Object.entries(show)) {          // layout ghosted from frame 0, each box lights up on its cue
+    const a = fade($(id), t, ts - 0.15, null, 26); $(id).style.opacity = 0.13 + 0.87 * a; $(id).style.visibility = 'visible';
+  }
   const tSam = at('deployed'); fade($('s5samlbl'), t, tSam, null, 0);
   let svg = '<defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#bdbdc2"/></marker></defs>';
   for (const [a, b] of ARROWS) {

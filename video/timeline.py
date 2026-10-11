@@ -11,9 +11,10 @@ from pathlib import Path
 AUDIO = Path(__file__).resolve().parent / "audio"
 SCENES = [1, 2, 3, 4, 5, 6]
 LEAD = {1: 0.3, 2: 0.5, 3: 0.3, 4: 0.3, 5: 0.3, 6: 0.3}
-TAIL = {1: 0.8, 2: 1.0, 3: 1.0, 4: 1.5, 5: 0.8, 6: 2.0}
+TAIL = {1: 0.8, 2: 1.0, 3: 1.0, 4: 1.5, 5: 0.8, 6: 6.5}   # 6: end card with the live URL
 # (word it precedes, only words starting at/after this narration time, seconds of silence)
-GAPS = {4: [("and", 20.0, 2.0), ("But", 22.0, 2.0)]}
+GAPS = {1: [("This", 28.0, 1.5)],                          # hold the 9,314 card before the wordmark
+        4: [("and", 20.0, 2.0), ("But", 22.0, 2.0)]}
 
 
 def words(scene):

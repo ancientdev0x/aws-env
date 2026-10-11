@@ -90,6 +90,10 @@ It is NOT: a rescue dispatch system, navigation, a live forecast, or an official
   Reset officer state before each demo take: `AWS_PROFILE=baadh scripts/reset_demo_state.sh`.
 - [x] Task 2.7/2.8: `frontend/index.html` (Leaflet, queue, road edit, hub add, WhatsApp, CSV) on Amazon S3 static website: http://baadhdrishti-frontendbucket-e1tfhveh47sy.s3-website.ap-south-1.amazonaws.com. Deploy: `scripts/deploy_frontend.sh`. Smoke: `tests/frontend_smoke.py <url> [--write]`. (S3 static website fallback used due to account CloudFront verification requirement).
 - [x] Docs (Sun): README (rules moved to docs/HACKATHON.md), docs/architecture.png, docs/VIDEO.md, docs/BLOG.md, docs/SUBMISSION.md. Demo hub: officer-nominated village-centre point from scripts/pick_demo_hub.py (OSM has too few rural public buildings).
+- [x] Demo video (Sun): `video/out/baadhdrishti_demo.mp4` (2:57, 1080p30, -16 LUFS, gitignored). Rebuild: `scripts/video_tts.py`
+  (ElevenLabs, key in .env) → `video/record_app.py` (live site) → `video/render_html.py` → `video/assemble.py`; timing in
+  `video/timeline.py`. Independent QC pass: no ground-truth violations; pacing fixes applied. Making it surfaced 3 app fixes:
+  shared canvas renderer (road clicks were swallowed), gzip API responses, batch `edge_ids` in road-status.
 - [ ] Sun 12:00 IST feature freeze → video → AWS Builder Center blog → submit (exact deadline time TO VERIFY)
 
 ## Ownership
