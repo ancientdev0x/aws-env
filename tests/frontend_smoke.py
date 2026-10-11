@@ -33,6 +33,20 @@ def main(url, write):
         assert page.locator(".leaflet-image-layer").count() == 3, "pre/post/mask overlays missing"
         assert "NOT official rescue orders" in page.inner_text("footer")
 
+        # clicking a disrupted road on the map must open its popup (canvas stacking bug, fixed 2026-10-11)
+        page.evaluate("""() => new Promise(r => {
+            const f = S.data.disrupted_edges.features.find(f => f.properties.status === 'AUTO_SUSPECTED');
+            const c = f.geometry.coordinates[Math.floor(f.geometry.coordinates.length / 2)];
+            map.once('moveend', () => r(1)); map.setView([c[1], c[0]], 17, { animate: false }); })""")
+        page.wait_for_timeout(500)
+        xy = page.evaluate("""() => { const f = S.data.disrupted_edges.features.find(f => f.properties.status === 'AUTO_SUSPECTED');
+            const c = f.geometry.coordinates[Math.floor(f.geometry.coordinates.length / 2)];
+            const p = map.latLngToContainerPoint([c[1], c[0]]), r = document.getElementById('map').getBoundingClientRect();
+            return [r.left + p.x, r.top + p.y]; }""")
+        page.mouse.click(*xy)
+        page.wait_for_selector(".leaflet-popup-content button[data-s=FORCE_BLOCKED]", timeout=5000)
+        page.evaluate("() => { map.closePopup(); map.fitBounds([[16.50, 80.50], [16.65, 80.70]]); }")
+
         page.uncheck("#f-cut")
         assert page.locator("#queue .row[data-id]").count() > rows, "unchecking filter should show PATH_EXISTS rows"
         page.check("#f-cut")

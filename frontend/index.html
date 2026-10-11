@@ -153,9 +153,11 @@ const statusText = s => s.replaceAll('_', ' ');
 const map = L.map('map', { preferCanvas: true }).fitBounds(AOI_BOUNDS);
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
   maxZoom: 19, attribution: '&copy; OpenStreetMap contributors' }).addTo(map);
-for (const [pane, z] of [['sar', 350], ['mask', 360], ['urban', 370], ['roads', 410], ['habs', 450]]) {
+for (const [pane, z] of [['sar', 350], ['mask', 360], ['vec', 410]]) {
   map.createPane(pane).style.zIndex = z;
 }
+// One canvas for every vector layer: separate per-pane canvases swallow each other's clicks and hovers.
+const VEC = L.canvas({ pane: 'vec' });
 const LY = { pre: null, post: null, mask: null, urban: null,
   roads: L.layerGroup().addTo(map), habs: L.layerGroup().addTo(map), dest: L.layerGroup(), hubs: L.layerGroup().addTo(map) };
 
@@ -186,7 +188,7 @@ async function loadStatic() {
   const day = d => new Date(d + 'T00:00:00Z').toLocaleDateString('en-IN', { day: 'numeric', month: 'short', timeZone: 'UTC' });
   $('d-pre').textContent = day(ov.pre_date); $('d-post').textContent = day(ov.post_date);
   LY.urban = L.geoJSON(await getJSON('data/urban_core.geojson'), {
-    pane: 'urban', interactive: true,
+    renderer: VEC, interactive: true,
     style: { color: '#f59e0b', weight: 2, dashArray: '6 4', fillColor: '#f59e0b', fillOpacity: 0.12 },
   }).bindTooltip(URBAN_TIP, { sticky: true }).addTo(map);
   applySar();
@@ -210,7 +212,7 @@ function renderStats() {
 function renderRoads() {
   LY.roads.clearLayers();
   L.geoJSON(S.data.disrupted_edges, {
-    pane: 'roads',
+    renderer: VEC,
     style: f => ({ color: ROAD_COLOR[f.properties.status], weight: f.properties.status === 'AUTO_SUSPECTED' ? 3 : 5, opacity: 0.95 }),
     onEachFeature: (f, layer) => layer.on('click', e => { if (!S.addHub) roadPopup(f.properties, e.latlng); }),
   }).addTo(LY.roads);
@@ -220,7 +222,7 @@ function renderHabs() {
   LY.habs.clearLayers();
   const add = (r, oos) => {
     const cut = !oos && r.status !== 'PATH_EXISTS';
-    L.circleMarker([r.lat, r.lon], { pane: 'habs', radius: cut ? 8 : 5, color: '#111827', weight: 1,
+    L.circleMarker([r.lat, r.lon], { renderer: VEC, radius: cut ? 8 : 5, color: '#111827', weight: 1,
         fillColor: oos ? '#6b7280' : HAB_COLOR[r.status], fillOpacity: 0.95 })
       .bindTooltip(`${esc(r.name)} · ${esc(oos ? r.excluded_reason : statusText(r.status))}`)
       .on('click', () => { if (!S.addHub && !oos) select(r.id, true); })
@@ -232,7 +234,7 @@ function renderHabs() {
 function renderDest() {
   LY.dest.clearLayers();
   for (const d of S.data.destinations || []) {
-    L.circleMarker([d.lat, d.lon], { pane: 'habs', radius: 3, color: '#1d4ed8', weight: 1, fillColor: '#3b82f6', fillOpacity: 1 })
+    L.circleMarker([d.lat, d.lon], { renderer: VEC, radius: 3, color: '#1d4ed8', weight: 1, fillColor: '#3b82f6', fillOpacity: 1 })
       .bindTooltip(esc(d.name)).addTo(LY.dest);
   }
   toggle('t-dest', LY.dest);
