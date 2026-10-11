@@ -6,5 +6,6 @@
 - [ ] Blog published on AWS Builder Center from docs/BLOG.md (attach docs/architecture.png, docs/screenshot.png) — link: ____
 - [ ] AWS Builder Center student profile verified.
 - [ ] Submission form: project name BaadhDrishti, Track 02 Heat & Water, repo link, live link, video link, blog link,
-      AWS services: S3, CloudFront, API Gateway, Lambda, DynamoDB, SAM, AWS Open Data (Sentinel-1).
+      AWS services: S3 (data bundle + static website hosting), API Gateway, Lambda, DynamoDB, SAM, AWS Open Data (Sentinel-1).
+      (CloudFront is not used: the new account needs CloudFront verification — see CLAUDE.md.)
 - [ ] After judging: deactivate the `baadh-dev` access key in IAM; `sam delete --stack-name baadhdrishti` when no longer needed.
