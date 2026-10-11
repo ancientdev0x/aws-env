@@ -1,6 +1,6 @@
 # Which villages lost every road to a hospital? Building BaadhDrishti on AWS
 
-*Bharat Builds Tour — Environmental Hacks · Track 02 Heat & Water · live demo: http://baadhdrishti-frontendbucket-e1tfhveh47sy.s3-website.ap-south-1.amazonaws.com · code: https://github.com/ancientdev0x/aws-env · demo video: [add YouTube link]*
+*Bharat Builds Tour — Environmental Hacks · Track 02 Heat & Water · live demo: http://baadhdrishti-frontendbucket-e1tfhveh47sy.s3-website.ap-south-1.amazonaws.com · code: https://github.com/ancientdev0x/aws-env · demo video: https://youtu.be/5Q1qWojO7iI*
 
 ## The problem
 When the Budameru rivulet flooded Vijayawada in early September 2024, rapid flood maps (NRSC/APSAC, Copernicus) showed

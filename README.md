@@ -1,9 +1,10 @@
 # BaadhDrishti (बाढ़-दृष्टि) — which villages lost every mapped road to a hospital?
 
 **Live demo:** http://baadhdrishti-frontendbucket-e1tfhveh47sy.s3-website.ap-south-1.amazonaws.com · **API:** https://f3m0jdk4wi.execute-api.ap-south-1.amazonaws.com/api/triage
+**Demo video:** https://youtu.be/5Q1qWojO7iI · **Blog:** https://builder.aws.com/content/3KY89U51xxhZcBmo0v9XJ4cOi4o/which-villages-lost-every-road-to-a-hospital-building-baadhdrishti-on-aws
 Bharat Builds Tour — Environmental Hacks, Track 02 Heat & Water. Hackathon rules: [`docs/HACKATHON.md`](docs/HACKATHON.md).
 
-![BaadhDrishti screenshot](docs/screenshot.png)
+![BaadhDrishti screenshot](docs/cover.png)
 
 After a flood, satellites tell a control room **where the water is**. They do not tell it **which habitations have no
 mapped road left to a hospital or relief hub** — the question that decides where field teams verify first.
