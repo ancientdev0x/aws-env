@@ -9,263 +9,263 @@
   },
   {
    "text": "the",
-   "start": 0.313,
-   "end": 0.383
+   "start": 0.325,
+   "end": 0.395
   },
   {
    "text": "hood:",
-   "start": 0.441,
-   "end": 0.871
+   "start": 0.453,
+   "end": 0.824
   },
   {
    "text": "Sentinel-1",
-   "start": 1.196,
-   "end": 1.927
+   "start": 1.01,
+   "end": 1.695
   },
   {
    "text": "from",
-   "start": 2.043,
-   "end": 2.229
+   "start": 1.8,
+   "end": 2.009
   },
   {
    "text": "AWS",
-   "start": 2.322,
-   "end": 2.868
+   "start": 2.113,
+   "end": 2.577
   },
   {
    "text": "Open",
-   "start": 2.937,
-   "end": 3.216
+   "start": 2.647,
+   "end": 2.868
   },
   {
    "text": "Data,",
-   "start": 3.286,
-   "end": 3.796
+   "start": 2.926,
+   "end": 3.425
   },
   {
    "text": "processed",
-   "start": 4.005,
-   "end": 4.435
+   "start": 3.587,
+   "end": 4.017
   },
   {
    "text": "once",
-   "start": 4.505,
-   "end": 4.737
+   "start": 4.122,
+   "end": 4.447
   },
   {
    "text": "offline",
-   "start": 4.783,
-   "end": 5.294
+   "start": 4.528,
+   "end": 5.05
   },
   {
    "text": "into",
-   "start": 5.329,
-   "end": 5.515
+   "start": 5.097,
+   "end": 5.294
   },
   {
    "text": "Amazon",
-   "start": 5.608,
-   "end": 5.991
+   "start": 5.364,
+   "end": 5.7
   },
   {
    "text": "S3.",
-   "start": 6.084,
-   "end": 6.583
+   "start": 5.759,
+   "end": 6.223
   },
   {
    "text": ".",
-   "start": 6.618,
-   "end": 6.676
+   "start": 6.327,
+   "end": 6.374
   },
   {
    "text": "Amazon",
-   "start": 7.465,
-   "end": 7.953
+   "start": 6.815,
+   "end": 7.175
   },
   {
    "text": "API",
-   "start": 8.034,
-   "end": 8.51
+   "start": 7.233,
+   "end": 7.558
   },
   {
    "text": "Gateway",
-   "start": 8.603,
-   "end": 9.033
+   "start": 7.616,
+   "end": 8.011
   },
   {
    "text": "and",
-   "start": 9.067,
-   "end": 9.137
+   "start": 8.034,
+   "end": 8.104
   },
   {
    "text": "AWS",
-   "start": 9.195,
-   "end": 9.659
+   "start": 8.162,
+   "end": 8.58
   },
   {
    "text": "Lambda",
-   "start": 9.776,
-   "end": 10.24
+   "start": 8.684,
+   "end": 9.079
   },
   {
    "text": "run",
-   "start": 10.449,
-   "end": 10.681
+   "start": 9.265,
+   "end": 9.439
   },
   {
    "text": "the",
-   "start": 10.716,
-   "end": 10.786
+   "start": 9.485,
+   "end": 9.555
   },
   {
    "text": "road",
-   "start": 10.844,
-   "end": 11.064
+   "start": 9.625,
+   "end": 9.834
   },
   {
    "text": "engine",
-   "start": 11.134,
-   "end": 11.494
+   "start": 9.892,
+   "end": 10.17
   },
   {
    "text": "on",
-   "start": 11.564,
-   "end": 11.726
+   "start": 10.205,
+   "end": 10.286
   },
   {
    "text": "every",
-   "start": 11.796,
-   "end": 12.051
+   "start": 10.344,
+   "end": 10.612
+  },
+  {
+   "text": "officer",
+   "start": 10.67,
+   "end": 11.053
+  },
+  {
+   "text": "edit,",
+   "start": 11.134,
+   "end": 11.564
+  },
+  {
+   "text": ".",
+   "start": 11.61,
+   "end": 11.668
   },
   {
    "text": "officer",
    "start": 12.109,
-   "end": 12.481
-  },
-  {
-   "text": "edit,",
-   "start": 12.527,
-   "end": 12.852
-  },
-  {
-   "text": ".",
-   "start": 12.875,
-   "end": 12.992
-  },
-  {
-   "text": "officer",
-   "start": 13.781,
-   "end": 14.234
+   "end": 12.492
   },
   {
    "text": "decisions",
-   "start": 14.303,
-   "end": 14.756
+   "start": 12.55,
+   "end": 12.992
   },
   {
    "text": "live",
-   "start": 14.826,
-   "end": 15.012
+   "start": 13.096,
+   "end": 13.34
   },
   {
    "text": "in",
-   "start": 15.035,
-   "end": 15.093
+   "start": 13.375,
+   "end": 13.456
   },
   {
    "text": "Amazon",
-   "start": 15.151,
-   "end": 15.488
+   "start": 13.514,
+   "end": 13.827
   },
   {
    "text": "DynamoDB,",
-   "start": 15.546,
-   "end": 16.358
+   "start": 13.886,
+   "end": 14.652
   },
   {
    "text": ".",
-   "start": 16.405,
-   "end": 16.463
+   "start": 14.687,
+   "end": 14.756
   },
   {
    "text": "and",
-   "start": 17.252,
-   "end": 17.392
+   "start": 15.197,
+   "end": 15.348
   },
   {
    "text": "the",
-   "start": 17.438,
-   "end": 17.508
+   "start": 15.395,
+   "end": 15.476
   },
   {
    "text": "whole",
-   "start": 17.554,
-   "end": 17.763
+   "start": 15.523,
+   "end": 15.778
   },
   {
    "text": "app",
-   "start": 17.798,
-   "end": 17.926
+   "start": 15.813,
+   "end": 15.929
   },
   {
    "text": "is",
-   "start": 17.984,
-   "end": 18.054
+   "start": 15.987,
+   "end": 16.057
   },
   {
    "text": "a",
-   "start": 18.1,
-   "end": 18.123
+   "start": 16.103,
+   "end": 16.126
   },
   {
    "text": "single",
-   "start": 18.17,
-   "end": 18.471
+   "start": 16.173,
+   "end": 16.44
   },
   {
    "text": "page",
-   "start": 18.518,
-   "end": 18.773
+   "start": 16.475,
+   "end": 16.742
   },
   {
    "text": "on",
-   "start": 18.808,
-   "end": 18.878
+   "start": 16.776,
+   "end": 16.846
   },
   {
    "text": "Amazon",
-   "start": 18.924,
-   "end": 19.261
+   "start": 16.893,
+   "end": 17.218
   },
   {
    "text": "S3",
-   "start": 19.342,
-   "end": 19.632
+   "start": 17.276,
+   "end": 17.519
   },
   {
    "text": "--",
-   "start": 19.807,
-   "end": 19.865
+   "start": 17.682,
+   "end": 17.775
   },
   {
    "text": "deployed",
-   "start": 19.981,
-   "end": 20.468
+   "start": 18.03,
+   "end": 18.437
   },
   {
    "text": "with",
-   "start": 20.515,
-   "end": 20.666
+   "start": 18.471,
+   "end": 18.611
   },
   {
    "text": "AWS",
-   "start": 20.712,
-   "end": 21.235
+   "start": 18.657,
+   "end": 19.098
   },
   {
    "text": "SAM.",
-   "start": 21.269,
-   "end": 21.653
+   "start": 19.133,
+   "end": 19.528
   }
  ]
 }

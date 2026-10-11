@@ -4,428 +4,428 @@
  "words": [
   {
    "text": "BaadhDrishti",
-   "start": 0.046,
-   "end": 0.975
+   "start": 0.058,
+   "end": 0.94
   },
   {
    "text": "starts",
-   "start": 1.126,
-   "end": 1.521
+   "start": 1.103,
+   "end": 1.44
   },
   {
    "text": "with",
-   "start": 1.556,
-   "end": 1.695
+   "start": 1.463,
+   "end": 1.602
   },
   {
    "text": "Sentinel-1",
-   "start": 1.753,
-   "end": 2.473
+   "start": 1.66,
+   "end": 2.345
   },
   {
    "text": "radar",
-   "start": 2.589,
-   "end": 3.019
+   "start": 2.531,
+   "end": 2.926
   },
   {
    "text": "from",
-   "start": 3.077,
-   "end": 3.239
+   "start": 2.972,
+   "end": 3.123
   },
   {
    "text": "AWS",
-   "start": 3.332,
-   "end": 3.82
+   "start": 3.193,
+   "end": 3.669
   },
   {
    "text": "Open",
-   "start": 3.913,
-   "end": 4.203
+   "start": 3.773,
+   "end": 4.029
   },
   {
    "text": "Data.",
-   "start": 4.296,
-   "end": 4.83
+   "start": 4.087,
+   "end": 4.621
   },
   {
    "text": "Radar",
-   "start": 5.213,
-   "end": 5.573
+   "start": 5.364,
+   "end": 5.735
   },
   {
    "text": "sees",
-   "start": 5.689,
-   "end": 6.002
+   "start": 5.84,
+   "end": 6.142
   },
   {
    "text": "through",
-   "start": 6.049,
-   "end": 6.281
+   "start": 6.2,
+   "end": 6.432
   },
   {
    "text": "monsoon",
-   "start": 6.339,
-   "end": 6.815
+   "start": 6.49,
+   "end": 6.873
   },
   {
    "text": "cloud.",
-   "start": 6.896,
-   "end": 7.372
+   "start": 6.943,
+   "end": 7.419
   },
   {
    "text": ".",
-   "start": 7.546,
-   "end": 7.57
+   "start": 7.454,
+   "end": 7.477
   },
   {
    "text": "We",
-   "start": 8.359,
-   "end": 8.51
+   "start": 7.918,
+   "end": 8.057
   },
   {
    "text": "calibrate",
-   "start": 8.568,
-   "end": 9.091
+   "start": 8.115,
+   "end": 8.626
   },
   {
    "text": "the",
-   "start": 9.114,
-   "end": 9.183
+   "start": 8.649,
+   "end": 8.731
   },
   {
    "text": "image",
-   "start": 9.23,
-   "end": 9.509
+   "start": 8.789,
+   "end": 9.079
   },
   {
    "text": "from",
-   "start": 9.543,
-   "end": 9.683
+   "start": 9.114,
+   "end": 9.265
   },
   {
    "text": "the",
-   "start": 9.729,
-   "end": 9.799
+   "start": 9.311,
+   "end": 9.381
   },
   {
    "text": "twentieth",
-   "start": 9.845,
-   "end": 10.286
+   "start": 9.416,
+   "end": 9.892
   },
   {
    "text": "of",
-   "start": 10.333,
-   "end": 10.391
+   "start": 9.938,
+   "end": 10.008
   },
   {
    "text": "August",
-   "start": 10.484,
-   "end": 10.867
+   "start": 10.112,
+   "end": 10.472
   },
   {
    "text": "and",
-   "start": 10.913,
-   "end": 11.018
+   "start": 10.519,
+   "end": 10.612
   },
   {
    "text": "the",
-   "start": 11.064,
-   "end": 11.134
+   "start": 10.658,
+   "end": 10.728
   },
   {
    "text": "one",
-   "start": 11.215,
-   "end": 11.424
+   "start": 10.797,
+   "end": 11.018
   },
   {
    "text": "from",
-   "start": 11.471,
-   "end": 11.622
+   "start": 11.064,
+   "end": 11.227
   },
   {
    "text": "the",
-   "start": 11.656,
-   "end": 11.726
+   "start": 11.285,
+   "end": 11.355
   },
   {
    "text": "first",
-   "start": 11.773,
-   "end": 12.04
+   "start": 11.413,
+   "end": 11.703
   },
   {
    "text": "of",
-   "start": 12.086,
-   "end": 12.156
+   "start": 11.749,
+   "end": 11.819
   },
   {
    "text": "September,",
-   "start": 12.225,
-   "end": 12.841
+   "start": 11.877,
+   "end": 12.504
   },
   {
    "text": ".",
-   "start": 12.864,
-   "end": 12.934
+   "start": 12.539,
+   "end": 12.585
   },
   {
    "text": "and",
-   "start": 13.723,
-   "end": 13.874
+   "start": 13.026,
+   "end": 13.201
   },
   {
    "text": "mark",
-   "start": 13.967,
-   "end": 14.292
+   "start": 13.305,
+   "end": 13.618
   },
   {
    "text": "where",
-   "start": 14.362,
-   "end": 14.594
+   "start": 13.677,
+   "end": 13.886
   },
   {
    "text": "the",
-   "start": 14.629,
-   "end": 14.698
+   "start": 13.92,
+   "end": 13.99
   },
   {
    "text": "ground",
-   "start": 14.756,
-   "end": 15.093
+   "start": 14.048,
+   "end": 14.385
   },
   {
    "text": "suddenly",
-   "start": 15.151,
-   "end": 15.523
+   "start": 14.443,
+   "end": 14.826
   },
   {
    "text": "turned",
-   "start": 15.592,
-   "end": 15.987
+   "start": 14.884,
+   "end": 15.221
   },
   {
    "text": "as",
-   "start": 16.057,
-   "end": 16.196
+   "start": 15.279,
+   "end": 15.395
   },
   {
    "text": "dark",
-   "start": 16.277,
-   "end": 16.637
+   "start": 15.453,
+   "end": 15.755
   },
   {
    "text": "as",
-   "start": 16.695,
-   "end": 16.777
+   "start": 15.813,
+   "end": 15.906
   },
   {
    "text": "open",
-   "start": 16.87,
-   "end": 17.16
+   "start": 15.975,
+   "end": 16.231
   },
   {
    "text": "water.",
-   "start": 17.229,
-   "end": 17.671
+   "start": 16.289,
+   "end": 16.73
   },
   {
    "text": ".",
-   "start": 17.694,
-   "end": 17.845
+   "start": 16.776,
+   "end": 16.8
   },
   {
    "text": "Permanent",
-   "start": 18.634,
-   "end": 19.122
+   "start": 17.241,
+   "end": 17.682
   },
   {
    "text": "rivers",
-   "start": 19.192,
-   "end": 19.598
+   "start": 17.74,
+   "end": 18.088
   },
   {
    "text": "and",
-   "start": 19.644,
-   "end": 19.737
+   "start": 18.146,
+   "end": 18.228
   },
   {
    "text": "steep",
-   "start": 19.784,
-   "end": 20.109
+   "start": 18.274,
+   "end": 18.564
   },
   {
    "text": "slopes",
-   "start": 20.19,
-   "end": 20.689
+   "start": 18.646,
+   "end": 19.098
   },
   {
    "text": "are",
-   "start": 20.747,
-   "end": 20.863
+   "start": 19.203,
+   "end": 19.377
   },
   {
    "text": "masked",
-   "start": 20.933,
-   "end": 21.339
+   "start": 19.435,
+   "end": 19.795
   },
   {
    "text": "out.",
-   "start": 21.386,
-   "end": 21.746
+   "start": 19.841,
+   "end": 20.201
   },
   {
    "text": ".",
-   "start": 22.187,
-   "end": 22.21
+   "start": 20.422,
+   "end": 20.445
   },
   {
    "text": "And",
-   "start": 23.0,
-   "end": 23.197
+   "start": 20.886,
+   "end": 21.037
   },
   {
    "text": "the",
-   "start": 23.255,
-   "end": 23.325
+   "start": 21.084,
+   "end": 21.153
   },
   {
    "text": "dense",
-   "start": 23.383,
-   "end": 23.673
+   "start": 21.211,
+   "end": 21.467
   },
   {
    "text": "city",
-   "start": 23.708,
-   "end": 23.975
+   "start": 21.49,
+   "end": 21.722
   },
   {
    "text": "core",
-   "start": 24.045,
-   "end": 24.288
+   "start": 21.78,
+   "end": 22.082
   },
   {
    "text": "is",
-   "start": 24.323,
-   "end": 24.393
+   "start": 22.129,
+   "end": 22.21
   },
   {
    "text": "excluded",
-   "start": 24.451,
-   "end": 24.962
+   "start": 22.268,
+   "end": 22.779
   },
   {
    "text": "and",
-   "start": 25.008,
-   "end": 25.089
+   "start": 22.837,
+   "end": 22.93
   },
   {
    "text": "clearly",
-   "start": 25.136,
-   "end": 25.484
+   "start": 22.988,
+   "end": 23.348
   },
   {
    "text": "labelled",
-   "start": 25.531,
-   "end": 25.914
+   "start": 23.406,
+   "end": 23.812
   },
   {
    "text": "--",
-   "start": 26.041,
-   "end": 26.123
+   "start": 23.974,
+   "end": 24.056
   },
   {
    "text": "radar",
-   "start": 26.564,
-   "end": 26.866
+   "start": 24.346,
+   "end": 24.636
   },
   {
    "text": "bounces",
-   "start": 26.924,
-   "end": 27.284
+   "start": 24.706,
+   "end": 25.077
   },
   {
    "text": "off",
-   "start": 27.342,
-   "end": 27.446
+   "start": 25.135,
+   "end": 25.252
   },
   {
    "text": "buildings,",
-   "start": 27.528,
-   "end": 28.096
+   "start": 25.31,
+   "end": 25.867
   },
   {
    "text": "so",
-   "start": 28.166,
-   "end": 28.363
+   "start": 25.971,
+   "end": 26.099
   },
   {
    "text": "city",
-   "start": 28.445,
-   "end": 28.735
+   "start": 26.157,
+   "end": 26.389
   },
   {
    "text": "flooding",
-   "start": 28.793,
-   "end": 29.176
+   "start": 26.447,
+   "end": 26.831
   },
   {
    "text": "is",
-   "start": 29.246,
-   "end": 29.35
+   "start": 26.935,
+   "end": 27.121
   },
   {
    "text": "ambiguous.",
-   "start": 29.408,
-   "end": 30.209
+   "start": 27.179,
+   "end": 27.957
   },
   {
    "text": ".",
-   "start": 30.488,
-   "end": 30.523
+   "start": 27.992,
+   "end": 28.05
   },
   {
    "text": "The",
-   "start": 31.312,
-   "end": 31.44
+   "start": 28.491,
+   "end": 28.63
   },
   {
    "text": "official",
-   "start": 31.498,
-   "end": 31.951
+   "start": 28.688,
+   "end": 29.106
   },
   {
    "text": "NRSC",
-   "start": 32.067,
-   "end": 32.659
+   "start": 29.176,
+   "end": 29.71
   },
   {
    "text": "flood",
-   "start": 32.81,
-   "end": 33.112
+   "start": 29.814,
+   "end": 30.07
   },
   {
    "text": "map",
-   "start": 33.193,
-   "end": 33.483
+   "start": 30.128,
+   "end": 30.36
   },
   {
    "text": "leaves",
-   "start": 33.565,
-   "end": 33.867
+   "start": 30.464,
+   "end": 30.79
   },
   {
    "text": "it",
-   "start": 33.925,
-   "end": 33.994
+   "start": 30.848,
+   "end": 30.917
   },
   {
    "text": "out",
-   "start": 34.041,
-   "end": 34.203
+   "start": 30.964,
+   "end": 31.138
   },
   {
    "text": "too.",
-   "start": 34.261,
-   "end": 34.691
+   "start": 31.184,
+   "end": 31.486
   }
  ]
 }

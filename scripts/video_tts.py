@@ -29,8 +29,8 @@ NARRATION = ROOT / "docs" / "NARRATION.md"
 OUT = ROOT / "video" / "audio"
 API = "https://api.elevenlabs.io/v1"
 MODEL = "eleven_multilingual_v2"
-PAUSE = '<break time="0.8s" />'  # stands in for "//" in the script
-VOICE_SETTINGS = {"stability": 0.55, "similarity_boost": 0.75, "style": 0.15, "use_speaker_boost": True}
+PAUSE = '<break time="0.45s" />'  # stands in for "//" in the script
+VOICE_SETTINGS = {"stability": 0.55, "similarity_boost": 0.75, "style": 0.15, "use_speaker_boost": True, "speed": 1.1}
 
 
 def api_key():

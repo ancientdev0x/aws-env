@@ -4,128 +4,128 @@
  "words": [
   {
    "text": "BaadhDrishti",
-   "start": 0.07,
-   "end": 0.685
+   "start": 0.058,
+   "end": 0.673
   },
   {
    "text": "is",
-   "start": 0.755,
-   "end": 0.824
+   "start": 0.731,
+   "end": 0.801
   },
   {
    "text": "not",
-   "start": 0.894,
-   "end": 1.045
+   "start": 0.859,
+   "end": 0.998
   },
   {
    "text": "a",
-   "start": 1.08,
-   "end": 1.103
+   "start": 1.033,
+   "end": 1.057
   },
   {
    "text": "rescue",
-   "start": 1.161,
-   "end": 1.463
+   "start": 1.115,
+   "end": 1.405
   },
   {
    "text": "order",
-   "start": 1.509,
-   "end": 1.753
+   "start": 1.463,
+   "end": 1.672
   },
   {
    "text": "and",
-   "start": 1.811,
-   "end": 1.904
+   "start": 1.73,
+   "end": 1.8
   },
   {
    "text": "not",
-   "start": 1.974,
-   "end": 2.125
+   "start": 1.858,
+   "end": 1.997
   },
   {
    "text": "a",
-   "start": 2.159,
-   "end": 2.183
+   "start": 2.032,
+   "end": 2.055
   },
   {
    "text": "forecast.",
-   "start": 2.229,
-   "end": 2.856
+   "start": 2.113,
+   "end": 2.728
   },
   {
    "text": ".",
-   "start": 3.181,
-   "end": 3.204
+   "start": 2.786,
+   "end": 2.81
   },
   {
    "text": "It",
-   "start": 3.994,
-   "end": 4.145
+   "start": 3.251,
+   "end": 3.379
   },
   {
    "text": "is",
-   "start": 4.203,
-   "end": 4.307
+   "start": 3.437,
+   "end": 3.518
   },
   {
    "text": "an",
-   "start": 4.365,
-   "end": 4.423
+   "start": 3.576,
+   "end": 3.634
   },
   {
    "text": "honest,",
-   "start": 4.47,
-   "end": 5.004
+   "start": 3.692,
+   "end": 4.075
   },
   {
    "text": "verification-first",
-   "start": 5.178,
-   "end": 6.188
+   "start": 4.122,
+   "end": 5.097
   },
   {
    "text": "queue",
-   "start": 6.246,
-   "end": 6.583
+   "start": 5.155,
+   "end": 5.468
   },
   {
    "text": "--",
-   "start": 6.699,
-   "end": 6.815
+   "start": 5.573,
+   "end": 5.631
   },
   {
    "text": "so",
-   "start": 7.14,
-   "end": 7.268
+   "start": 5.735,
+   "end": 5.898
   },
   {
    "text": "officers",
-   "start": 7.338,
-   "end": 7.79
+   "start": 5.968,
+   "end": 6.432
   },
   {
    "text": "know",
-   "start": 7.848,
-   "end": 8.046
+   "start": 6.49,
+   "end": 6.687
   },
   {
    "text": "where",
-   "start": 8.104,
-   "end": 8.313
+   "start": 6.745,
+   "end": 6.954
   },
   {
    "text": "to",
-   "start": 8.348,
-   "end": 8.406
+   "start": 6.989,
+   "end": 7.047
   },
   {
    "text": "look",
-   "start": 8.464,
-   "end": 8.649
+   "start": 7.105,
+   "end": 7.291
   },
   {
    "text": "first.",
-   "start": 8.707,
-   "end": 9.207
+   "start": 7.349,
+   "end": 7.802
   }
  ]
 }

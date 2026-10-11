@@ -5,382 +5,432 @@
   {
    "text": "Disaster",
    "start": 0.058,
-   "end": 0.592
+   "end": 0.464
   },
   {
    "text": "response",
-   "start": 0.627,
-   "end": 1.103
+   "start": 0.499,
+   "end": 0.952
   },
   {
    "text": "needs",
-   "start": 1.138,
-   "end": 1.347
+   "start": 0.987,
+   "end": 1.207
   },
   {
    "text": "a",
-   "start": 1.382,
-   "end": 1.416
+   "start": 1.242,
+   "end": 1.277
   },
   {
    "text": "human",
-   "start": 1.486,
-   "end": 1.881
+   "start": 1.324,
+   "end": 1.614
   },
   {
    "text": "in",
-   "start": 1.927,
-   "end": 1.997
+   "start": 1.649,
+   "end": 1.718
   },
   {
    "text": "the",
-   "start": 2.032,
-   "end": 2.101
+   "start": 1.765,
+   "end": 1.834
   },
   {
    "text": "loop.",
-   "start": 2.148,
-   "end": 2.508
+   "start": 1.892,
+   "end": 2.276
   },
   {
    "text": ".",
-   "start": 2.752,
-   "end": 2.775
+   "start": 2.531,
+   "end": 2.554
   },
   {
    "text": "A",
-   "start": 3.564,
-   "end": 3.634
+   "start": 2.995,
+   "end": 3.065
   },
   {
    "text": "field",
-   "start": 3.727,
-   "end": 3.994
+   "start": 3.146,
+   "end": 3.39
   },
   {
    "text": "report",
-   "start": 4.052,
-   "end": 4.481
+   "start": 3.437,
+   "end": 3.75
   },
   {
    "text": "says",
-   "start": 4.54,
-   "end": 4.888
+   "start": 3.808,
+   "end": 4.098
   },
   {
    "text": "that",
-   "start": 4.946,
-   "end": 5.085
+   "start": 4.156,
+   "end": 4.284
   },
   {
    "text": "stretch",
-   "start": 5.143,
-   "end": 5.445
+   "start": 4.319,
+   "end": 4.609
   },
   {
    "text": "of",
-   "start": 5.503,
-   "end": 5.584
+   "start": 4.667,
+   "end": 4.737
   },
   {
    "text": "road",
-   "start": 5.7,
-   "end": 5.944
+   "start": 4.841,
+   "end": 5.05
   },
   {
    "text": "is",
-   "start": 5.991,
-   "end": 6.072
+   "start": 5.108,
+   "end": 5.19
   },
   {
    "text": "passable.",
-   "start": 6.153,
-   "end": 6.838
+   "start": 5.248,
+   "end": 5.828
   },
   {
    "text": "The",
-   "start": 7.163,
-   "end": 7.291
+   "start": 6.177,
+   "end": 6.304
   },
   {
    "text": "officer",
-   "start": 7.384,
-   "end": 7.825
+   "start": 6.374,
+   "end": 6.78
   },
   {
    "text": "marks",
-   "start": 7.918,
-   "end": 8.29
+   "start": 6.85,
+   "end": 7.163
   },
   {
    "text": "it",
-   "start": 8.336,
-   "end": 8.429
+   "start": 7.21,
+   "end": 7.303
   },
   {
    "text": "cleared",
-   "start": 8.499,
-   "end": 8.928
+   "start": 7.361,
+   "end": 7.732
   },
   {
    "text": "--",
-   "start": 9.079,
-   "end": 9.149
+   "start": 7.872,
+   "end": 8.081
   },
   {
    "text": ".",
-   "start": 9.427,
-   "end": 9.485
+   "start": 8.545,
+   "end": 8.649
   },
   {
    "text": "and",
-   "start": 10.275,
-   "end": 10.495
+   "start": 9.091,
+   "end": 9.23
   },
   {
    "text": "AWS",
-   "start": 10.612,
-   "end": 11.215
+   "start": 9.288,
+   "end": 9.799
   },
   {
    "text": "Lambda",
-   "start": 11.308,
-   "end": 11.68
+   "start": 9.88,
+   "end": 10.298
   },
   {
    "text": "recomputes",
-   "start": 11.738,
-   "end": 12.272
+   "start": 10.414,
+   "end": 11.122
   },
   {
    "text": "reachability",
-   "start": 12.341,
-   "end": 13.108
+   "start": 11.238,
+   "end": 11.958
   },
   {
    "text": "in",
-   "start": 13.189,
-   "end": 13.305
+   "start": 12.028,
+   "end": 12.132
   },
   {
    "text": "well",
-   "start": 13.421,
-   "end": 13.688
+   "start": 12.214,
+   "end": 12.434
   },
   {
    "text": "under",
-   "start": 13.758,
-   "end": 13.955
+   "start": 12.504,
+   "end": 12.736
   },
   {
    "text": "a",
-   "start": 14.002,
-   "end": 14.025
+   "start": 12.794,
+   "end": 12.817
   },
   {
    "text": "second.",
-   "start": 14.083,
-   "end": 14.605
+   "start": 12.875,
+   "end": 13.363
   },
   {
    "text": "Five",
-   "start": 14.988,
-   "end": 15.267
+   "start": 13.711,
+   "end": 13.978
   },
   {
    "text": "habitations",
-   "start": 15.302,
-   "end": 15.882
+   "start": 14.025,
+   "end": 14.675
   },
   {
    "text": "get",
-   "start": 15.929,
-   "end": 16.068
+   "start": 14.733,
+   "end": 14.872
   },
   {
    "text": "a",
-   "start": 16.115,
-   "end": 16.138
+   "start": 14.919,
+   "end": 14.942
   },
   {
    "text": "path",
-   "start": 16.196,
-   "end": 16.463
+   "start": 15.0,
+   "end": 15.256
   },
   {
    "text": "back.",
-   "start": 16.521,
-   "end": 16.939
+   "start": 15.302,
+   "end": 15.709
   },
   {
    "text": ".",
-   "start": 17.543,
-   "end": 17.566
+   "start": 16.254,
+   "end": 16.278
   },
   {
    "text": "For",
-   "start": 18.355,
-   "end": 18.576
+   "start": 16.719,
+   "end": 16.974
   },
   {
    "text": "Paidurupadu,",
-   "start": 18.692,
-   "end": 20.015
+   "start": 17.055,
+   "end": 18.007
   },
   {
    "text": "the",
-   "start": 20.132,
-   "end": 20.248
+   "start": 18.042,
+   "end": 18.158
   },
   {
    "text": "officer",
-   "start": 20.341,
-   "end": 20.805
+   "start": 18.216,
+   "end": 18.588
   },
   {
    "text": "nominates",
-   "start": 20.886,
-   "end": 21.351
+   "start": 18.658,
+   "end": 19.122
   },
   {
    "text": "a",
-   "start": 21.385,
-   "end": 21.42
+   "start": 19.157,
+   "end": 19.192
   },
   {
    "text": "dry",
-   "start": 21.49,
-   "end": 21.827
+   "start": 19.25,
+   "end": 19.552
   },
   {
    "text": "staging",
-   "start": 21.885,
-   "end": 22.303
+   "start": 19.61,
+   "end": 19.981
   },
   {
    "text": "point",
-   "start": 22.372,
-   "end": 22.709
+   "start": 20.051,
+   "end": 20.364
   },
   {
    "text": "--",
-   "start": 22.883,
-   "end": 22.93
+   "start": 20.469,
+   "end": 20.515
   },
   {
    "text": "and",
-   "start": 23.44,
-   "end": 23.626
+   "start": 20.771,
+   "end": 20.945
   },
   {
    "text": "it",
-   "start": 23.696,
-   "end": 23.754
+   "start": 21.003,
+   "end": 21.061
   },
   {
    "text": "is",
-   "start": 23.8,
-   "end": 23.87
+   "start": 21.107,
+   "end": 21.177
   },
   {
    "text": "connected",
-   "start": 23.928,
-   "end": 24.346
+   "start": 21.235,
+   "end": 21.641
   },
   {
    "text": "too.",
-   "start": 24.392,
-   "end": 24.752
+   "start": 21.688,
+   "end": 22.071
   },
   {
    "text": ".",
-   "start": 24.996,
-   "end": 25.031
+   "start": 22.21,
+   "end": 22.233
   },
   {
    "text": "But",
-   "start": 25.82,
-   "end": 26.006
+   "start": 22.675,
+   "end": 22.826
   },
   {
    "text": "if",
-   "start": 26.053,
-   "end": 26.122
+   "start": 22.872,
+   "end": 22.942
   },
   {
    "text": "the",
-   "start": 26.169,
-   "end": 26.238
+   "start": 23.0,
+   "end": 23.069
   },
   {
    "text": "bridge",
-   "start": 26.285,
-   "end": 26.564
+   "start": 23.127,
+   "end": 23.441
   },
   {
    "text": "on",
-   "start": 26.587,
-   "end": 26.668
+   "start": 23.499,
+   "end": 23.603
   },
   {
    "text": "that",
-   "start": 26.714,
-   "end": 26.842
+   "start": 23.65,
+   "end": 23.778
   },
   {
    "text": "same",
-   "start": 26.9,
-   "end": 27.144
+   "start": 23.836,
+   "end": 24.068
   },
   {
    "text": "road",
-   "start": 27.19,
-   "end": 27.376
+   "start": 24.126,
+   "end": 24.335
   },
   {
    "text": "is",
-   "start": 27.423,
-   "end": 27.492
+   "start": 24.381,
+   "end": 24.451
   },
   {
    "text": "reported",
-   "start": 27.539,
-   "end": 27.992
+   "start": 24.497,
+   "end": 24.892
   },
   {
    "text": "down,",
-   "start": 28.061,
-   "end": 28.409
+   "start": 24.95,
+   "end": 25.275
   },
   {
    "text": "five",
-   "start": 28.56,
-   "end": 28.897
+   "start": 25.345,
+   "end": 25.624
   },
   {
    "text": "habitations",
-   "start": 28.932,
-   "end": 29.629
+   "start": 25.67,
+   "end": 26.239
   },
   {
    "text": "are",
-   "start": 29.687,
-   "end": 29.826
+   "start": 26.274,
+   "end": 26.367
   },
   {
    "text": "cut",
-   "start": 29.861,
-   "end": 30.023
+   "start": 26.401,
+   "end": 26.541
   },
   {
    "text": "off",
-   "start": 30.07,
-   "end": 30.209
+   "start": 26.599,
+   "end": 26.715
   },
   {
    "text": "again.",
-   "start": 30.255,
-   "end": 30.662
+   "start": 26.773,
+   "end": 27.133
+  },
+  {
+   "text": ".",
+   "start": 27.168,
+   "end": 27.249
+  },
+  {
+   "text": "That",
+   "start": 27.69,
+   "end": 27.934
+  },
+  {
+   "text": "is",
+   "start": 27.992,
+   "end": 28.096
+  },
+  {
+   "text": "exactly",
+   "start": 28.155,
+   "end": 28.596
+  },
+  {
+   "text": "why",
+   "start": 28.642,
+   "end": 28.77
+  },
+  {
+   "text": "bridges",
+   "start": 28.839,
+   "end": 29.153
+  },
+  {
+   "text": "are",
+   "start": 29.199,
+   "end": 29.315
+  },
+  {
+   "text": "flagged,",
+   "start": 29.373,
+   "end": 29.78
+  },
+  {
+   "text": "not",
+   "start": 29.838,
+   "end": 30.023
+  },
+  {
+   "text": "guessed.",
+   "start": 30.093,
+   "end": 30.627
   },
   {
    "text": ".",
@@ -388,114 +438,64 @@
    "end": 31.196
   },
   {
-   "text": "That",
-   "start": 31.985,
-   "end": 32.334
-  },
-  {
-   "text": "is",
-   "start": 32.403,
-   "end": 32.519
-  },
-  {
-   "text": "exactly",
-   "start": 32.589,
-   "end": 33.053
-  },
-  {
-   "text": "why",
-   "start": 33.1,
-   "end": 33.228
-  },
-  {
-   "text": "bridges",
-   "start": 33.297,
-   "end": 33.634
-  },
-  {
-   "text": "are",
-   "start": 33.692,
-   "end": 33.796
-  },
-  {
-   "text": "flagged,",
-   "start": 33.854,
-   "end": 34.342
-  },
-  {
-   "text": "not",
-   "start": 34.423,
-   "end": 34.667
-  },
-  {
-   "text": "guessed.",
-   "start": 34.748,
-   "end": 35.352
-  },
-  {
-   "text": ".",
-   "start": 35.561,
-   "end": 35.735
-  },
-  {
    "text": "The",
-   "start": 36.524,
-   "end": 36.664
+   "start": 31.637,
+   "end": 31.765
   },
   {
    "text": "queue",
-   "start": 36.733,
-   "end": 37.012
+   "start": 31.823,
+   "end": 32.032
   },
   {
    "text": "goes",
-   "start": 37.058,
-   "end": 37.256
+   "start": 32.067,
+   "end": 32.299
   },
   {
    "text": "to",
-   "start": 37.291,
-   "end": 37.349
+   "start": 32.345,
+   "end": 32.415
   },
   {
    "text": "field",
-   "start": 37.43,
-   "end": 37.685
+   "start": 32.485,
+   "end": 32.763
   },
   {
    "text": "teams",
-   "start": 37.72,
-   "end": 37.987
+   "start": 32.798,
+   "end": 33.054
   },
   {
    "text": "on",
-   "start": 38.045,
-   "end": 38.127
+   "start": 33.1,
+   "end": 33.17
   },
   {
    "text": "WhatsApp,",
-   "start": 38.185,
-   "end": 38.788
+   "start": 33.216,
+   "end": 33.75
   },
   {
    "text": "or",
-   "start": 38.835,
-   "end": 39.009
+   "start": 33.797,
+   "end": 33.948
   },
   {
    "text": "as",
-   "start": 39.067,
-   "end": 39.171
+   "start": 33.994,
+   "end": 34.087
   },
   {
    "text": "a",
-   "start": 39.23,
-   "end": 39.253
+   "start": 34.145,
+   "end": 34.168
   },
   {
    "text": "spreadsheet.",
-   "start": 39.299,
-   "end": 40.042
+   "start": 34.203,
+   "end": 34.83
   }
  ]
 }

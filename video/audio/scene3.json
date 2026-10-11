@@ -9,448 +9,448 @@
   },
   {
    "text": "flood",
-   "start": 0.174,
+   "start": 0.186,
    "end": 0.453
   },
   {
    "text": "map",
-   "start": 0.511,
-   "end": 0.72
+   "start": 0.522,
+   "end": 0.743
   },
   {
    "text": "alone",
-   "start": 0.778,
-   "end": 1.022
+   "start": 0.801,
+   "end": 1.068
   },
   {
    "text": "is",
-   "start": 1.057,
-   "end": 1.126
+   "start": 1.103,
+   "end": 1.173
   },
   {
    "text": "not",
-   "start": 1.196,
-   "end": 1.382
+   "start": 1.231,
+   "end": 1.37
   },
   {
    "text": "the",
-   "start": 1.416,
-   "end": 1.509
+   "start": 1.405,
+   "end": 1.474
   },
   {
    "text": "answer.",
-   "start": 1.567,
-   "end": 2.078
+   "start": 1.521,
+   "end": 1.927
   },
   {
    "text": ".",
-   "start": 2.101,
-   "end": 2.125
+   "start": 1.95,
+   "end": 1.974
   },
   {
    "text": "We",
-   "start": 2.914,
-   "end": 3.146
+   "start": 2.415,
+   "end": 2.612
   },
   {
    "text": "turn",
-   "start": 3.216,
-   "end": 3.506
+   "start": 2.67,
+   "end": 2.926
   },
   {
    "text": "more",
-   "start": 3.599,
-   "end": 3.808
+   "start": 2.995,
+   "end": 3.181
   },
   {
    "text": "than",
-   "start": 3.843,
-   "end": 3.971
+   "start": 3.216,
+   "end": 3.355
   },
   {
    "text": "twenty-six",
-   "start": 4.017,
-   "end": 4.528
+   "start": 3.402,
+   "end": 3.947
   },
   {
    "text": "thousand",
-   "start": 4.598,
-   "end": 5.085
+   "start": 4.005,
+   "end": 4.412
   },
   {
    "text": "OpenStreetMap",
-   "start": 5.178,
-   "end": 6.002
+   "start": 4.493,
+   "end": 5.317
   },
   {
    "text": "road",
-   "start": 6.084,
-   "end": 6.316
+   "start": 5.375,
+   "end": 5.584
   },
   {
    "text": "segments",
-   "start": 6.374,
-   "end": 6.885
+   "start": 5.642,
+   "end": 6.037
   },
   {
    "text": "into",
-   "start": 6.943,
-   "end": 7.187
+   "start": 6.095,
+   "end": 6.316
   },
   {
    "text": "a",
-   "start": 7.268,
-   "end": 7.303
+   "start": 6.397,
+   "end": 6.432
   },
   {
    "text": "graph.",
-   "start": 7.361,
-   "end": 7.86
+   "start": 6.49,
+   "end": 7.024
   },
   {
    "text": ".",
-   "start": 7.895,
-   "end": 7.918
+   "start": 7.187,
+   "end": 7.21
   },
   {
    "text": "Any",
-   "start": 8.707,
-   "end": 8.998
+   "start": 7.651,
+   "end": 7.883
   },
   {
    "text": "road",
-   "start": 9.079,
-   "end": 9.381
+   "start": 7.953,
+   "end": 8.185
   },
   {
    "text": "next",
-   "start": 9.474,
-   "end": 9.752
+   "start": 8.266,
+   "end": 8.475
   },
   {
    "text": "to",
-   "start": 9.787,
-   "end": 9.845
+   "start": 8.51,
+   "end": 8.568
   },
   {
    "text": "candidate",
-   "start": 9.915,
-   "end": 10.449
+   "start": 8.626,
+   "end": 9.114
   },
   {
    "text": "water",
-   "start": 10.519,
-   "end": 10.902
+   "start": 9.16,
+   "end": 9.497
   },
   {
    "text": "is",
-   "start": 10.983,
-   "end": 11.134
+   "start": 9.555,
+   "end": 9.648
   },
   {
    "text": "treated",
-   "start": 11.204,
-   "end": 11.564
+   "start": 9.694,
+   "end": 10.031
   },
   {
    "text": "as",
-   "start": 11.61,
-   "end": 11.703
+   "start": 10.077,
+   "end": 10.17
   },
   {
    "text": "blocked",
-   "start": 11.773,
-   "end": 12.179
+   "start": 10.228,
+   "end": 10.588
   },
   {
    "text": "--",
-   "start": 12.33,
-   "end": 12.399
+   "start": 10.623,
+   "end": 10.67
   },
   {
    "text": "except",
-   "start": 12.841,
-   "end": 13.293
+   "start": 10.716,
+   "end": 11.099
   },
   {
    "text": "bridges.",
-   "start": 13.375,
-   "end": 14.118
+   "start": 11.157,
+   "end": 11.749
   },
   {
    "text": "Bridges",
-   "start": 15.07,
-   "end": 15.499
+   "start": 12.214,
+   "end": 12.539
   },
   {
    "text": "are",
-   "start": 15.557,
-   "end": 15.72
+   "start": 12.597,
+   "end": 12.725
   },
   {
    "text": "never",
-   "start": 15.79,
-   "end": 16.08
+   "start": 12.806,
+   "end": 13.05
   },
   {
    "text": "closed",
-   "start": 16.161,
-   "end": 16.556
+   "start": 13.108,
+   "end": 13.398
   },
   {
    "text": "automatically;",
-   "start": 16.591,
-   "end": 17.45
+   "start": 13.433,
+   "end": 14.188
   },
   {
    "text": "they",
-   "start": 17.659,
-   "end": 17.81
+   "start": 14.373,
+   "end": 14.513
   },
   {
    "text": "are",
-   "start": 17.845,
-   "end": 17.938
+   "start": 14.536,
+   "end": 14.629
   },
   {
    "text": "flagged",
-   "start": 17.996,
-   "end": 18.425
+   "start": 14.687,
+   "end": 15.012
   },
   {
    "text": "for",
-   "start": 18.472,
-   "end": 18.611
+   "start": 15.047,
+   "end": 15.186
   },
   {
    "text": "a",
-   "start": 18.658,
-   "end": 18.681
+   "start": 15.221,
+   "end": 15.244
   },
   {
    "text": "field",
-   "start": 18.739,
-   "end": 18.983
+   "start": 15.291,
+   "end": 15.523
   },
   {
    "text": "check.",
-   "start": 19.018,
-   "end": 19.389
+   "start": 15.558,
+   "end": 15.918
   },
   {
    "text": ".",
-   "start": 19.83,
-   "end": 19.853
+   "start": 16.556,
+   "end": 16.579
   },
   {
    "text": "Then,",
-   "start": 20.643,
-   "end": 21.003
+   "start": 17.021,
+   "end": 17.473
   },
   {
    "text": "for",
-   "start": 21.061,
-   "end": 21.212
+   "start": 17.578,
+   "end": 17.74
   },
   {
    "text": "every",
-   "start": 21.27,
-   "end": 21.467
+   "start": 17.798,
+   "end": 18.007
   },
   {
    "text": "habitation,",
-   "start": 21.514,
-   "end": 22.164
+   "start": 18.065,
+   "end": 18.634
   },
   {
    "text": "we",
-   "start": 22.199,
-   "end": 22.303
+   "start": 18.669,
+   "end": 18.762
   },
   {
    "text": "ask",
-   "start": 22.384,
-   "end": 22.617
+   "start": 18.82,
+   "end": 19.052
   },
   {
    "text": "one",
-   "start": 22.686,
-   "end": 22.849
+   "start": 19.11,
+   "end": 19.273
   },
   {
    "text": "question:",
-   "start": 22.884,
-   "end": 23.487
+   "start": 19.308,
+   "end": 19.842
   },
   {
    "text": "is",
-   "start": 24.184,
-   "end": 24.347
+   "start": 20.48,
+   "end": 20.654
   },
   {
    "text": "any",
-   "start": 24.416,
-   "end": 24.602
+   "start": 20.724,
+   "end": 20.91
   },
   {
    "text": "mapped",
-   "start": 24.683,
-   "end": 24.985
+   "start": 21.014,
+   "end": 21.397
   },
   {
    "text": "road",
-   "start": 25.066,
-   "end": 25.299
+   "start": 21.502,
+   "end": 21.757
   },
   {
    "text": "path",
-   "start": 25.368,
-   "end": 25.693
+   "start": 21.815,
+   "end": 22.152
   },
   {
    "text": "left",
-   "start": 25.763,
-   "end": 25.984
+   "start": 22.222,
+   "end": 22.442
   },
   {
    "text": "to",
-   "start": 26.018,
-   "end": 26.1
+   "start": 22.466,
+   "end": 22.547
   },
   {
    "text": "a",
-   "start": 26.181,
-   "end": 26.204
+   "start": 22.605,
+   "end": 22.628
   },
   {
    "text": "hospital?",
-   "start": 26.262,
-   "end": 26.854
+   "start": 22.686,
+   "end": 23.197
   },
   {
    "text": ".",
-   "start": 27.179,
-   "end": 27.214
+   "start": 23.255,
+   "end": 23.278
   },
   {
    "text": "Seven",
-   "start": 28.004,
-   "end": 28.352
+   "start": 23.719,
+   "end": 24.045
   },
   {
    "text": "peri-urban",
-   "start": 28.422,
-   "end": 28.898
+   "start": 24.103,
+   "end": 24.579
   },
   {
    "text": "habitations",
-   "start": 28.944,
-   "end": 29.536
+   "start": 24.637,
+   "end": 25.182
   },
   {
    "text": "have",
-   "start": 29.583,
-   "end": 29.768
+   "start": 25.229,
+   "end": 25.403
   },
   {
    "text": "none.",
-   "start": 29.815,
-   "end": 30.163
+   "start": 25.449,
+   "end": 25.716
   },
   {
    "text": ".",
-   "start": 30.488,
-   "end": 30.523
+   "start": 25.74,
+   "end": 25.856
   },
   {
    "text": "Tadepalle",
-   "start": 31.312,
-   "end": 31.974
+   "start": 26.297,
+   "end": 26.796
   },
   {
    "text": "tops",
-   "start": 32.044,
-   "end": 32.323
+   "start": 26.854,
+   "end": 27.121
   },
   {
    "text": "the",
-   "start": 32.357,
-   "end": 32.427
+   "start": 27.168,
+   "end": 27.237
   },
   {
    "text": "queue",
-   "start": 32.497,
-   "end": 32.845
+   "start": 27.295,
+   "end": 27.597
   },
   {
    "text": "--",
-   "start": 32.88,
-   "end": 32.926
+   "start": 27.702,
+   "end": 27.748
   },
   {
    "text": "about",
-   "start": 33.008,
-   "end": 33.286
+   "start": 28.096,
+   "end": 28.375
   },
   {
    "text": "two",
-   "start": 33.309,
-   "end": 33.472
+   "start": 28.398,
+   "end": 28.561
   },
   {
    "text": "thousand",
-   "start": 33.542,
-   "end": 33.902
+   "start": 28.619,
+   "end": 28.944
   },
   {
    "text": "four",
-   "start": 33.948,
-   "end": 34.134
+   "start": 29.002,
+   "end": 29.188
   },
   {
    "text": "hundred",
-   "start": 34.18,
-   "end": 34.424
+   "start": 29.223,
+   "end": 29.443
   },
   {
    "text": "people",
-   "start": 34.471,
-   "end": 34.854
+   "start": 29.478,
+   "end": 29.792
   },
   {
    "text": "--",
-   "start": 34.947,
-   "end": 35.005
+   "start": 29.85,
+   "end": 29.919
   },
   {
    "text": "cut",
-   "start": 35.283,
-   "end": 35.492
+   "start": 30.268,
+   "end": 30.43
   },
   {
    "text": "off",
-   "start": 35.562,
-   "end": 35.701
+   "start": 30.488,
+   "end": 30.628
   },
   {
    "text": "on",
-   "start": 35.771,
-   "end": 35.852
+   "start": 30.686,
+   "end": 30.779
   },
   {
    "text": "the",
-   "start": 35.887,
-   "end": 35.957
+   "start": 30.813,
+   "end": 30.883
   },
   {
    "text": "Vijayawada-Vissannapeta",
-   "start": 36.026,
-   "end": 37.269
+   "start": 30.929,
+   "end": 32.23
   },
   {
    "text": "Road.",
-   "start": 37.338,
-   "end": 37.71
+   "start": 32.288,
+   "end": 32.59
   }
  ]
 }
