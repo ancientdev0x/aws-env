@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>BaadhDrishti video scenes</title>
+<!-- Deterministic frames: video/render_html.py calls window.render(t) for every frame and screenshots it.
+     No CSS transitions or timers: everything on screen is a pure function of t (seconds, scene clock). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=block" rel="stylesheet">
+<style>
+  :root { --bg: #0a0a0b; --p1: #111113; --p2: #17171a; --p3: #1f1f23; --line: #2a2a2f; --text: #ededee; --muted: #8d8d93;
+          --dim: #5c5c62; --accent: #f2f2f2; --flood: #4f8cff; --warn: #ff5a4f; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); color: var(--text);
+               font-family: Inter, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  .scene { position: absolute; inset: 0; display: none; }
+  .abs { position: absolute; }
+  .serif { font-family: "Instrument Serif", Georgia, serif; font-weight: 400; }
+  .mono { font-family: "JetBrains Mono", ui-monospace, monospace; }
+  .chip { display: inline-flex; gap: 10px; align-items: center; padding: 8px 16px; border: 1px solid var(--line);
+          border-radius: 999px; background: var(--p1); color: var(--muted); font-size: 20px; letter-spacing: .01em; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+  .panel { background: var(--p2); border: 1px solid var(--line); border-radius: 22px; box-shadow: 0 30px 80px rgba(0,0,0,.55); }
+  #grain { position: absolute; inset: -50px; pointer-events: none; opacity: .028; z-index: 50;
+           background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); }
+  #vignette { position: absolute; inset: 0; pointer-events: none; z-index: 49;
+              background: radial-gradient(ellipse at 50% 45%, rgba(0,0,0,0) 55%, rgba(0,0,0,.55) 100%); }
+  .cursor { position: absolute; z-index: 40; width: 34px; height: 34px; filter: drop-shadow(0 2px 4px rgba(0,0,0,.6)); }
+  .ripple { position: absolute; z-index: 39; width: 44px; height: 44px; border-radius: 50%; border: 2px solid #fff; }
+
+  /* scene 1: hook */
+  #s1 .title { left: 160px; top: 330px; font-size: 128px; line-height: 1.02; letter-spacing: -.01em; }
+  #s1 .sub { left: 164px; top: 520px; font-size: 34px; color: var(--muted); }
+  #s1 .mapwrap { left: 160px; top: 150px; width: 900px; height: 715px; overflow: hidden; padding: 0; }
+  #s1 .mapwrap img { width: 100%; display: block; }
+  #s1 .mapcap { left: 1110px; top: 430px; width: 650px; font-size: 54px; line-height: 1.12; }
+  #s1 .mapsrc { left: 1112px; top: 600px; font-size: 20px; color: var(--muted); }
+  #s1 .composer { left: 260px; top: 300px; width: 1400px; padding: 34px 40px 30px; }
+  #s1 .composer .lbl { font-size: 18px; color: var(--muted); letter-spacing: .08em; text-transform: uppercase; }
+  #s1 .composer .q { margin-top: 16px; font-size: 46px; line-height: 1.25; min-height: 116px; }
+  #s1 .composer .bar { margin-top: 18px; display: flex; justify-content: space-between; align-items: center; }
+  #s1 .run { padding: 12px 22px; border-radius: 12px; background: var(--accent); color: #0a0a0b; font-weight: 600; font-size: 22px; }
+  #s1 .caret { display: inline-block; width: 3px; height: 46px; background: var(--text); vertical-align: -6px; margin-left: 4px; }
+  #s1 .tool { left: 260px; top: 560px; }
+  #s1 .answer { left: 262px; top: 640px; width: 1400px; font-size: 52px; line-height: 1.2; }
+  #s1 .cards { left: 260px; top: 770px; display: flex; gap: 28px; }
+  #s1 .card { width: 470px; padding: 26px 30px; }
+  #s1 .card .n { font-size: 112px; font-weight: 600; letter-spacing: -.03em; font-variant-numeric: tabular-nums; line-height: 1; }
+  #s1 .card .l { margin-top: 10px; font-size: 22px; color: var(--muted); }
+  #s1 .brand { left: 0; right: 0; top: 380px; text-align: center; }
+  #s1 .brand .w { font-size: 150px; letter-spacing: -.02em; }
+  #s1 .brand .d { margin-top: 6px; font-size: 30px; color: var(--muted); }
+
+  /* scene 5: architecture */
+  #s5 .head { left: 120px; top: 70px; font-size: 64px; }
+  #s5 .box { position: absolute; padding: 22px 24px; border-radius: 18px; background: var(--p2); border: 1px solid var(--line); }
+  #s5 .box .k { font-size: 16px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+  #s5 .box .t { margin-top: 8px; font-size: 30px; font-weight: 600; }
+  #s5 .box .s { margin-top: 6px; font-size: 19px; color: var(--muted); line-height: 1.35; }
+  #s5 .box.aws { border-color: #3a3a40; }
+  #s5 svg { position: absolute; inset: 0; z-index: 1; }
+  #s5 .box { z-index: 2; }
+  #s5 .sam { position: absolute; border: 2px dashed #6b6b72; border-radius: 26px; z-index: 0; }
+  #s5 .samlbl { position: absolute; font-size: 20px; color: var(--muted); background: var(--bg); padding: 0 12px; z-index: 3; }
+  #s5 .lane { position: absolute; font-size: 18px; color: var(--dim); letter-spacing: .1em; text-transform: uppercase; }
+
+  /* scene 6: close */
+  #s6 .l1 { left: 0; right: 0; top: 300px; text-align: center; font-size: 64px; }
+  #s6 .l2 { left: 0; right: 0; top: 400px; text-align: center; font-size: 46px; color: var(--muted); }
+  #s6 .end { left: 0; right: 0; top: 560px; text-align: center; }
+  #s6 .end .w { font-size: 110px; }
+  #s6 .links { margin-top: 26px; display: flex; gap: 18px; justify-content: center; }
+  #s6 .foot { left: 0; right: 0; bottom: 70px; text-align: center; font-size: 20px; color: var(--dim); }
+</style>
+</head>
+<body>
+<div id="grain"></div><div id="vignette"></div>
+
+<!-- ============ SCENE 1: hook ============ -->
+<div class="scene" id="s1">
+  <div class="abs" style="left:160px; top:80px" id="s1chip"><span class="chip"><span class="dot"></span>Replay · Vijayawada, Andhra Pradesh</span></div>
+  <div class="abs serif title" id="s1title">September 2024</div>
+  <div class="abs sub" id="s1sub">The Budameru flood reaches the villages around Vijayawada.</div>
+  <div class="abs panel mapwrap" id="s1map"><img src="assets/nrsc_6sep_map.png" alt=""></div>
+  <div class="abs serif mapcap" id="s1mapcap">Flood maps show <i>where the water is.</i></div>
+  <div class="abs mapsrc" id="s1mapsrc">NRSC/ISRO (2024) · flood inundation, Vijayawada, as on 06-09-2024</div>
+  <div class="abs panel composer" id="s1comp">
+    <div class="lbl">The control-room question</div>
+    <div class="q" id="s1q"></div>
+    <div class="bar"><span class="chip mono" style="font-size:17px">BaadhDrishti · Sentinel-1 + OpenStreetMap roads</span><span class="run" id="s1run">Run triage</span></div>
+  </div>
+  <div class="abs tool" id="s1tool"><span class="chip mono" style="font-size:18px"><span class="dot" id="s1spin"></span>reachability recomputed on AWS Lambda</span></div>
+  <div class="abs serif answer" id="s1ans"></div>
+  <div class="abs cards" id="s1cards">
+    <div class="panel card" id="s1c1"><div class="n" id="s1n1">0</div><div class="l">habitations with no mapped road path to a hospital</div></div>
+    <div class="panel card" id="s1c2"><div class="n" id="s1n2">0</div><div class="l">people living in those habitations · GHSL 2020 estimate</div></div>
+  </div>
+  <div class="abs brand" id="s1brand"><div class="serif w">BaadhDrishti</div><div class="d">बाढ़-दृष्टि · post-flood field-verification triage queue</div></div>
+  <svg class="cursor abs" id="s1cur" viewBox="0 0 30 30"><path d="M5 3 L5 24 L10.5 18.6 L14.2 27 L18 25.3 L14.4 17.2 L22 17.2 Z" fill="#fff" stroke="#111" stroke-width="1.6" stroke-linejoin="round"/></svg>
+  <div class="ripple" id="s1rip"></div>
+</div>
+
+<!-- ============ SCENE 5: architecture ============ -->
+<div class="scene" id="s5">
+  <div class="abs serif head" id="s5head">Under the hood</div>
+  <div class="lane" style="left:120px; top:190px" id="s5lane1">Offline · once</div>
+  <div class="lane" style="left:120px; top:560px" id="s5lane2">Online · every officer edit</div>
+  <!-- SAM deploys the AWS resources only (S3 bundle, API, Lambda, DynamoDB, website) - not the offline pipeline -->
+  <div class="samlbl" id="s5samlbl" style="left:1310px; top:198px">Deployed with AWS SAM</div>
+  <svg id="s5svg" width="1920" height="1080"></svg>
+  <div class="box aws" id="b_s1" style="left:120px; top:240px; width:400px"><div class="k">AWS Open Data</div><div class="t">Sentinel-1 radar</div><div class="s">20 Aug &amp; 1 Sep 2024 · Amazon S3</div></div>
+  <div class="box" id="b_pipe" style="left:660px; top:240px; width:460px"><div class="k">Python pipeline</div><div class="t">Flood mask → road graph</div><div class="s">calibrate · change detection · OSM roads · triage</div></div>
+  <div class="box aws" id="b_data" style="left:1300px; top:240px; width:460px"><div class="k">Amazon S3</div><div class="t">Precomputed bundle</div><div class="s">graph, habitations, destinations</div></div>
+  <div class="box" id="b_off" style="left:120px; top:620px; width:400px"><div class="k">District officer</div><div class="t">Browser</div><div class="s">clear / block a road · add a staging hub</div></div>
+  <div class="box aws" id="b_api" style="left:660px; top:620px; width:460px"><div class="k">Amazon API Gateway</div><div class="t">HTTP API</div><div class="s">/api/triage · /api/road-status · /api/hubs</div></div>
+  <div class="box aws" id="b_lam" style="left:1300px; top:620px; width:460px"><div class="k">AWS Lambda · Python</div><div class="t">Road engine</div><div class="s">NetworkX multi-source Dijkstra</div></div>
+  <div class="box aws" id="b_ddb" style="left:1300px; top:820px; width:460px"><div class="k">Amazon DynamoDB</div><div class="t">Officer decisions</div><div class="s">road overrides · staging hubs</div></div>
+  <div class="box aws" id="b_web" style="left:660px; top:820px; width:460px"><div class="k">Amazon S3 static website</div><div class="t">Single page + Leaflet</div><div class="s">index.html · map · queue</div></div>
+</div>
+
+<!-- ============ SCENE 6: close ============ -->
+<div class="scene" id="s6">
+  <div class="abs serif l1" id="s6l1">Not a rescue order. Not a forecast.</div>
+  <div class="abs l2" id="s6l2">A verification-first queue — so officers know where to look first.</div>
+  <div class="abs end" id="s6end">
+    <div class="serif w">BaadhDrishti</div>
+    <div class="links"><span class="chip mono" id="s6url"></span><span class="chip mono" id="s6repo"></span></div>
+  </div>
+  <div class="abs foot" id="s6foot">Bharat Builds Tour · Environmental Hacks · Track 02 Heat &amp; Water · Built on AWS</div>
+</div>
+
+<script>
+// ---------- timing helpers (T is injected by render_html.py: {scene, words:[{text,t}], dur, data}) ----------
+const E = x => (x <= 0 ? 0 : x >= 1 ? 1 : 1 - Math.pow(2, -10 * x));          // expo-out
+const P = (t, a, b) => Math.max(0, Math.min(1, (t - a) / (b - a)));          // linear progress
+const at = (tok, n = 1) => { const h = T.words.filter(w => w.text.toLowerCase().startsWith(tok.toLowerCase())); return h[n - 1].t; };
+const $ = id => document.getElementById(id);
+function fade(el, t, tin, tout, dy = 24) {       // in over 0.6 s from tin, out over 0.5 s from tout
+  const a = E(P(t, tin, tin + 0.6)) * (tout == null ? 1 : 1 - E(P(t, tout, tout + 0.5)));
+  el.style.opacity = a; el.style.transform = `translateY(${(1 - E(P(t, tin, tin + 0.6))) * dy}px)`;
+  el.style.visibility = a <= 0.001 ? 'hidden' : 'visible';
+  return a;
+}
+const fmt = n => Math.round(n).toLocaleString('en-IN');
+function typed(text, t, a, b) { const k = Math.round(text.length * P(t, a, b)); return text.slice(0, k); }
+function cursorAt(cur, rip, t, path, clicks) {   // path: [[t, x, y], ...] eased between keys; clicks: [t]
+  let x = path[0][1], y = path[0][2];
+  for (let i = 1; i < path.length; i++) {
+    const [t0, x0, y0] = path[i - 1], [t1, x1, y1] = path[i];
+    if (t >= t0) { const e = E(P(t, t0, t1)); x = x0 + (x1 - x0) * e; y = y0 + (y1 - y0) * e; }
+  }
+  cur.style.left = (x - 6) + 'px'; cur.style.top = (y - 4) + 'px';
+  cur.style.opacity = t < path[0][0] ? 0 : 1;
+  let r = 0, op = 0;
+  for (const c of clicks) if (t >= c && t < c + 0.6) { const k = E(P(t, c, c + 0.6)); r = 1 + 0.9 * k; op = 1 - k; }
+  rip.style.left = (x - 22) + 'px'; rip.style.top = (y - 22) + 'px'; rip.style.opacity = op; rip.style.transform = `scale(${r})`;
+}
+
+// ---------- scene 1 ----------
+function render1(t) {
+  const D = T.data, Q = 'Which villages lost every mapped road to a hospital — and where should field teams verify first?';
+  const tMap = at('Satellite'), tBut = at('But'), tQ0 = at('which'), tQ1 = at('first?') + 0.3, tIn = at('In', 2),
+        tSeven = at('seven'), tAbout = at('About'), tThis = at('BaadhDrishti') - 0.6;  // not at('This'): 'this replay' matches first
+  fade($('s1chip'), t, 0.1, tThis - 0.4, 10);
+  fade($('s1title'), t, 0.2, tMap - 0.4); fade($('s1sub'), t, 1.6, tMap - 0.4);
+  const m = fade($('s1map'), t, tMap, tBut + 0.2, 40); fade($('s1mapcap'), t, at('They'), tBut + 0.2); fade($('s1mapsrc'), t, at('They') + 0.3, tBut + 0.2);
+  $('s1map').style.transform += ` scale(${1.04 - 0.04 * E(P(t, tMap, tBut))})`;
+  // composer: rises at "But", question types across "which ... first?"
+  const comp = $('s1comp'); fade(comp, t, tBut, tThis - 0.5, 40);
+  const lift = E(P(t, tIn - 0.6, tIn + 0.2)) * 170;            // composer moves up when the answer arrives
+  comp.style.transform = `translateY(${(1 - E(P(t, tBut, tBut + 0.6))) * 40 - lift}px)`;
+  const q = typed(Q, t, tQ0, tQ1);
+  $('s1q').innerHTML = q.replace(/&/g, '&amp;') + (t < tIn ? '<span class="caret" style="opacity:' + (Math.floor(t * 2) % 2 ? 0.2 : 1) + '"></span>' : '');
+  const tRun = tQ1 + 0.35;
+  $('s1run').style.background = t >= tRun && t < tRun + 0.25 ? '#bdbdbd' : '';
+  const tool = $('s1tool'); fade(tool, t, tRun + 0.15, tThis - 0.5, 12); tool.style.top = (560 - lift) + 'px';
+  $('s1spin').style.opacity = t < tIn ? 0.35 + 0.65 * Math.abs(Math.sin(t * 7)) : 1;
+  // answer streams word by word in serif
+  const ans = `In this replay, ${D.cut_off_count} habitations have no mapped road path left to any hospital.`;
+  const aEl = $('s1ans'); fade(aEl, t, tIn, tThis - 0.5, 10); aEl.style.top = (640 - lift) + 'px';
+  const words = ans.split(' '); const kk = Math.round(words.length * P(t, tIn, tSeven + 0.9)); aEl.textContent = words.slice(0, kk).join(' ');
+  const cards = $('s1cards'); cards.style.top = (770 - lift + 40) + 'px';
+  fade($('s1c1'), t, tSeven - 0.2, tThis - 0.5, 30); fade($('s1c2'), t, tAbout - 0.1, tThis - 0.5, 30);
+  $('s1n1').textContent = fmt(D.cut_off_count * E(P(t, tSeven - 0.1, tSeven + 1.0)));
+  $('s1n2').textContent = fmt(D.cut_off_population_proxy * E(P(t, tAbout + 0.2, at('people') + 0.4)));
+  fade($('s1brand'), t, tThis, null, 20);
+  const cx = 1530, cy = 300 + 210;                     // "Run triage" button centre (composer bar)
+  cursorAt($('s1cur'), $('s1rip'), t, [[tQ1 - 1.6, 1500, 860], [tQ1 - 0.1, cx, cy], [tIn + 0.6, cx + 120, cy + 320]], [tRun]);
+  $('s1cur').style.opacity = t > tQ1 - 1.6 && t < tIn + 0.8 ? 1 : 0;
+}
+
+// ---------- scene 5 ----------
+const ARROWS = [['b_s1', 'b_pipe'], ['b_pipe', 'b_data'], ['b_data', 'b_lam'], ['b_off', 'b_api'], ['b_api', 'b_lam'], ['b_lam', 'b_ddb'], ['b_web', 'b_off']];
+function anchor(id, toward) {
+  const r = $(id).getBoundingClientRect(), c = [r.left + r.width / 2, r.top + r.height / 2];
+  const dx = toward[0] - c[0], dy = toward[1] - c[1];
+  const s = Math.min(dx ? (r.width / 2 + 8) / Math.abs(dx) : 1e9, dy ? (r.height / 2 + 8) / Math.abs(dy) : 1e9);
+  return [c[0] + dx * s, c[1] + dy * s];
+}
+const ctr = id => { const r = $(id).getBoundingClientRect(); return [r.left + r.width / 2, r.top + r.height / 2]; };
+function render5(t) {
+  const show = {
+    b_s1: at('Sentinel-1'), b_pipe: at('processed'), b_data: at('Amazon', 1), b_api: at('API'), b_lam: at('Lambda'),
+    b_off: at('officer', 1), b_ddb: at('DynamoDB'), b_web: at('single'),
+  };
+  fade($('s5head'), t, 0.1, null, 16); fade($('s5lane1'), t, show.b_s1, null, 0); fade($('s5lane2'), t, show.b_api, null, 0);
+  for (const [id, ts] of Object.entries(show)) fade($(id), t, ts - 0.15, null, 26);
+  const tSam = at('deployed'); fade($('s5samlbl'), t, tSam, null, 0);
+  let svg = '<defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#bdbdc2"/></marker></defs>';
+  for (const [a, b] of ARROWS) {
+    const t0 = Math.max(show[a], show[b]) + 0.3, k = E(P(t, t0, t0 + 0.7));
+    if (k <= 0) continue;
+    const p = anchor(a, ctr(b)), q = anchor(b, ctr(a)), x = p[0] + (q[0] - p[0]) * k, y = p[1] + (q[1] - p[1]) * k;
+    svg += `<line x1="${p[0]}" y1="${p[1]}" x2="${x}" y2="${y}" stroke="#bdbdc2" stroke-width="2.5" ${k > 0.98 ? 'marker-end="url(#ah)"' : ''}/>`;
+    if (k > 0.98) {   // data pulse travelling along the arrow, period 1.6 s
+      const u = ((t - t0 - 0.7) / 1.6) % 1, px = p[0] + (q[0] - p[0]) * u, py = p[1] + (q[1] - p[1]) * u;
+      svg += `<circle cx="${px}" cy="${py}" r="5" fill="#ffffff" opacity="${0.9 * Math.sin(Math.PI * u)}"/>`;
+    }
+  }
+  const ks = E(P(t, tSam, tSam + 0.6));
+  if (ks > 0) svg += `<path d="M1270 205 H1805 V990 H628 V592 H1270 Z" fill="none" stroke="#6b6b72" stroke-width="2" stroke-dasharray="10 8" stroke-linejoin="round" opacity="${ks}"/>`;
+  $('s5svg').innerHTML = svg;
+}
+
+// ---------- scene 6 ----------
+function render6(t) {
+  $('s6url').textContent = T.data.frontend_url.replace(/^https?:\/\//, '');
+  $('s6repo').textContent = 'github.com/ancientdev0x/aws-env';
+  fade($('s6l1'), t, 0.2, null, 20); fade($('s6l2'), t, at('It') - 0.1, null, 20);
+  fade($('s6end'), t, at('look') - 0.2, null, 24); fade($('s6foot'), t, at('look'), null, 0);
+}
+
+window.render = t => {
+  document.querySelectorAll('.scene').forEach(s => { s.style.display = s.id === 's' + T.scene ? 'block' : 'none'; });
+  $('grain').style.transform = `translate(${(Math.floor(t * 24) * 37) % 50 - 25}px, ${(Math.floor(t * 24) * 53) % 50 - 25}px)`;
+  ({ 1: render1, 5: render5, 6: render6 })[T.scene](t);
+};
+</script>
+</body>
+</html>
