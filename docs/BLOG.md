@@ -1,6 +1,6 @@
 # Which villages lost every road to a hospital? Building BaadhDrishti on AWS
 
-*Bharat Builds Tour — Environmental Hacks · Track 02 Heat & Water · live demo: http://baadhdrishti-frontendbucket-e1tfhveh47sy.s3-website.ap-south-1.amazonaws.com · code: https://github.com/ancientdev0x/aws-env*
+*Bharat Builds Tour — Environmental Hacks · Track 02 Heat & Water · live demo: http://baadhdrishti-frontendbucket-e1tfhveh47sy.s3-website.ap-south-1.amazonaws.com · code: https://github.com/ancientdev0x/aws-env · demo video: [add YouTube link]*
 
 ## The problem
 When the Budameru rivulet flooded Vijayawada in early September 2024, rapid flood maps (NRSC/APSAC, Copernicus) showed
@@ -21,7 +21,8 @@ of one route restored five of them.
 ## The stack
 - **AWS Open Data**: Sentinel-1 GRD from `s3://sentinel-s1-l1c`, found via the Earth Search STAC API — read as AOI windows only.
 - **Offline Python** (run once): rasterio, NumPy/SciPy, OSMnx, Shapely → a 3.6 MB bundle in **Amazon S3**.
-- **Amazon API Gateway + AWS Lambda** (Python, NetworkX): multi-source Dijkstra from all destinations per request.
+- **Amazon API Gateway + AWS Lambda** (Python, NetworkX): multi-source Dijkstra from all destinations per request
+  (measured 560–850 ms of compute per recompute at 1769 MB); responses are gzip-compressed.
 - **Amazon DynamoDB**: officer road overrides and staging hubs.
 - **Amazon S3 static website**: one `index.html` with Leaflet. **AWS SAM** deploys all of it.
 
@@ -42,9 +43,31 @@ of one route restored five of them.
 5. **Small things:** Overpass hung from Python over IPv4 on our network (curl over IPv6 worked); OSM has few mapped rural
    public buildings, so the demo hub is an officer-nominated village-centre point checked dry in our mask, not a "school".
 
+Recording the demo video against the live site found three more problems, all fixed and redeployed:
+
+6. **Road clicks went nowhere.** Leaflet gave each map pane its own canvas, and the habitation-marker canvas sat on top
+   of the roads canvas and swallowed every click, so "mark cleared / blocked" on the map never opened (the queue buttons
+   worked, which is why our first smoke test missed it). One shared canvas renderer fixed it; the browser test now clicks
+   a road on the map.
+7. **Slow field networks.** Each triage response was ~395 kB of JSON. Our own connection measured 56–160 kB/s that day,
+   so a single response took 1.3–5.8 s to arrive although Lambda finished in under a second. Gzip brings it to ~64 kB.
+8. **Four round trips for one decision.** "Clear blocking roads" sent one request per road segment (about 8 s for four).
+   The API now accepts a list of `edge_ids` and recomputes once; the same action takes under 2 s.
+
 ## Honest limits
 Candidate inundation, not ground truth; dense urban core excluded (radar double-bounce), as NRSC also does; OSM is
 today's network, not September 2024's; population is a GHSL 2020 estimate. It is a screening queue, not rescue orders.
+
+## How the demo video was made
+Everything in the video is generated from code: the hook, architecture and closing scenes are an HTML page rendered
+frame by frame, and the demo part is a scripted headless-browser recording of the live site against the live API, so
+every number on screen is real output. Actions are cued from the narration's word timestamps. An independent review
+pass checked every number against the project's computed results before the final cut.
+
+## AI tools used
+- **Claude Code (Claude Opus 5.5)**: planning, SAR/GIS pipeline, API, frontend, video tooling, code review and QC.
+- **agycode** (AI coding agent): executed the frontend / hosting / docs implementation plan.
+- **ElevenLabs**: text-to-speech narration for the demo video (script written by the team).
 
 ## Try it
 Live: http://baadhdrishti-frontendbucket-e1tfhveh47sy.s3-website.ap-south-1.amazonaws.com · Code and reproduce steps: https://github.com/ancientdev0x/aws-env

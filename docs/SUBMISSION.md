@@ -1,5 +1,10 @@
 # Submission checklist (Sun Oct 11)
 
+Form: https://www.wemakedevs.org/aws/env/submit (sign in with the WeMakeDevs account; one submission per team).
+Rules §04 (wemakedevs.org/aws/env/rules): public repo + YouTube demo video **under 3:00** (public or unlisted — open the
+link in a signed-out browser first) + short writeup (problem, build, where AWS fits). §03: list the AI tools used.
+Deadline hour: not published on the schedule page as of 2026-10-11 afternoon — **TO VERIFY on the form page**.
+
 - [ ] Repo https://github.com/ancientdev0x/aws-env is public; README shows live URL, screenshot, architecture.
 - [ ] `AWS_PROFILE=baadh scripts/reset_demo_state.sh` run after the last test; live URL loads and shows 7 cut-off.
 - [ ] Video (≤ 3 min) uploaded (YouTube unlisted / Drive with view access) — link: ____
