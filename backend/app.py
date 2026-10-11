@@ -9,6 +9,8 @@ Precomputed graph/habitations come from s3://$DATA_BUCKET/$BUNDLE_KEY (scripts/e
 No SAR/GIS work here - only NetworkX via engine.reachability.
 """
 
+import base64
+import gzip
 import json
 import math
 import os
@@ -175,7 +177,19 @@ def add_hub(body):
     return respond(201, {**compute(), "hub": hub})
 
 
+def gzipped(event, res):
+    """Compress JSON bodies (~0.4 MB of mostly repeated keys) when the client accepts gzip: slow field networks."""
+    if "gzip" not in (event.get("headers") or {}).get("accept-encoding", "") or len(res["body"]) < 1024:
+        return res
+    return {**res, "headers": {**res["headers"], "Content-Encoding": "gzip"}, "isBase64Encoded": True,
+            "body": base64.b64encode(gzip.compress(res["body"].encode(), 6)).decode()}
+
+
 def handler(event, context):
+    return gzipped(event, route(event))
+
+
+def route(event):
     method = event.get("requestContext", {}).get("http", {}).get("method", "GET")
     path = event.get("rawPath", "")
     try:

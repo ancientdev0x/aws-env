@@ -3,6 +3,8 @@ tests/test_lambda_local.py - local smoke test of backend/app.py against the real
 DynamoDB and S3 are replaced by in-memory fakes; no AWS calls.
 Run: .venv/bin/python tests/test_lambda_local.py  (needs data/processed/lambda_bundle.json)
 """
+import base64
+import gzip
 import json
 import os
 import sys
@@ -82,6 +84,14 @@ def test_api_lifecycle():
     assert call("POST", "/api/hubs", {"name": "x", "lat": 10, "lon": 10})[0] == 400
     assert call("GET", "/api/nothing")[0] == 404
     print("✓ validation errors")
+
+    # gzip when the client accepts it (HTTP API v2 lowercases header names)
+    res = app.handler({"requestContext": {"http": {"method": "GET"}}, "rawPath": "/api/triage",
+                       "headers": {"accept-encoding": "gzip, deflate, br"}}, None)
+    assert res["headers"].get("Content-Encoding") == "gzip" and res["isBase64Encoded"] is True
+    plain_len = len(json.dumps(json.loads(gzip.decompress(base64.b64decode(res["body"])))))
+    assert json.loads(gzip.decompress(base64.b64decode(res["body"])))["cut_off_count"] == call("GET", "/api/triage")[1]["cut_off_count"]
+    print(f"✓ gzip: {len(res['body']) / 1e3:.0f} kB base64 vs ~{plain_len / 1e3:.0f} kB JSON")
 
 
 if __name__ == "__main__":
