@@ -1,0 +1,271 @@
+{
+ "scene": 5,
+ "title": "Architecture",
+ "words": [
+  {
+   "text": "Under",
+   "start": 0.035,
+   "end": 0.267
+  },
+  {
+   "text": "the",
+   "start": 0.313,
+   "end": 0.383
+  },
+  {
+   "text": "hood:",
+   "start": 0.441,
+   "end": 0.871
+  },
+  {
+   "text": "Sentinel-1",
+   "start": 1.196,
+   "end": 1.927
+  },
+  {
+   "text": "from",
+   "start": 2.043,
+   "end": 2.229
+  },
+  {
+   "text": "AWS",
+   "start": 2.322,
+   "end": 2.868
+  },
+  {
+   "text": "Open",
+   "start": 2.937,
+   "end": 3.216
+  },
+  {
+   "text": "Data,",
+   "start": 3.286,
+   "end": 3.796
+  },
+  {
+   "text": "processed",
+   "start": 4.005,
+   "end": 4.435
+  },
+  {
+   "text": "once",
+   "start": 4.505,
+   "end": 4.737
+  },
+  {
+   "text": "offline",
+   "start": 4.783,
+   "end": 5.294
+  },
+  {
+   "text": "into",
+   "start": 5.329,
+   "end": 5.515
+  },
+  {
+   "text": "Amazon",
+   "start": 5.608,
+   "end": 5.991
+  },
+  {
+   "text": "S3.",
+   "start": 6.084,
+   "end": 6.583
+  },
+  {
+   "text": ".",
+   "start": 6.618,
+   "end": 6.676
+  },
+  {
+   "text": "Amazon",
+   "start": 7.465,
+   "end": 7.953
+  },
+  {
+   "text": "API",
+   "start": 8.034,
+   "end": 8.51
+  },
+  {
+   "text": "Gateway",
+   "start": 8.603,
+   "end": 9.033
+  },
+  {
+   "text": "and",
+   "start": 9.067,
+   "end": 9.137
+  },
+  {
+   "text": "AWS",
+   "start": 9.195,
+   "end": 9.659
+  },
+  {
+   "text": "Lambda",
+   "start": 9.776,
+   "end": 10.24
+  },
+  {
+   "text": "run",
+   "start": 10.449,
+   "end": 10.681
+  },
+  {
+   "text": "the",
+   "start": 10.716,
+   "end": 10.786
+  },
+  {
+   "text": "road",
+   "start": 10.844,
+   "end": 11.064
+  },
+  {
+   "text": "engine",
+   "start": 11.134,
+   "end": 11.494
+  },
+  {
+   "text": "on",
+   "start": 11.564,
+   "end": 11.726
+  },
+  {
+   "text": "every",
+   "start": 11.796,
+   "end": 12.051
+  },
+  {
+   "text": "officer",
+   "start": 12.109,
+   "end": 12.481
+  },
+  {
+   "text": "edit,",
+   "start": 12.527,
+   "end": 12.852
+  },
+  {
+   "text": ".",
+   "start": 12.875,
+   "end": 12.992
+  },
+  {
+   "text": "officer",
+   "start": 13.781,
+   "end": 14.234
+  },
+  {
+   "text": "decisions",
+   "start": 14.303,
+   "end": 14.756
+  },
+  {
+   "text": "live",
+   "start": 14.826,
+   "end": 15.012
+  },
+  {
+   "text": "in",
+   "start": 15.035,
+   "end": 15.093
+  },
+  {
+   "text": "Amazon",
+   "start": 15.151,
+   "end": 15.488
+  },
+  {
+   "text": "DynamoDB,",
+   "start": 15.546,
+   "end": 16.358
+  },
+  {
+   "text": ".",
+   "start": 16.405,
+   "end": 16.463
+  },
+  {
+   "text": "and",
+   "start": 17.252,
+   "end": 17.392
+  },
+  {
+   "text": "the",
+   "start": 17.438,
+   "end": 17.508
+  },
+  {
+   "text": "whole",
+   "start": 17.554,
+   "end": 17.763
+  },
+  {
+   "text": "app",
+   "start": 17.798,
+   "end": 17.926
+  },
+  {
+   "text": "is",
+   "start": 17.984,
+   "end": 18.054
+  },
+  {
+   "text": "a",
+   "start": 18.1,
+   "end": 18.123
+  },
+  {
+   "text": "single",
+   "start": 18.17,
+   "end": 18.471
+  },
+  {
+   "text": "page",
+   "start": 18.518,
+   "end": 18.773
+  },
+  {
+   "text": "on",
+   "start": 18.808,
+   "end": 18.878
+  },
+  {
+   "text": "Amazon",
+   "start": 18.924,
+   "end": 19.261
+  },
+  {
+   "text": "S3",
+   "start": 19.342,
+   "end": 19.632
+  },
+  {
+   "text": "--",
+   "start": 19.807,
+   "end": 19.865
+  },
+  {
+   "text": "deployed",
+   "start": 19.981,
+   "end": 20.468
+  },
+  {
+   "text": "with",
+   "start": 20.515,
+   "end": 20.666
+  },
+  {
+   "text": "AWS",
+   "start": 20.712,
+   "end": 21.235
+  },
+  {
+   "text": "SAM.",
+   "start": 21.269,
+   "end": 21.653
+  }
+ ]
+}

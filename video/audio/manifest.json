@@ -1,0 +1,48 @@
+{
+ "scenes": {
+  "3": {
+   "title": "Roads and the queue",
+   "audio": "scene3.mp3",
+   "timings": "scene3.json",
+   "duration_s": 37.988,
+   "chars": 526
+  },
+  "1": {
+   "title": "Hook",
+   "audio": "scene1.mp3",
+   "timings": "scene1.json",
+   "duration_s": 32.461,
+   "chars": 451
+  },
+  "2": {
+   "title": "Radar",
+   "audio": "scene2.mp3",
+   "timings": "scene2.json",
+   "duration_s": 34.876,
+   "chars": 484
+  },
+  "4": {
+   "title": "The officer acts",
+   "audio": "scene4.mp3",
+   "timings": "scene4.json",
+   "duration_s": 40.217,
+   "chars": 538
+  },
+  "5": {
+   "title": "Architecture",
+   "audio": "scene5.mp3",
+   "timings": "scene5.json",
+   "duration_s": 21.873,
+   "chars": 287
+  },
+  "6": {
+   "title": "Close",
+   "audio": "scene6.mp3",
+   "timings": "scene6.json",
+   "duration_s": 9.381,
+   "chars": 139
+  }
+ },
+ "voice_id": "miqykcv8BCUvQnRlIGUV",
+ "model_id": "eleven_multilingual_v2"
+}

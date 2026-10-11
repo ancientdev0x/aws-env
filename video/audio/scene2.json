@@ -1,0 +1,431 @@
+{
+ "scene": 2,
+ "title": "Radar",
+ "words": [
+  {
+   "text": "BaadhDrishti",
+   "start": 0.046,
+   "end": 0.975
+  },
+  {
+   "text": "starts",
+   "start": 1.126,
+   "end": 1.521
+  },
+  {
+   "text": "with",
+   "start": 1.556,
+   "end": 1.695
+  },
+  {
+   "text": "Sentinel-1",
+   "start": 1.753,
+   "end": 2.473
+  },
+  {
+   "text": "radar",
+   "start": 2.589,
+   "end": 3.019
+  },
+  {
+   "text": "from",
+   "start": 3.077,
+   "end": 3.239
+  },
+  {
+   "text": "AWS",
+   "start": 3.332,
+   "end": 3.82
+  },
+  {
+   "text": "Open",
+   "start": 3.913,
+   "end": 4.203
+  },
+  {
+   "text": "Data.",
+   "start": 4.296,
+   "end": 4.83
+  },
+  {
+   "text": "Radar",
+   "start": 5.213,
+   "end": 5.573
+  },
+  {
+   "text": "sees",
+   "start": 5.689,
+   "end": 6.002
+  },
+  {
+   "text": "through",
+   "start": 6.049,
+   "end": 6.281
+  },
+  {
+   "text": "monsoon",
+   "start": 6.339,
+   "end": 6.815
+  },
+  {
+   "text": "cloud.",
+   "start": 6.896,
+   "end": 7.372
+  },
+  {
+   "text": ".",
+   "start": 7.546,
+   "end": 7.57
+  },
+  {
+   "text": "We",
+   "start": 8.359,
+   "end": 8.51
+  },
+  {
+   "text": "calibrate",
+   "start": 8.568,
+   "end": 9.091
+  },
+  {
+   "text": "the",
+   "start": 9.114,
+   "end": 9.183
+  },
+  {
+   "text": "image",
+   "start": 9.23,
+   "end": 9.509
+  },
+  {
+   "text": "from",
+   "start": 9.543,
+   "end": 9.683
+  },
+  {
+   "text": "the",
+   "start": 9.729,
+   "end": 9.799
+  },
+  {
+   "text": "twentieth",
+   "start": 9.845,
+   "end": 10.286
+  },
+  {
+   "text": "of",
+   "start": 10.333,
+   "end": 10.391
+  },
+  {
+   "text": "August",
+   "start": 10.484,
+   "end": 10.867
+  },
+  {
+   "text": "and",
+   "start": 10.913,
+   "end": 11.018
+  },
+  {
+   "text": "the",
+   "start": 11.064,
+   "end": 11.134
+  },
+  {
+   "text": "one",
+   "start": 11.215,
+   "end": 11.424
+  },
+  {
+   "text": "from",
+   "start": 11.471,
+   "end": 11.622
+  },
+  {
+   "text": "the",
+   "start": 11.656,
+   "end": 11.726
+  },
+  {
+   "text": "first",
+   "start": 11.773,
+   "end": 12.04
+  },
+  {
+   "text": "of",
+   "start": 12.086,
+   "end": 12.156
+  },
+  {
+   "text": "September,",
+   "start": 12.225,
+   "end": 12.841
+  },
+  {
+   "text": ".",
+   "start": 12.864,
+   "end": 12.934
+  },
+  {
+   "text": "and",
+   "start": 13.723,
+   "end": 13.874
+  },
+  {
+   "text": "mark",
+   "start": 13.967,
+   "end": 14.292
+  },
+  {
+   "text": "where",
+   "start": 14.362,
+   "end": 14.594
+  },
+  {
+   "text": "the",
+   "start": 14.629,
+   "end": 14.698
+  },
+  {
+   "text": "ground",
+   "start": 14.756,
+   "end": 15.093
+  },
+  {
+   "text": "suddenly",
+   "start": 15.151,
+   "end": 15.523
+  },
+  {
+   "text": "turned",
+   "start": 15.592,
+   "end": 15.987
+  },
+  {
+   "text": "as",
+   "start": 16.057,
+   "end": 16.196
+  },
+  {
+   "text": "dark",
+   "start": 16.277,
+   "end": 16.637
+  },
+  {
+   "text": "as",
+   "start": 16.695,
+   "end": 16.777
+  },
+  {
+   "text": "open",
+   "start": 16.87,
+   "end": 17.16
+  },
+  {
+   "text": "water.",
+   "start": 17.229,
+   "end": 17.671
+  },
+  {
+   "text": ".",
+   "start": 17.694,
+   "end": 17.845
+  },
+  {
+   "text": "Permanent",
+   "start": 18.634,
+   "end": 19.122
+  },
+  {
+   "text": "rivers",
+   "start": 19.192,
+   "end": 19.598
+  },
+  {
+   "text": "and",
+   "start": 19.644,
+   "end": 19.737
+  },
+  {
+   "text": "steep",
+   "start": 19.784,
+   "end": 20.109
+  },
+  {
+   "text": "slopes",
+   "start": 20.19,
+   "end": 20.689
+  },
+  {
+   "text": "are",
+   "start": 20.747,
+   "end": 20.863
+  },
+  {
+   "text": "masked",
+   "start": 20.933,
+   "end": 21.339
+  },
+  {
+   "text": "out.",
+   "start": 21.386,
+   "end": 21.746
+  },
+  {
+   "text": ".",
+   "start": 22.187,
+   "end": 22.21
+  },
+  {
+   "text": "And",
+   "start": 23.0,
+   "end": 23.197
+  },
+  {
+   "text": "the",
+   "start": 23.255,
+   "end": 23.325
+  },
+  {
+   "text": "dense",
+   "start": 23.383,
+   "end": 23.673
+  },
+  {
+   "text": "city",
+   "start": 23.708,
+   "end": 23.975
+  },
+  {
+   "text": "core",
+   "start": 24.045,
+   "end": 24.288
+  },
+  {
+   "text": "is",
+   "start": 24.323,
+   "end": 24.393
+  },
+  {
+   "text": "excluded",
+   "start": 24.451,
+   "end": 24.962
+  },
+  {
+   "text": "and",
+   "start": 25.008,
+   "end": 25.089
+  },
+  {
+   "text": "clearly",
+   "start": 25.136,
+   "end": 25.484
+  },
+  {
+   "text": "labelled",
+   "start": 25.531,
+   "end": 25.914
+  },
+  {
+   "text": "--",
+   "start": 26.041,
+   "end": 26.123
+  },
+  {
+   "text": "radar",
+   "start": 26.564,
+   "end": 26.866
+  },
+  {
+   "text": "bounces",
+   "start": 26.924,
+   "end": 27.284
+  },
+  {
+   "text": "off",
+   "start": 27.342,
+   "end": 27.446
+  },
+  {
+   "text": "buildings,",
+   "start": 27.528,
+   "end": 28.096
+  },
+  {
+   "text": "so",
+   "start": 28.166,
+   "end": 28.363
+  },
+  {
+   "text": "city",
+   "start": 28.445,
+   "end": 28.735
+  },
+  {
+   "text": "flooding",
+   "start": 28.793,
+   "end": 29.176
+  },
+  {
+   "text": "is",
+   "start": 29.246,
+   "end": 29.35
+  },
+  {
+   "text": "ambiguous.",
+   "start": 29.408,
+   "end": 30.209
+  },
+  {
+   "text": ".",
+   "start": 30.488,
+   "end": 30.523
+  },
+  {
+   "text": "The",
+   "start": 31.312,
+   "end": 31.44
+  },
+  {
+   "text": "official",
+   "start": 31.498,
+   "end": 31.951
+  },
+  {
+   "text": "NRSC",
+   "start": 32.067,
+   "end": 32.659
+  },
+  {
+   "text": "flood",
+   "start": 32.81,
+   "end": 33.112
+  },
+  {
+   "text": "map",
+   "start": 33.193,
+   "end": 33.483
+  },
+  {
+   "text": "leaves",
+   "start": 33.565,
+   "end": 33.867
+  },
+  {
+   "text": "it",
+   "start": 33.925,
+   "end": 33.994
+  },
+  {
+   "text": "out",
+   "start": 34.041,
+   "end": 34.203
+  },
+  {
+   "text": "too.",
+   "start": 34.261,
+   "end": 34.691
+  }
+ ]
+}

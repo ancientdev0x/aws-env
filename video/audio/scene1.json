@@ -1,0 +1,381 @@
+{
+ "scene": 1,
+ "title": "Hook",
+ "words": [
+  {
+   "text": "In",
+   "start": 0.035,
+   "end": 0.139
+  },
+  {
+   "text": "September",
+   "start": 0.221,
+   "end": 0.755
+  },
+  {
+   "text": "2024,",
+   "start": 0.836,
+   "end": 2.032
+  },
+  {
+   "text": "the",
+   "start": 2.241,
+   "end": 2.334
+  },
+  {
+   "text": "Budameru",
+   "start": 2.38,
+   "end": 2.914
+  },
+  {
+   "text": "flood",
+   "start": 3.03,
+   "end": 3.355
+  },
+  {
+   "text": "swept",
+   "start": 3.425,
+   "end": 3.727
+  },
+  {
+   "text": "through",
+   "start": 3.75,
+   "end": 3.982
+  },
+  {
+   "text": "the",
+   "start": 4.017,
+   "end": 4.087
+  },
+  {
+   "text": "villages",
+   "start": 4.145,
+   "end": 4.644
+  },
+  {
+   "text": "around",
+   "start": 4.702,
+   "end": 5.074
+  },
+  {
+   "text": "Vijayawada.",
+   "start": 5.155,
+   "end": 6.072
+  },
+  {
+   "text": ".",
+   "start": 6.223,
+   "end": 6.246
+  },
+  {
+   "text": "Satellite",
+   "start": 7.036,
+   "end": 7.593
+  },
+  {
+   "text": "flood",
+   "start": 7.628,
+   "end": 7.872
+  },
+  {
+   "text": "maps",
+   "start": 7.941,
+   "end": 8.208
+  },
+  {
+   "text": "came",
+   "start": 8.266,
+   "end": 8.499
+  },
+  {
+   "text": "quickly.",
+   "start": 8.545,
+   "end": 9.102
+  },
+  {
+   "text": "They",
+   "start": 9.381,
+   "end": 9.555
+  },
+  {
+   "text": "showed",
+   "start": 9.613,
+   "end": 9.88
+  },
+  {
+   "text": "where",
+   "start": 9.915,
+   "end": 10.054
+  },
+  {
+   "text": "the",
+   "start": 10.089,
+   "end": 10.159
+  },
+  {
+   "text": "water",
+   "start": 10.205,
+   "end": 10.507
+  },
+  {
+   "text": "was.",
+   "start": 10.565,
+   "end": 11.064
+  },
+  {
+   "text": ".",
+   "start": 11.761,
+   "end": 11.784
+  },
+  {
+   "text": "But",
+   "start": 12.574,
+   "end": 12.748
+  },
+  {
+   "text": "a",
+   "start": 12.794,
+   "end": 12.817
+  },
+  {
+   "text": "control",
+   "start": 12.875,
+   "end": 13.259
+  },
+  {
+   "text": "room",
+   "start": 13.305,
+   "end": 13.433
+  },
+  {
+   "text": "has",
+   "start": 13.479,
+   "end": 13.584
+  },
+  {
+   "text": "a",
+   "start": 13.63,
+   "end": 13.653
+  },
+  {
+   "text": "sharper",
+   "start": 13.7,
+   "end": 14.06
+  },
+  {
+   "text": "question:",
+   "start": 14.094,
+   "end": 14.652
+  },
+  {
+   "text": ".",
+   "start": 14.675,
+   "end": 14.756
+  },
+  {
+   "text": "which",
+   "start": 15.546,
+   "end": 15.778
+  },
+  {
+   "text": "villages",
+   "start": 15.836,
+   "end": 16.254
+  },
+  {
+   "text": "have",
+   "start": 16.3,
+   "end": 16.451
+  },
+  {
+   "text": "lost",
+   "start": 16.509,
+   "end": 16.869
+  },
+  {
+   "text": "every",
+   "start": 16.927,
+   "end": 17.148
+  },
+  {
+   "text": "mapped",
+   "start": 17.217,
+   "end": 17.531
+  },
+  {
+   "text": "road",
+   "start": 17.589,
+   "end": 17.798
+  },
+  {
+   "text": "to",
+   "start": 17.833,
+   "end": 17.914
+  },
+  {
+   "text": "a",
+   "start": 17.995,
+   "end": 18.018
+  },
+  {
+   "text": "hospital",
+   "start": 18.076,
+   "end": 18.541
+  },
+  {
+   "text": "--",
+   "start": 18.657,
+   "end": 18.703
+  },
+  {
+   "text": "and",
+   "start": 19.145,
+   "end": 19.284
+  },
+  {
+   "text": "where",
+   "start": 19.342,
+   "end": 19.563
+  },
+  {
+   "text": "should",
+   "start": 19.586,
+   "end": 19.76
+  },
+  {
+   "text": "field",
+   "start": 19.806,
+   "end": 20.097
+  },
+  {
+   "text": "teams",
+   "start": 20.131,
+   "end": 20.457
+  },
+  {
+   "text": "verify",
+   "start": 20.526,
+   "end": 20.944
+  },
+  {
+   "text": "first?",
+   "start": 21.025,
+   "end": 21.536
+  },
+  {
+   "text": ".",
+   "start": 21.559,
+   "end": 21.583
+  },
+  {
+   "text": "In",
+   "start": 22.372,
+   "end": 22.535
+  },
+  {
+   "text": "this",
+   "start": 22.616,
+   "end": 22.802
+  },
+  {
+   "text": "replay,",
+   "start": 22.871,
+   "end": 23.452
+  },
+  {
+   "text": "the",
+   "start": 23.626,
+   "end": 23.742
+  },
+  {
+   "text": "answer",
+   "start": 23.812,
+   "end": 24.183
+  },
+  {
+   "text": "is",
+   "start": 24.253,
+   "end": 24.334
+  },
+  {
+   "text": "seven",
+   "start": 24.404,
+   "end": 24.752
+  },
+  {
+   "text": "habitations.",
+   "start": 24.822,
+   "end": 25.727
+  },
+  {
+   "text": ".",
+   "start": 25.786,
+   "end": 25.809
+  },
+  {
+   "text": "About",
+   "start": 26.598,
+   "end": 26.958
+  },
+  {
+   "text": "nine",
+   "start": 27.028,
+   "end": 27.26
+  },
+  {
+   "text": "thousand",
+   "start": 27.306,
+   "end": 27.69
+  },
+  {
+   "text": "three",
+   "start": 27.748,
+   "end": 27.968
+  },
+  {
+   "text": "hundred",
+   "start": 28.026,
+   "end": 28.316
+  },
+  {
+   "text": "people,",
+   "start": 28.375,
+   "end": 28.769
+  },
+  {
+   "text": "by",
+   "start": 28.804,
+   "end": 28.92
+  },
+  {
+   "text": "population",
+   "start": 28.978,
+   "end": 29.512
+  },
+  {
+   "text": "estimate.",
+   "start": 29.559,
+   "end": 30.093
+  },
+  {
+   "text": ".",
+   "start": 30.116,
+   "end": 30.151
+  },
+  {
+   "text": "This",
+   "start": 30.94,
+   "end": 31.149
+  },
+  {
+   "text": "is",
+   "start": 31.207,
+   "end": 31.3
+  },
+  {
+   "text": "BaadhDrishti.",
+   "start": 31.382,
+   "end": 32.287
+  }
+ ]
+}
